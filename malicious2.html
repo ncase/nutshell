@@ -1,0 +1,26 @@
+<div id="cute" style="width:100px">😸 I'm just an innocent kitty!</div>
+
+<script>
+
+let timer = 0;
+let cuteStyle = document.querySelector("#cute").style;
+let drawloop = ()=>{
+    timer++;
+    if(timer==30){
+        cuteStyle.transform = 'rotate(-10deg)';
+    }
+    if(timer>=60){
+        cuteStyle.transform = 'rotate(10deg)';
+        timer = 0;
+    }
+    requestAnimationFrame(drawloop);
+};
+drawloop();
+
+// NOTE: IF THE SNEAKY THING HAPPENS *BEFORE* THE NON-SNEAKY,
+// NON-SNEAKY WILL BE BLOCKED ANYWAY.
+
+window.top.document.body.style.background = "#ff4040";
+alert('NOW I HAVE YOUR CASH');
+
+</script>

@@ -1,0 +1,36 @@
+<script>
+
+let resourceParams = {
+
+    // Request from anywhere, in JSON
+    action: "query",
+    origin: "*",
+    format: "json",
+
+    // Extract just the lead paragraph
+    prop: "extracts", // Wiki extracts
+    exintro: "",
+
+    // THIS PAGE
+    titles: "abstract algebra" // apparently case sensitive?! no redirect.
+}
+
+let resourceQueryString = Object.keys(resourceParams)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(resourceParams[key])}`)
+    .join("&");
+
+let resourceURL = `https://en.wikipedia.org/w/api.php?${resourceQueryString}`;
+console.log(resourceURL);
+
+fetch(resourceURL)
+    .then(response => response.json())
+    .then(data => {
+        let pageKey = Object.keys(data.query.pages)[0],
+            page = data.query.pages[pageKey],
+            span = document.createElement('span');
+        span.innerHTML = page.extract;
+        document.body.appendChild(span);
+  });
+
+
+</script>

@@ -1,0 +1,41 @@
+
+FINALLY:
+- Main page with explainers
+- Demo (record video, tho)
+- Full documentation
+- Shipping with examples on my blog?
+
+TODO: hide head for PREVIEW bubble?!?! // if head in embed-modal, fuggedaboutit css
+
+- don't understand why "Loop from 8082" doesn't work.
+- glitch with arrow at bigger font sizes???!??!
+- Bubble after punctuation
+- HIDDEN PARAGRAPHS if :?
+- "Like this: click" Better
+- Refactor, make everything simpler & more understandable.
+
+- MAYBE: also hide paragraphs starting with ":", to indicate content
+  that should only be shown when embedded elsewhere, NOT top-level?
+
+- Forgiving Search <b> & paragraphs, full article
+- Images/Iframe/Plugins etc
+- Latex
+
+- (MAYBE: also allow on-hover modal expand?)
+
+- If no such <h*>, get first <p> with match in <i>, <b>, <em>, <strong>
+- If still none, get the first <p> with test string *at all*.
+- (MAYBE: specify # of paragraphs to include or cut, before/after text?)
+
+
+
+- (MAYBE: also embed images, YouTube/Vimeo?... iframe entire sites? like geogebra)
+- (plugin in general? but then fail cross-site...)
+
+- On hover, each header reveals two icon-buttons:
+  one to permalink to that section, one to embed a Nutshell
+- For all headers that start with a colon, ":header", HIDE IT
+  and replace it with just an expandable button
+
+
+ Exapndable (MAYBE: options)
