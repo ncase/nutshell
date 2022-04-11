@@ -1,4 +1,24 @@
 
+
+TODO: What prior art exists?
+already a library for this within-site? pop-up?
+StretchText - original idea to use across authors?
+https://github.com/BradNeuberg/stretchtext.js (but not across websites)
+Use ////'s arrow styling idea
+Wikipedia
+Gwern
+LessWrong
+selling points: NOT DISRUPTIVE, JUST-IN-TIME LEARNING
+Telescopic text
+Stretchtext can also be implemented in JavaScript, as in Brad Neuberg’s Stretchtext.js, and illustrated in an extensive system on Ted Goranson’s blog.
+
+
+[:](// Just a quick one-off comment, without needing to go off)
+
+======
+
+
+
 FINALLY:
 - Main page with explainers
 - Demo (record video, tho)
@@ -39,3 +59,18 @@ TODO: hide head for PREVIEW bubble?!?! // if head in embed-modal, fuggedaboutit 
 
 
  Exapndable (MAYBE: options)
+
+// TODO: Simple Wiki, too?
+
+// TODO: IF NO SECTIONID GET ENTIRE PAGE???
+
+IMPORTANT TO DOs NEXT
+- CLEAN THE CODE @done
+- Bubble Head: source, embed
+- Bubble Head: foot close
+- punctuation & style reset
+\\
+- permalink, too (on receive end as well)
+- proper nut, link, close buttons (data URI in CSS? svg? or pure HTML/CSS?) ✕
+- use dot? or get parent color for balls & bubble?
+- no embed nut in embed modal

@@ -42,7 +42,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
 == What Nutshell Needs To Do (Spec) ==
 
-1) Convert the top page (or a given element):
+1) Convert the top page:
 
   a. Turn :links into expandable buttons
     <a href="pageURL#Section">:link text</a>
@@ -90,42 +90,18 @@ SERIOUSLY, BIG STONES. WHAT'S IMPORTANT NEXT?
 HIDE :HEADERS
 
 VISUAL FIXES
-- The arrow is screwed @done
-- Close button at bottom @done
-- Embed button for bubbles only on hover & doesn't look like trash @done
-- (and not inside embed) @done
-- ScrollTo when close wih bottom X. @done
-- A better on-hover header to show embedding @done
-- Style reset if link was in bold @done
-- MAKE THE BUBBLE SUBTLY MOVE UP & DOWN TOO, ON TOP OF OPEN/CLOSE (to show zipping for long bubbles) @done
-- After punctuation @done
-- Continue text faded @done
-- TODO: Better Embed Modal structure - Bubble, scroller-container, close button @done
-- And hack: bold the nutshell via js... @done
-
-? non-english wiki, simple wiki?
-- Style code, strike, underline, blockquote...
-- TODO: Error Get it but section is blank (header after header)
-\
-- Trim embedded sections. (empty/whitespace paragraphs) // nah just fix Quill.
-
-\
-- test malicious: <a href="javascript:alert('xss')">some text</a> @done
+- Embed button only on hover & doesn't look like trash (and not inside embed)
+- Close button at bottom
+- The arrow is screwed
+- A better on-hover header to show embedding
+- After punctuation
+- Style reset if link was in bold
+- TODO: Better Embed Modal structure - Bubble, scroller-container, close
+- MAKE THE BUBBLE SUBTLY MOVE UP & DOWN TOO, ON TOP OF OPEN/CLOSE (to show zipping for long bubbles)
 
 TRY NUTSHELL
 
 DOCUMENTATION PAGE
-
-Lower crit mass by making it niche
-
-yada ydad yadad
-
-OTHER FEATURES:
-- KaTEX
-- YouTube / img
-- Search bold, p
-- If no SectionID, get whole thing
-- hover preview
 
 *************************************************************************/
 
@@ -143,23 +119,17 @@ OTHER FEATURES:
         if(Nutshell.options.startOnLoad) Nutshell.start();
     });
 
-    // NUTSHELL START
-    Nutshell.start = (el=document.body)=>{
-
-        // Restart!
-        Nutshell.htmlCache = {};
-
-        // IF TOP PAGE: Convert this page!
-        // (By default, the whole document. But you can specify element, i.e. leaving out comments)
-        // IF NOT: I must have been created for postMessage, give parent my HTML.
+    // IF TOP PAGE: Convert this page!
+    // IF NOT: I must have been created for postMessage, give parent my HTML.
+    Nutshell.start = ()=>{
         if(window == window.top){
 
             // Add self's HTML to my own cached
-            Nutshell.htmlCache[Nutshell.thisPageURL] = el.innerHTML;
+            Nutshell.htmlCache[Nutshell.thisPageURL] = document.body.innerHTML;
 
             // Add styles & convert page
             Nutshell.addStyles();
-            Nutshell.convertLinksToExpandables(el);
+            Nutshell.convertLinksToExpandables(document.body);
             Nutshell.convertHeaders();
 
             // Fill out embed modal with localized text
@@ -180,20 +150,12 @@ OTHER FEATURES:
     const ANIM_TIME = 300;
     const CORS_WAIT_TIME = 9999;
     const HEADER_TAGS = ['h1','h2','h3','h4','h5','h6'];
-    const END_PUNCTUATION = `.,?!)_~'"’”`;
 
     Nutshell.options = {
         startOnLoad: true, // Start Nutshell on load? (default: yes)
         //showOnHover: false, // Should bubbles be expanded on hover, instead of click? (default: no) click only on mobile?
         customCSS: '', // Add your own style
         lang: 'en' // Language
-    };
-
-    // A semantic sugar function to override options
-    Nutshell.setOptions = (newOptions)=>{
-        Object.keys(newOptions).forEach((key)=>{
-            Nutshell.options[key] = newOptions[key];
-        });
     };
 
     /////////////////////
@@ -209,13 +171,11 @@ OTHER FEATURES:
             sectionIDError: `Uh oh, there's no section that matches the ID #[ID]! Watch out for typos & regional spelling differences.`,
 
             // Embed modal!
-            embedStep0: `You can embed this as an "expandable explanation" in your own blog/site!
-                         Click to preview → [EXAMPLE]`,
-            embedStep1: `Step 1) Copy this code into the [HEAD] of your site: [CODE]`,
-            embedStep2: `Step 2) In your article, create a link to [LINK]
-                         and make sure the link text starts with a
-                         <a href="javascript:alert('like that link')">:colon</a>,
-                         so Nutshell knows to make it expandable.`,
+            embedStep0: `You can embed this as an "expandable explanation" in your own blog/site.
+                         Click to preview → [EXAMPLE]. How?`,
+            embedStep1: `Step 1) Copy the Nutshell library into the [HEAD] of your site: [CODE]`,
+            embedStep2: `Step 2) Create a link to [LINK], and make sure the link text starts with a :colon
+                         (that's how Nutshell knows to make it expandable!). Like so:`,
             embedStep3: `Step 3) That's all, folks! 🎉`,
 
         }
@@ -234,89 +194,32 @@ OTHER FEATURES:
     Nutshell.convertLinksToExpandables = (dom)=>{
 
         // Get an array of all links, filtered by if the text starts with a :colon
-        let expandables = [...dom.querySelectorAll('a')].filter(
+        let links = [...dom.querySelectorAll('a')].filter(
             link => (link.innerText.trim().indexOf(':')==0)
         );
 
         // Turn each one into an Expandable!
-        expandables.forEach((ex)=>{
+        links.forEach((link)=>{
 
             // Style: closed Expandable
-            ex.classList.add('nutshell-expandable');
-            ex.setAttribute("mode", "closed");
+            link.classList.add('nutshell-expandable');
+            link.setAttribute("mode", "closed");
 
             // Remove colon, replace with animated balls
             let linkText = document.createElement('span');
-            linkText.innerHTML = ex.innerText.slice(ex.innerText.indexOf(':')+1);
-            linkText.className = 'nutshell-expandable-text';
+            linkText.innerHTML = link.innerText.slice(link.innerText.indexOf(':')+1);
+            linkText.className = 'nutshell-link-text';
             let ballUp = document.createElement('span');
             ballUp.className = 'nutshell-ball-up';
             let ballDown = document.createElement('span');
             ballDown.className = 'nutshell-ball-down';
-            ex.innerHTML = '';
-            ex.appendChild(linkText);
-            ex.appendChild(ballUp);
-            ex.appendChild(ballDown);
-
-            // Save the punctuation!
-            // Extremely inefficient: plop each character one-by-one into the span
-            let punctuation = document.createElement('span');
-            if(ex.nextSibling){
-                let nextChar;
-                // get next char, is it punctuation?
-                while( END_PUNCTUATION.indexOf(nextChar=ex.nextSibling.nodeValue[0]) >= 0 ){
-                    ex.nextSibling.nodeValue = ex.nextSibling.nodeValue.slice(1); // slice off the rest
-                    punctuation.innerHTML += nextChar; // slap it on
-                }
-            }
-            ex.parentNode.insertBefore(punctuation, ex.nextSibling); // add right after expandable
-
-            // Follow up by repeating last sentence, UNLESS IT'S THE START/END OF PARAGRAPH ALREADY.
-            let hasWordsAfterExpandable = punctuation.nextSibling && punctuation.nextSibling.nodeValue.length>3;
-            let followupSpan = document.createElement('span');
-            followupSpan.style.display = 'none';
-            followupSpan.className = 'nutshell-followup';
-            ex.parentNode.insertBefore(followupSpan, punctuation.nextSibling); // add right after punctuation
-
-            // Short or long followup TEXT?
-            let shortFollowupHTML = '...', // just dots
-                longFollowupHTML = '';
-            if(hasWordsAfterExpandable){
-
-                // Get last sentence *including html markup*...
-                let htmlBeforeThisLink = ex.parentNode.innerHTML.split( ex.outerHTML )[0],
-                    sentencesBeforeThisLink = htmlBeforeThisLink.split(/[.?!]\s/g),
-                    lastSentenceHTML = sentencesBeforeThisLink[sentencesBeforeThisLink.length-1];
-
-                // Hack: convert to TEXT not html. Strip out <a>, <i>, <b>, etc
-                followupSpan.innerHTML = lastSentenceHTML;
-                longFollowupHTML = followupSpan.innerText;
-
-                // ...then the expandable text in bold, then punctuation
-                longFollowupHTML += '<b>' + ex.innerHTML + '</b>' + punctuation.innerHTML;
-
-            }
+            link.innerHTML = '';
+            link.appendChild(linkText);
+            link.appendChild(ballUp);
+            link.appendChild(ballDown);
 
             // Show on hover, or on click?
-            let _bubble = null;
-            ex.close = ()=>{ // close() but not open() needs to be publicly accessible,
-                               // because there's 2 ways to close but only 1 to open.
-                _bubble.close();
-                _bubble = null;
-                ex.setAttribute("mode", "closed");
-                ex.updateFollowup();
-            };
-            ex.updateFollowup = ()=>{ // accessible so bubble can update it when content loads
-                if(!_bubble || !hasWordsAfterExpandable){
-                    // if closed (or no words after), hide
-                    followupSpan.style.display = 'none';
-                }else{
-                    // if open, show only if bubble's textContent is above 50 words
-                    let longEnough = (_bubble.textContent.trim().split(" ").length>=50);
-                    followupSpan.style.display = 'inline';
-                    followupSpan.innerHTML = longEnough ? longFollowupHTML : shortFollowupHTML;
-                }
-            };
+            let myBubble = null; // extremely hacky way to reference it
             if(Nutshell.options.showOnHover){
                 // ON MOUSEOVER, show
                 /*link.addEventListener('mouseover',(e)=>{
@@ -324,21 +227,21 @@ OTHER FEATURES:
                 });*/
             }else{
                 // ON CLICK: toggle open/closed
-                ex.addEventListener('click',(e)=>{
+                link.addEventListener('click',(e)=>{
 
                     // Don't actually go to that link.
                     e.preventDefault();
 
                     // Toggle create/close
-                    if(!_bubble){
+                    if(!myBubble){
                         // Is closed, make OPEN
-                        _bubble = Nutshell.createBubble(ex, e.offsetX);
-                        ex.parentNode.insertBefore(_bubble, punctuation.nextSibling); // place the bubble AFTER PUNCTUATION
-                        ex.setAttribute("mode", "open");
-                        ex.updateFollowup();
+                        myBubble = Nutshell.createBubble(link, e.offsetX);
+                        link.setAttribute("mode", "open");
                     }else{
                         // Is open, make CLOSED
-                        ex.close();
+                        myBubble.close();
+                        myBubble = null;
+                        link.setAttribute("mode", "closed");
                     }
 
                 });
@@ -387,7 +290,7 @@ OTHER FEATURES:
                     titles: articleTitle
                 }
                 let resourceQueryString = _objectToURLParams(resourceParams);
-                let resourceURL = `https://simple.wikipedia.org/w/api.php?${resourceQueryString}`;
+                let resourceURL = `https://en.wikipedia.org/w/api.php?${resourceQueryString}`;
                 fetch(resourceURL)
                     .then(response => response.json())
                     .then(data => {
@@ -690,11 +593,10 @@ OTHER FEATURES:
         Bubble:
         - Arrow (sticks out of bubble)
         - Overflow container
-          - Embed button, reveal on hover
+          - Head: source & embed buttons
           - Section (left & right padded)
-            - "from URL..."
             - Recursive bubbles (sticks out of padding)
-          - Close button
+          - Foot: close button
 
         Animation:
           Opening:
@@ -710,50 +612,29 @@ OTHER FEATURES:
         // Make a bubble container!
         let bubble = document.createElement('div');
         bubble.className = 'nutshell-bubble';
-        // Subtly move down
-        bubble.style.top = '-5px';
-        setTimeout(()=>{ bubble.style.top = '0px'; },1);
-        // RESET FONT STYLE.
-        let topPageStyle = window.getComputedStyle(document.body);
-        bubble.style.fontStyle = topPageStyle.fontStyle;
-        bubble.style.fontWeight = topPageStyle.fontWeight;
-        bubble.style.textDecoration = topPageStyle.textDecoration;
 
         // A speech-bubble arrow, positioned at X of *where you clicked*???
         let arrow = document.createElement("div");
-        arrow.className = "nutshell-bubble-arrow";
+        arrow.className = "nutshell-bubble-arrow-up";
         bubble.appendChild(arrow);
 
         // Position the arrow, starting at 20px left of the click...
-        // SO HACKY.
-        {
-            // (since 20px is half the arrow's width)
-            let arrowX = clickX-20;
-
-            // What's width of the paragraph the expandable is in?
-            let p = _findFirstParentWithFilter(expandable,(p)=>{
-                return p.tagName=="P";
-            });
-            p = p ? p : document.body; // oh whatever, by default.
-            let paragraphWidth = p.getBoundingClientRect().width;
-
-            // What's the width of the container the expandable is in?
-            let cont = _findFirstParentWithFilter(p,(cont)=>{
-                return cont.className=='nutshell-bubble-overflow-section';
-            });
-            if(cont){
-                let sectionWidth = cont.getBoundingClientRect().width,
-                    padding = (sectionWidth-paragraphWidth)/2;
-                arrowX += padding-3; // iunno, border & padding
-            }
-
-            // Don't let the arrow go past bubble's rounded corners (33px)
-            if(arrowX < 33) arrowX = 33; // left
-            if(arrowX > paragraphWidth-33) arrowX = paragraphWidth-33; // right
-
-            // Finally, place that arrow.
-            arrow.style.left = arrowX+"px";
+        // (since 20px is half the arrow's width)
+        let arrowX = clickX-20;
+        // What's width of paragraph?
+        let p = expandable.parentNode,
+            paragraphWidth = p.getBoundingClientRect().width;
+        // If that paragraph is inside another Nutshell, add the padding.
+        if(p.parentNode.className=="nutshell-bubble-overflow-section"){
+            let sectionWidth = p.parentNode.getBoundingClientRect().width,
+                padding = (sectionWidth-paragraphWidth)/2;
+            arrowX += padding;
         }
+        // Don't let the arrow go past bubble's rounded corners (33px)
+        if(arrowX < 33) arrowX = 33; // left
+        if(arrowX > paragraphWidth-33) arrowX = paragraphWidth-33; // right
+        // Finally, place that arrow.
+        arrow.style.left = arrowX+"px";
 
         // The Overflow container
         let overflow = document.createElement('div');
@@ -762,40 +643,29 @@ OTHER FEATURES:
         overflow.style.height = "0px"; // start closed
         bubble.appendChild(overflow);
 
-        // Embed Button
-        let embed = document.createElement('div');
-        embed.className = 'nutshell-bubble-overflow-embed-button';
-        embed.innerHTML = `<img src='${Nutshell._dataURIImage}'/>`;
-        embed.onclick = ()=>{
+        // Head
+        let head = document.createElement('div');
+        head.className = 'nutshell-bubble-overflow-head';
+        overflow.appendChild(head);
+
+        // Head: Embed
+        let embedButton = document.createElement('div');
+        embedButton.className = 'nutshell-bubble-overflow-head-embed';
+        embedButton.innerHTML = "🌰";
+        embedButton.onclick = ()=>{
             Nutshell.showEmbedModal(expandable.href, expandable.textContent);
         };
-        overflow.appendChild(embed);
+        head.appendChild(embedButton);
 
         // Section
         let section = document.createElement('div');
         section.className = "nutshell-bubble-overflow-section";
         overflow.appendChild(section);
 
-        // Close Button
-        let close = document.createElement('div');
-        close.className = 'nutshell-bubble-overflow-close';
-        close.innerHTML = '&times;';
-        close.onclick = ()=>{
+        // Foot: Close
 
-            // Close my parent, which'll also close me
-            expandable.close();
-
-            // Then scroll to that parent expandable *if it's offscreen*
-            let parentTop = expandable.getBoundingClientRect().top;
-            if(parentTop<0){
-                window.scrollTo({
-                    top: parentTop + window.pageYOffset,
-                    behavior: 'smooth'
-                });
-            }
-
-        };
-        overflow.appendChild(close);
+        // Place the bubble after Expandable.
+        expandable.parentNode.insertBefore(bubble, expandable.nextSibling);
 
         /////////////////////////
         // OPENING //////////////
@@ -815,14 +685,11 @@ OTHER FEATURES:
             section.innerHTML = '';
             section.appendChild(content);
 
-            // TODO: ONLY SHOW EMBED & FROM IF *SUCCESSFUL* LOAD
+            // TODO: ONLY SHOW HEAD IF *SUCCESSFUL* LOAD
 
             // And animate! Go to full height, then auto.
             overflow.style.height = section.getBoundingClientRect().height+"px";
             setTimeout(()=>{ overflow.style.height="auto"; }, ANIM_TIME);
-
-            // Oh, and update expandable's followup
-            expandable.updateFollowup();
 
             // Yes.
             _isSectionLoadedYet = true;
@@ -861,9 +728,6 @@ OTHER FEATURES:
         // Close Animation
         bubble.close = ()=>{
 
-            // Subtly move up
-            bubble.style.top = '-5px';
-
             // Can't start an animation from "auto", so set height to current height
             overflow.style.height = overflow.getBoundingClientRect().height + "px";
 
@@ -885,14 +749,6 @@ OTHER FEATURES:
         return bubble;
 
     };
-
-    let _findFirstParentWithFilter = (el,filter)=>{
-        let original = el;
-        while( el && !filter(el) ){ // first parent who passes
-            el = el.parentNode;
-        }
-        return el; // if any
-    }
 
     ///////////////////////////////////////////////////////////
     // Convert <h*> headers: On hover, show permalink/embed options
@@ -923,7 +779,7 @@ OTHER FEATURES:
             // Embed button
             let embedButton = document.createElement('div');
             embedButton.className = 'nutshell-header-embed';
-            embedButton.innerHTML = `<img src='${Nutshell._dataURIImage}'/>`;
+            embedButton.innerHTML = "🌰";
             embedButton.onclick = ()=>{
                 Nutshell.showEmbedModal(permalink, headerText);
             };
@@ -948,14 +804,15 @@ OTHER FEATURES:
     _e.innerHTML = `
         <div id="nutshell-embed-modal-bg" onclick="Nutshell.closeEmbedModal();"></div>
         <div id="nutshell-embed-modal-bubble">
-            <div id="nutshell-embed-modal-close" onclick="Nutshell.closeEmbedModal();">&times;</div>
-            <div id="nutshell-embed-modal-overflow">
-                <p id="nutshell-embed-p0"></p>
-                <p id="nutshell-embed-p1"></p>
-                <p id="nutshell-embed-p2"></p>
-                <p id="nutshell-embed-p3"></p>
-            </div>
+            <p id="nutshell-embed-p0"></p>
+            <p id="nutshell-embed-p1"></p>
+            <p id="nutshell-embed-p2"></p>
+            <p id="nutshell-embed-p2b">
+                // pic
+            </p>
+            <p id="nutshell-embed-p3"></p>
         </div>
+        <div id="nutshell-embed-modal-close" onclick="Nutshell.closeEmbedModal();">🅧</div>
     `;
 
     // Shortcut variables because ugh this is messy code
@@ -978,7 +835,11 @@ OTHER FEATURES:
         // Step 2: Link
         _p2.innerHTML = Nutshell.getLocalizedText("embedStep2")
             .replace(`[LINK]`,`
-                <input id="nutshell-embed-modal-link" onclick="select()"/>`);
+                <input
+                style="width:380px; font-size:10px; height:20px; position:relative; top:-3px;"
+                id="nutshell-embed-modal-link"
+                onclick="select()"
+                />`);
 
         // Step 3: That's all, folks!
         _p3.innerHTML = Nutshell.getLocalizedText("embedStep3");
@@ -997,7 +858,7 @@ OTHER FEATURES:
 
         // Reset Step 0's Example
         _p0.innerHTML = Nutshell.getLocalizedText("embedStep0")
-            .replace(`[EXAMPLE]`,`<a href='${url}' style='font-weight:bolder'>:${linkText}</a>`);
+            .replace(`[EXAMPLE]`,`<b><a href='${url}'>:${linkText}</a></b>`);
         Nutshell.convertLinksToExpandables(_p0);
 
         // Update Step 2's link URL
@@ -1016,8 +877,6 @@ OTHER FEATURES:
     // Nutshell Styling
     /////////////////////
 
-    Nutshell._dataURIImage = "data:image/png;base64,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";
-
     Nutshell.defaultStyle = `
 
     /***************************************************
@@ -1028,28 +887,16 @@ OTHER FEATURES:
         position:relative;
     }
     .nutshell-header-embed{
-
-        /* Position at end of header text */
-        width: 0; /* don't force newline */
-        display: inline-block;
-        position: relative;
-        top:0.14em; left:0;
-
-        /* Button, reveal on hover */
-        opacity:0;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: -30px;
+        width: 30px;
+        height: 30px;
         cursor: pointer;
-        transition: all 0.1s ease-in-out;
-
-    }
-    .nutshell-header-embed img{
-        width:1em; height:1em;
     }
     .nutshell-header:hover .nutshell-header-embed{
-        left:0.25em;
-        opacity:0.33;
-    }
-    .nutshell-header:hover .nutshell-header-embed:hover{
-        opacity:1;
+        display: block;
     }
 
     /***************************************************
@@ -1074,7 +921,7 @@ OTHER FEATURES:
     .nutshell-expandable:hover{
         opacity: 0.8;
     }
-    .nutshell-expandable .nutshell-expandable-text{
+    .nutshell-expandable .nutshell-link-text{
         padding-left: 0.35em; /* Give balls space */
     }
     /* The balls! */
@@ -1105,11 +952,6 @@ OTHER FEATURES:
     .nutshell-expandable[mode=open]:hover .nutshell-ball-up{        top:0.55em; }
     .nutshell-expandable[mode=open]:hover .nutshell-ball-down{      top:0.55em; }
 
-    /* Followup! */
-    .nutshell-followup{
-        opacity:0.33;
-    }
-
     /***************************************************
     BUBBLES:
     ***************************************************/
@@ -1128,15 +970,10 @@ OTHER FEATURES:
         position: relative;
         margin-top: 22px;
 
-        /* For subtle move up & down */
-        position: relative;
-        top: 0;
-        transition: top 0.3s linear;
-
     }
 
     /* Arrow outline */
-    .nutshell-bubble-arrow{
+    .nutshell-bubble-arrow-up{
         width: 0;
         height: 0;
         border-left: 20px solid transparent;
@@ -1148,15 +985,15 @@ OTHER FEATURES:
     }
 
     /* Arrow white */
-    .nutshell-bubble-arrow::after{
+    .nutshell-bubble-arrow-up::after{
         content: "";
         width: 0;
         height: 0;
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
         border-bottom: 20px solid #fff;
-        position: absolute;
-        top: 1.5px;
+        position: relative;
+        top: -25px;
         left: -20px;
         pointer-events: none; /* don't block clicking */
     }
@@ -1172,38 +1009,20 @@ OTHER FEATURES:
         transition: height 0.3s ease-in; /* Snap to close */
     }
 
-    /* Head: Embed Button, show on hover */
-    .nutshell-bubble-overflow-embed-button{
+    /* Head */
+    .nutshell-bubble-overflow-head{
+        position: relative;
+    }
+    .nutshell-bubble-overflow-head-embed{
         position: absolute;
-        top:5px; right:10px;
-        width:1em; height:1em;
-        opacity:0;
-        transition: all 0.1s ease-in-out;
-        cursor:pointer;
-    }
-    .nutshell-bubble-overflow-embed-button img{
-        width:1em; height:1em;
-    }
-    .nutshell-bubble-overflow:hover > .nutshell-bubble-overflow-embed-button{
-        right: 5px;
-        opacity: 0.33;
-    }
-    .nutshell-bubble-overflow:hover > .nutshell-bubble-overflow-embed-button:hover{
-        opacity: 1.0;
-    }
-    /* NO EMBEDDING IF IT'S A PREVIEW INSIDE EMBED MODAL */
-    .nutshell-embed-modal .nutshell-bubble-overflow-embed-button{
-        display:none;
+        left: 5px;
+        cursor: pointer;
     }
 
     /* Section */
     .nutshell-bubble-overflow-section{
-        padding: 0 1em;
-        padding-bottom: 0.5em;
+        padding: 0 20px;
         overflow: hidden; /* to capture full height, including <p>'s margins */
-    }
-    .nutshell-bubble-overflow-section > div{
-        margin: 1em 0; /* if you people forgot to put your text in <p>'s -_- */
     }
     .nutshell-bubble-overflow-section img{
         max-width:100%; /* so it fits */
@@ -1216,29 +1035,11 @@ OTHER FEATURES:
         /* So that recursive bubbles don't get squashed too quickly */
         width: calc(100% + 40px - 6px); /* undo section's padding, minus a gap */
         position: relative;
-        right: calc(1em - 2px);
+        right: calc(20px - 2px);
     }
 
-    /* Foot: is a close button, too. */
-    .nutshell-bubble-overflow-close{
-
-        /* A lightweight &times; sign */
-        font-weight: 100;
-        text-align: center;
-
-        /* Whole-width bottom */
-        position:absolute;
-        width:100%;
-        bottom:0;
-
-        /* A button that gets darker. */
-        cursor:pointer;
-        opacity: 0.33;
-        transition: opacity 0.1s ease-in-out;
-
-    }
-    .nutshell-bubble-overflow-close:hover{
-        opacity:1;
+    /* Foot */
+    .nutshell-bubble-overflow-foot{
     }
 
     /***************************************************
@@ -1277,15 +1078,22 @@ OTHER FEATURES:
         /* In the middle */
         position: absolute;
         margin: auto;
-        top: 0; left: 0; right: 0; bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         width: 600px;
-        height: 420px;
+        height: 500px;
 
         /* Color & font */
         background: #fff;
+        padding: 15px 30px;
         border-radius: 30px;
         font-size: 20px;
         line-height: 1.5em;
+
+        /* Can scroll inside! */
+        overflow: scroll;
 
         /* Animate by slide up */
         transition: top 0.3s ease-in-out;
@@ -1293,42 +1101,38 @@ OTHER FEATURES:
     .nutshell-embed-modal[mode=shown] #nutshell-embed-modal-bubble{  top:0;     }
     .nutshell-embed-modal[mode=hidden] #nutshell-embed-modal-bubble{ top:100px; }
 
-    /* Close button */
-    #nutshell-embed-modal-close{
-
-        /* Top right button */
-        position: absolute;
-        top: 5px; right: 10px;
-        cursor: pointer;
-
-        /* Just a times sign */
-        font-size: 40px;
-        font-weight: 100;
-        height: 40px;
-
-        /* Anim */
-        opacity: 0.25;
-        transition: opacity 0.1s ease-in-out;
-
-    }
-    #nutshell-embed-modal-close:hover{
-        opacity:1;
-    }
-
-    /* Can scroll inside! */
-    #nutshell-embed-modal-overflow{
-        overflow-x: visible;
-        overflow-y: scroll;
-        padding: 15px 30px;
-        width: calc(100% - 60px);
-        height: calc(100% - 30px);
-    }
-
     /* The "inputs" in the modal should look code-like */
-    #nutshell-embed-modal-bubble input{
+    #nutshell-embed-modal-bubble > p > input{
         width: 100%;
         font-size: 14px;
         font-family: monospace;
+    }
+
+    /* VERY HACKY CLOSE BUTTON */
+    #nutshell-embed-modal-close{
+
+        /* In the "middle". Hack coz otherwise, scrolls with bubble content. */
+        position: absolute;
+        margin: auto;
+        top: -464px;
+        right: -608px;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        height: 40px;
+
+        /* It's a button. */
+        font-size: 40px;
+        cursor: pointer;
+
+        /* Anim */
+        transition: top 0.3s ease-in-out;
+    }
+    .nutshell-embed-modal[mode=shown] #nutshell-embed-modal-close{
+        top: -464px;
+    }
+    .nutshell-embed-modal[mode=hidden] #nutshell-embed-modal-close{
+        top: -364px;
     }
 
     `;
