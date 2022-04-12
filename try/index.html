@@ -1,117 +1,30 @@
+<!--
+
+DEMOs:
+- Non-crap CM @done
+- ONE md file, , for both Quill & CM @done
+- fetch it @done
+- #Basic & #Advanced UI @done
+- then actually loading @done
+- compiled to prettied HTML @done
+- non-crap Markdown, too. @done
+
+-->
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
+    <meta charset="utf-8">
     <title>Try Nutshell!</title>
-    <style>
-
-        /* Big ol' reset */
-        body, html{
-            width:100%; height:100%;
-            overflow:hidden;
-        }
-
-        /* Structure of this half-and-half page */
-        #container{
-
-            /* Big ol' block */
-            width: 1220px;
-            height: 600px;
-
-            /* In the middle */
-            position:absolute;
-            margin: auto;
-            top:0; left:0; right:0; bottom:0;
-
-        }
-        #left-half, #right-half{
-            position: absolute;
-            width:600px;
-            height:600px;
-        }
-        #left-half{     left:0;     }
-        #right-half{    right:0;    }
-
-        /* Titles saying what's what */
-        .half-title{
-            font-family: Helvetica, Arial, sans-serif;
-            font-size: 30px;
-            font-weight: 100;
-            line-height: 1.3em;
-        }
-        .point-down{
-            position:relative;
-            top: 0.5em;
-        }
-        .inline-button{
-            display: inline-block;
-            border: 1px solid #000;
-            border-radius: 1em;
-            padding: 0 0.5em;
-            cursor:pointer;
-            position:relative;
-            opacity:1;
-            top:0px;
-            transition: all 0.1s ease-in-out;
-        }
-        .inline-button:hover{
-            opacity:0.5;
-            top:-2px;
-        }
-        .inline-button:active{
-            opacity:1;
-            top:2px;
-        }
-
-        /* The EDITOR half */
-        #editor{
-            position: absolute;
-            bottom:0;
-        }
-        #editor-rich, #editor-md, #editor-html{
-            display:none; /* don't clutter, to start */
-        }
-        #editor-rich-textbox{
-            width: 600px;
-            height: 460px;
-        }
-        #editor-md, #editor-html{
-            width: 560px;
-            height: 420px;
-            border: 1px solid #ccc;
-            padding: 40px 20px;
-        }
-        .ql-editor p{ /* WHY CAN'T YOU BE NORMAL?! */
-            margin-block-start: 1em !important;
-            margin-block-end: 1em !important;
-        }
-
-        /* The PREVIEW half */
-        #try-nutshell-output{
-
-            position: absolute;
-            bottom:0;
-            width: 560px;
-            height: 443px;
-            padding: 20px;
-            padding-top: 38px;
-            border: 1px solid #ccc;
-
-            font-family: Helvetica, Arial, sans-serif;
-            font-size: 13px;
-            line-height: 1.42;
-
-            overflow-y: scroll;
-            overflow-x: hidden;
-
-        }
-
-    </style>
+    <link rel="stylesheet" href="try.css"></link>
+    <link rel="icon" type="image/png" href="../favicon.png">
 </head>
 <body>
-
     <div id="container">
 
+        <!-- LEFT HALF: EDITOR -->
         <div id="left-half">
             <div class="half-title">
                 Just write in whatever tool you <i>already</i> use...
@@ -122,19 +35,14 @@
             </div>
             <div id="editor">
                 <div id="editor-rich">
-
-<div id="editor-rich-textbox">
-
-<h2 class="nutshell-header">Recursion</h2><p><a href="#Recursion" target="_blank">:Recursion</a> is its own reward.</p><p>------</p><h2 class="nutshell-header">To write a Nutshell section, start with a header...</h2><p>...then put a bunch of words in a paragraph.</p><p>Or two.</p><p>(Bonus! On the right-hand side of this page, the "converted" section, you can hover over a header to see its "embed this Nutshell" button. Try it out!)</p><h2 class="nutshell-header">Then, to embed a Nutshell...</h2><p>Make a link...</p><ul><li>with a <code style="background-color: rgb(240, 240, 240);">:colon</code> as <em>the first character of the link text</em>, so Nutshell knows to convert it.</li><li>link to <code>SomeWebsite.com/SomePage#TextOfTheHeader</code>.</li></ul><p>(If it's the same website, you can just link to <code>SomePage/#TextOfTheHeader</code>. If it's the same page, you can just link to <code>#TextOfTheHeader</code>. Also, capitalization/spaces/punctuation doesn't matter, and you don't need the <em>entire </em>text of the header: if the header is "Then, to embed a Nutshell..." you can just use <code>#EmbedANutshell</code>, <code>#embed-a-nutshell</code>, <code style="background-color: rgb(240, 240, 240);">#eMbED A NuT sHEll!!!!!</code>, etc)</p><p>Three examples:</p><ol><li>A :link-with-colon to a section from a different website. <a href="https://blog.ncase.me/back-to-the-future-with-rss/#WhatIsRSS" target="_blank">:What is RSS?</a> (Note that you can embed writings from <em>before </em>Nutshell was made! This is because Nutshell needs no special format, just the headers &amp; paragraphs you're used to.)</li><li>A :link-with-colon to an above section from this page. <a href="#ToWriteANutshellSection" target="_blank">:To write a Nutshell section...</a></li><li>A :link-with-colon to <em>this section itself</em>. <a href="#eMbED A NuT sHEll!!!!!" target="_blank">:To embed a Nutshell...</a></li></ol><p><br></p><h2 class="nutshell-header">[Try it yourself! Replace this header with whatever text you want...]</h2><p>[Then write a :link-with-colon to <code>#WhateverTextYouWant</code>. <strong>Remember the :colon!</strong>]</p><p>[Finally, press "refresh" at the top-right of this page to see it live!]</p><p><br></p><h2 class="nutshell-header">P.S: on embedding from other websites</h2><p>If you're embedding Nutshells from within the same website, all's good. But if you're embedding from another website, it must either:</p><ul><li>Have Nutshell <em>also </em>installed on at least just the webpage you want, if not the whole site. And/or,</li><li>Have CORS enabled</li></ul><p>Not sure if a webpage has Nutshell or CORS enabled? Just make a :link to it in this Try Nutshell page to test it! Here's the fail-message you get from <a href="http://info.cern.ch/" target="_blank">:a link to something <em>without </em>Nutshell or CORS</a>.</p><p><br></p><h2 class="nutshell-header">P.S: first step last – to install Nutshell in your blog / site...</h2><p>Just copy-paste this one line of code into your site, to include the script:</p><p><code style="background-color: rgb(240, 240, 240);">&lt;script src=""&gt;&lt;/script&gt;</code></p><p>Alternatively, download the script here (TODO) &amp; include it manually yourself!</p><p>(Most blogging platforms – like Wordpress, Tumblr, Ghost, Github Pages, etc – allow you to add your own custom code. Sadly, some – like Medium – don't. Check your platform to see if you're even allowed to add <em>one </em>line of code!)</p><p><br></p>
-
-</div>
-
+                    <div id="editor-rich-textbox"></div>
                 </div>
                 <div id="editor-md"></div>
                 <div id="editor-html"></div>
             </div>
         </div>
 
+        <!-- RIGHT HALF: PREVIEW NUTSHELL -->
         <div id="right-half">
             <div class="half-title">
                 ...and Nutshell will convert
@@ -146,18 +54,27 @@
             <div id="try-nutshell-output"></div>
         </div>
 
+        <!-- BOTTOM: CHOOSE DEMO -->
+        <div id="bottom">
+            <div class="half-title" style="font-size:20px">
+                demo:
+                <span class="inline-button" onclick="loadFromMarkdownFile('NutshellInANutshell.md');">nutshell in a nutshell</span>
+                <span class="inline-button" onclick="loadFromMarkdownFile('GettingStarted.md');">getting started</span>
+                <span class="inline-button" onclick="loadFromMarkdownFile('AdvancedFeatures.md');">advanced features</span>
+            </div>
+        </div>
     </div>
-
 </body>
 
 <!-- Other People's Code -->
 <link href="libraries/quill.snow.css" rel="stylesheet">
 <script src="libraries/quill.js"></script>
 <link rel="stylesheet" href="libraries/codemirror.min.css"></link>
-<script type="text/javascript" src="libraries/codemirror.min.js"></script>
-<script type="text/javascript" src="libraries/markdown.min.js"></script>
-<script type="text/javascript" src="libraries/htmlmixed.min.js"></script>
-<script type="text/javascript" src="libraries/showdown.min.js"></script>
+<script src="libraries/codemirror.min.js"></script>
+<script src="libraries/markdown.min.js"></script>
+<script src="libraries/xml.min.js"></script>
+<script src="libraries/showdown.min.js"></script>
+<script src="libraries/beautify-html.min.js"></script>
 
 <!-- Nutshell! -->
 <script src="../nutshell.js"></script>
@@ -167,231 +84,7 @@
     });
 </script>
 
+<!-- Try Nutshell -->
+<script src="try.js"></script>
+
 </html>
-
-<script>
-
-/* Get all these editors started! */
-let quill = new Quill('#editor-rich-textbox', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, 4, 5, 6, false] }],
-            ['bold', 'italic', 'underline', 'strike', 'code', 'blockquote'],
-            ['link', { 'list': 'bullet' }, { 'list': 'ordered'}],
-            ['image']
-        ]
-    },
-    theme: 'snow'
-});
-let codemirror_md = CodeMirror(document.querySelector('#editor-md'), {
-    //lineNumbers: true,
-    tabSize: 4,
-    value: `
-## To write a Nutshell section, start with a header...
-
-...then put a bunch of words in a paragraph.
-
-Or two.
-
-(Bonus! On the right-hand side of this page,
-the "converted" section, you can hover over a header
-to see its "embed this Nutshell" button. Try it out!)
-
-## Then, to embed a Nutshell...
-
-Make a link...
-
-* with a :colon as the first character of the link text,
-  so Nutshell knows to convert it.
-* link to \`SomeWebsite.com/SomePage#TextOfTheHeader\`.
-
-(If it's the same website, you can just link to
-\`SomePage/#TextOfTheHeader\`. If it's the same page,
-you can just link to \`#TextOfTheHeader\`.
-Also, capitalization/spaces/punctuation doesn't matter,
-and you don't need the entire text of the header:
-if the header is "Then, to embed a Nutshell..."
-you can just use \`#EmbedANutshell\`, \`#embed-a-nutshell\`,
-\`#eMbED A NuT sHEll!!!!!\`, etc)
-
-Three examples:
-
-* A :link-with-colon to a section from a different website.
-  :What is RSS? (Note that you can embed writings from before
-  Nutshell was made! This is because Nutshell needs no special format,
-  just the headers & paragraphs you're used to.)
-* A :link-with-colon to an above section from this page.
-  :To write a Nutshell section...
-* A :link-with-colon to this section itself.
-  :To embed a Nutshell...
-
-
-## (Try it yourself! Replace this header with whatever text you want...)
-
-(Then write a :link-with-colon to #WhateverTextYouWant.
-Remember that :colon!)
-
-(Finally, press "refresh" at the top-right of this page to see it live!)
-
-
-
-## P.S: on embedding from other websites
-
-If you're embedding Nutshells from within the same website, all's good.
-But if you're embedding from another website, it must either:
-
-* Have Nutshell also installed on at least just the webpage you want,
-  if not the whole site. And/or,
-* Have CORS enabled
-
-Not sure if a webpage has Nutshell or CORS enabled?
-Just make a :link to it in this Try Nutshell page to test it!
-Here's the fail-message you get from
-:a link to something without Nutshell or CORS.
-
-
-
-## P.S: first step last – to install Nutshell in your blog / site...
-
-Just copy-paste this one line of code into your site,
-to include the script:
-
- \`&lt;script src=""&gt;&lt;/script&gt;\`
-
-Alternatively, download the script here (TODO)
-& include it manually yourself!
-
-(Most blogging platforms
-– like Wordpress, Tumblr, Ghost, Github Pages, etc –
-allow you to add your own custom code.
-Sadly, some – like Medium – don't.
-Check your platform to see if you're even allowed
-to add *one* line of code!)
-
-`,
-    mode: 'markdown'
-});
-let codemirror_html = CodeMirror(document.querySelector('#editor-html'), {
-    //lineNumbers: true,
-    tabSize: 4,
-    value: `
-<h2>
-	To write a Nutshell section, start with a header...
-</h2>
-<p>
-	...then put a bunch of words in a paragraph.
-</p>
-<p>
-	Or two.
-</p>
-<p>
-	(Bonus! On the right-hand side of this page,
-    the "converted" section, you can hover over a header
-    to see its "embed this Nutshell" button. Try it out!)
-</p>
-
-<h2>Then, to embed a Nutshell…</h2>
-<p>Make a link…</p>
-<ul>
-<li>with a :colon as the first character of the link text,
-so Nutshell knows to convert it.</li>
-<li>link to <code>SomeWebsite.com/SomePage#TextOfTheHeader</code>.</li>
-</ul>
-<p>(If it's the same website, you can just link to
-<code>SomePage/#TextOfTheHeader</code>. If it's the same page,
-you can just link to <code>#TextOfTheHeader</code>.
-Also, capitalization/spaces/punctuation doesn't matter,
-and you don't need the entire text of the header:
-if the header is "Then, to embed a Nutshell…"
-you can just use <code>#EmbedANutshell</code>, <code>#embed-a-nutshell</code>,
-<code>#eMbED A NuT sHEll!!!!!</code>, etc)</p>
-<p>Three examples:</p>
-<ul>
-<li>A :link-with-colon to a section from a different website.
-:What is RSS? (Note that you can embed writings from before Nutshell was made! This is because Nutshell needs no special format, just the headers &amp; paragraphs you're used to.)</li>
-<li>A :link-with-colon to an above section from this page.
-:To write a Nutshell section…</li>
-<li>A :link-with-colon to this section itself.
-:To embed a Nutshell…</li>
-</ul>
-<h2 id="tryityourselfreplacethisheaderwithwhatevertextyouwant">(Try it yourself! Replace this header with whatever text you want…)</h2>
-<p>(Then write a :link-with-colon to #WhateverTextYouWant. Remember that :colon!)</p>
-<p>(Finally, press "refresh" at the top-right of this page to see it live!)</p>
-<h2 id="psonembeddingfromotherwebsites">P.S: on embedding from other websites</h2>
-<p>If you're embedding Nutshells from within the same website, all's good.
-But if you're embedding from another website, it must either:</p>
-<ul>
-<li>Have Nutshell also installed on at least just the webpage you want,
-if not the whole site. And/or,</li>
-<li>Have CORS enabled</li>
-</ul>
-<p>Not sure if a webpage has Nutshell or CORS enabled?
-Just make a :link to it in this Try Nutshell page to test it!
-Here's the fail-message you get from
-:a link to something without Nutshell or CORS.</p>
-<h2 id="psfirststeplasttoinstallnutshellinyourblogsite">P.S: first step last – to install Nutshell in your blog / site…</h2>
-<p>Just copy-paste this one line of code into your site,
-to include the script:</p>
-<p><code>&amp;lt;script src=""&amp;gt;&amp;lt;/script&amp;gt;</code></p>
-<p>Alternatively, download the script here (TODO)
-&amp; include it manually yourself!</p>
-<p>(Most blogging platforms
-– like Wordpress, Tumblr, Ghost, Github Pages, etc –
-allow you to add your own custom code.
-Sadly, some – like Medium – don't.
-Check your platform to see if you're even allowed
-to add <em>one</em> line of code!)</p>
-
-`,
-    mode: 'html'
-});
-
-/* Refresh that Nutshell preview */
-let output = document.querySelector("#try-nutshell-output");
-let converter = new showdown.Converter();
-let refreshPreview = ()=>{
-    switch(currentTool){
-        case 'rich':
-            output.innerHTML = quill.root.innerHTML;
-            break;
-        case 'md':
-            let md = codemirror_md.getValue(),
-                html = converter.makeHtml(md);
-            output.innerHTML = html;
-            break;
-        case 'html':
-            output.innerHTML = codemirror_html.getValue();
-            break;
-    }
-    Nutshell.start(output);
-};
-
-/* Switch tool... */
-let currentTool = 'rich'; // rich / md / html
-let editor_rich = document.querySelector("#editor-rich"),
-    editor_md   = document.querySelector("#editor-md"),
-    editor_html = document.querySelector("#editor-html");
-let switchTool = (tool)=>{
-
-    // Hide all
-    editor_rich.style.display = 'none';
-    editor_md.style.display = 'none';
-    editor_html.style.display = 'none';
-
-    // Switch to...
-    currentTool = tool;
-    switch(currentTool){
-        case 'rich': editor_rich.style.display = 'block'; break;
-        case 'md': editor_md.style.display = 'block'; break;
-        case 'html': editor_html.style.display = 'block'; break;
-    }
-
-    // Refresh preview!
-    refreshPreview();
-
-}
-
-/* START WITH RICH TEXT */
-switchTool('rich');
-
-</script>

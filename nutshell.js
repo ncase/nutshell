@@ -102,15 +102,31 @@ VISUAL FIXES
 - Continue text faded @done
 - TODO: Better Embed Modal structure - Bubble, scroller-container, close button @done
 - And hack: bold the nutshell via js... @done
+- Trim embedded sections. (empty/whitespace paragraphs) // nah just fix Quill.
+- test malicious: <a href="javascript:alert('xss')">some text</a> @done
+
+=====================
+
+BIGGEST STONES NEXT
+
+Favicon & Meta unicode & title, w/e
+
+MAIN PAGE LOOKS GOOD
+- :headers auto-hide
+- Big-ass styled buttons to start
+- Animated header
+- Fix text
+
+TRY PAGE LOOKS GOOD
+- Bigger text editor
+- CodeMirror isn't screwed.
+
+=====================
 
 ? non-english wiki, simple wiki?
 - Style code, strike, underline, blockquote...
 - TODO: Error Get it but section is blank (header after header)
-\
-- Trim embedded sections. (empty/whitespace paragraphs) // nah just fix Quill.
-
-\
-- test malicious: <a href="javascript:alert('xss')">some text</a> @done
+- Don't scrollTo if parent is inside embedModal
 
 TRY NUTSHELL
 
@@ -159,6 +175,7 @@ OTHER FEATURES:
 
             // Add styles & convert page
             Nutshell.addStyles();
+            Nutshell.hideHeaders();
             Nutshell.convertLinksToExpandables(el);
             Nutshell.convertHeaders();
 
@@ -261,7 +278,7 @@ OTHER FEATURES:
             // Save the punctuation!
             // Extremely inefficient: plop each character one-by-one into the span
             let punctuation = document.createElement('span');
-            if(ex.nextSibling){
+            if(ex.nextSibling && ex.nextSibling.nodeValue){
                 let nextChar;
                 // get next char, is it punctuation?
                 while( END_PUNCTUATION.indexOf(nextChar=ex.nextSibling.nodeValue[0]) >= 0 ){
@@ -272,7 +289,9 @@ OTHER FEATURES:
             ex.parentNode.insertBefore(punctuation, ex.nextSibling); // add right after expandable
 
             // Follow up by repeating last sentence, UNLESS IT'S THE START/END OF PARAGRAPH ALREADY.
-            let hasWordsAfterExpandable = punctuation.nextSibling && punctuation.nextSibling.nodeValue.length>3;
+            let hasWordsAfterExpandable = punctuation.nextSibling
+                                          && punctuation.nextSibling.nodeValue
+                                          && punctuation.nextSibling.nodeValue.trim().length>3;
             let followupSpan = document.createElement('span');
             followupSpan.style.display = 'none';
             followupSpan.className = 'nutshell-followup';
@@ -304,7 +323,7 @@ OTHER FEATURES:
                 _bubble.close();
                 _bubble = null;
                 ex.setAttribute("mode", "closed");
-                ex.updateFollowup();
+                setTimeout(ex.updateFollowup, ANIM_TIME);
             };
             ex.updateFollowup = ()=>{ // accessible so bubble can update it when content loads
                 if(!_bubble || !hasWordsAfterExpandable){
@@ -713,10 +732,16 @@ OTHER FEATURES:
         // Subtly move down
         bubble.style.top = '-5px';
         setTimeout(()=>{ bubble.style.top = '0px'; },1);
-        // RESET FONT STYLE.
-        let topPageStyle = window.getComputedStyle(document.body);
+        // RESET FONT STYLE to that of first parent <p>. Or document.body.
+        let p = _findFirstParentWithFilter(bubble,(p)=>{
+            return p.tagName=="P";
+        }) || document.body;
+        let topPageStyle = window.getComputedStyle(p);
+        bubble.style.color = topPageStyle.color;
+        bubble.style.fontSize = topPageStyle.fontSize;
         bubble.style.fontStyle = topPageStyle.fontStyle;
         bubble.style.fontWeight = topPageStyle.fontWeight;
+        bubble.style.lineHeight = topPageStyle.lineHeight;
         bubble.style.textDecoration = topPageStyle.textDecoration;
 
         // A speech-bubble arrow, positioned at X of *where you clicked*???
@@ -895,25 +920,16 @@ OTHER FEATURES:
     }
 
     ///////////////////////////////////////////////////////////
-    // Convert <h*> headers: On hover, show permalink/embed options
+    // Convert <h*> headers: On hover, show embed option
     ///////////////////////////////////////////////////////////
 
     Nutshell.convertHeaders = ()=>{
 
-        // Get all headers
-        let allHeaders = [];
-        for(let i=0; i<HEADER_TAGS.length; i++){
-            let tag = HEADER_TAGS[i];
-            allHeaders = allHeaders.concat( [...document.body.querySelectorAll(tag)] ); // big ol' array
-        }
-
-        // For each one, a container that only shows on hover!
-        allHeaders.forEach((header)=>{
+        // For each header, a container that only shows on hover!
+        _getAllHeaders().forEach((header)=>{
 
             // So it can show stuff on hover
             header.classList.add('nutshell-header');
-
-            // TODO: on-hover element
 
             // Info needed for embed & permalink
             let headerText = header.innerText,
@@ -929,6 +945,82 @@ OTHER FEATURES:
             };
             header.appendChild(embedButton);
 
+        });
+
+    };
+
+    let _getAllHeaders = ()=>{
+        let allHeaders = [];
+        for(let i=0; i<HEADER_TAGS.length; i++){
+            let tag = HEADER_TAGS[i];
+            allHeaders = allHeaders.concat( [...document.body.querySelectorAll(tag)] ); // big ol' array
+        }
+        return allHeaders;
+    }
+
+    ///////////////////////////////////////////////////////////
+    // If header begins with colon, replace it and following section with just a link!
+    ///////////////////////////////////////////////////////////
+
+    Nutshell.hideHeaders = ()=>{
+
+        // Temporary dividers to remove later...
+        let tmpDividers = [];
+
+        // For each found header with :colon...
+        _getAllHeaders().filter((header)=>{
+            return header.innerText.trim()[0]==":";
+        }).forEach((header)=>{
+
+            // Put a link before the header
+            let link = document.createElement("a");
+            link.href = "#" + header.innerText.replace(/[^A-Za-z]/g,''), // A section ID
+            link.innerText = ":" + header.innerText.trim().slice(1).trim(); // remove first char
+            header.parentNode.insertBefore(link, header);
+
+            // And insert a <br> after the link
+            let br = document.createElement("br");
+            link.parentNode.insertBefore(br, link.nextSibling);
+
+            // Put a <hr> before the link,
+            // so it won't be confused with a previous section.
+            let hr = document.createElement("hr");
+            link.parentNode.insertBefore(hr, link);
+            tmpDividers.push(hr);
+
+            // Then delete every node following until next header, hr, or end of post.
+            let currentNode = header,
+                foundEndOfSection = false;
+            while(!foundEndOfSection){
+
+                // Move on to next, then destroy this one.
+                // ("then", coz can't get next sibling in DOM if already dead
+                let nextNode = currentNode.nextSibling;
+                currentNode.parentNode.removeChild(currentNode);
+                currentNode = nextNode;
+
+                // Is there a next node at all?
+                if(!nextNode){
+                    // If not, FOUND END.
+                    foundEndOfSection = true;
+                }else{
+                    // If yes, what's its tag? (if any?)
+                    if(nextNode.tagName){
+                        // If it's a header or <hr>, FOUND END.
+                        let currentTag = nextNode.tagName.toLowerCase();
+                        if(HEADER_TAGS.indexOf(currentTag)>=0 || currentTag=='hr'){
+                            foundEndOfSection = true;
+                        }
+                    }
+                }
+
+            }
+
+        });
+
+        // NOW remove all those temporary dividers
+        tmpDividers.forEach((hr)=>{
+            hr.parentNode.removeChild(hr);
         });
 
     };
@@ -997,7 +1089,7 @@ OTHER FEATURES:
 
         // Reset Step 0's Example
         _p0.innerHTML = Nutshell.getLocalizedText("embedStep0")
-            .replace(`[EXAMPLE]`,`<a href='${url}' style='font-weight:bolder'>:${linkText}</a>`);
+            .replace(`[EXAMPLE]`,`<a href='${url}' style='font-weight:bold'>:${linkText}</a>`);
         Nutshell.convertLinksToExpandables(_p0);
 
         // Update Step 2's link URL
@@ -1249,6 +1341,7 @@ OTHER FEATURES:
 
         /* TAKE UP WHOLE SCREEN */
         position: fixed;
+        z-index: 99999;
         top: 0;
         left: 0;
         width: 100%;
@@ -1279,7 +1372,7 @@ OTHER FEATURES:
         margin: auto;
         top: 0; left: 0; right: 0; bottom: 0;
         width: 600px;
-        height: 420px;
+        height: 450px;
 
         /* Color & font */
         background: #fff;

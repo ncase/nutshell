@@ -1,0 +1,118 @@
+/* Big ol' reset */
+body, html{
+    width:100%; height:100%;
+    overflow:hidden;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 100;
+}
+
+/* Structure of this half-and-half page */
+#container{
+
+    /* Big ol' block */
+    width: 1220px;
+    height: 600px;
+
+    /* In the middle */
+    position:absolute;
+    margin: auto;
+    top:0; left:0; right:0; bottom:0;
+
+}
+#left-half, #right-half{
+    position: absolute;
+    width:600px;
+    height:540px;
+}
+#left-half{     left:0;     }
+#right-half{    right:0;    }
+#bottom{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Titles saying what's what */
+.half-title{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 100;
+    line-height: 1.3em;
+}
+.point-down{
+    position:relative;
+    top: 0.5em;
+}
+.inline-button{
+    display: inline-block;
+    border: 1px solid #000;
+    border-radius: 1em;
+    padding: 0 0.5em;
+    cursor:pointer;
+    position:relative;
+    opacity:1;
+    top:0px;
+    transition: all 0.1s ease-in-out;
+}
+.inline-button:hover{
+    opacity:0.5;
+    top:-2px;
+}
+.inline-button:active{
+    opacity:1;
+    top:2px;
+}
+
+/* The EDITOR half */
+#editor{
+    position: absolute;
+    bottom:0;
+}
+#editor-rich, #editor-md, #editor-html{
+    display:none; /* don't clutter, to start */
+}
+#editor-rich-textbox{
+    width: 600px;
+    height: 400px;
+    font-size: 16px;
+}
+#editor-md, #editor-html{
+    width: 600px;
+    height: 440px;
+    border: 1px solid #ccc;
+}
+.CodeMirror {
+    font-family: monospace;
+    font-size: 16px;
+}
+.CodeMirror-code{
+    margin: 20px 0 !important;
+}
+.CodeMirror-line{
+    padding-left: 20px !important;
+}
+.ql-editor p{ /* WHY CAN'T YOU BE NORMAL?! */
+    margin-block-start: 1em !important;
+    margin-block-end: 1em !important;
+}
+
+/* The PREVIEW half */
+#try-nutshell-output{
+
+    position: absolute;
+    bottom:0;
+    width: 560px;
+    height: 390px;
+    padding: 20px;
+    padding-top: 30px;
+    border: 1px solid #ccc;
+
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.42;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
