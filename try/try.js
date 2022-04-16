@@ -104,6 +104,12 @@ let switchTool = (tool, dontUpdatePreview)=>{
 
 }
 
-/* START WITH RICH TEXT */
-loadFromMarkdownFile('GettingStarted.md');
+/* START */
+let hash = window.location.hash.slice(1);
+let filenames = ['NutshellInANutshell','GettingStarted','AdvancedFeatures'];
+if(filenames.indexOf(hash)>=0){
+    loadFromMarkdownFile(hash+'.md');
+}else{
+    loadFromMarkdownFile('GettingStarted.md');
+}
 switchTool('rich', true);

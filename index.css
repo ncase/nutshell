@@ -12,6 +12,9 @@ body {
     background-color: white;
 
 }
+b, strong{
+    font-weight: bold;
+}
 hr{
     border:none;
     border-top: 3px dashed #ddd;

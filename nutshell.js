@@ -171,13 +171,13 @@ OTHER FEATURES:
         if(window == window.top){
 
             // Add self's HTML to my own cached
-            Nutshell.htmlCache[Nutshell.thisPageURL] = el.innerHTML;
+            Nutshell.htmlCache[Nutshell.thisPageURL] = _purifyHTML(el.innerHTML, Nutshell.thisPageURL);
 
             // Add styles & convert page
             Nutshell.addStyles();
-            Nutshell.hideHeaders();
+            Nutshell.hideHeaders(el);
             Nutshell.convertLinksToExpandables(el);
-            Nutshell.convertHeaders();
+            Nutshell.convertHeaders(el);
 
             // Fill out embed modal with localized text
             Nutshell.fillEmbedModalText();
@@ -194,10 +194,9 @@ OTHER FEATURES:
     // Constants & Options
     /////////////////////
 
-    const ANIM_TIME = 300;
-    const CORS_WAIT_TIME = 9999;
+    const ANIM_TIME = 300; // 0.3 seconds
+    const LOAD_WAIT_TIME = 6999; // 7 seconds
     const HEADER_TAGS = ['h1','h2','h3','h4','h5','h6'];
-    const END_PUNCTUATION = `.,?!)_~'"’”`;
 
     Nutshell.options = {
         startOnLoad: true, // Start Nutshell on load? (default: yes)
@@ -222,8 +221,10 @@ OTHER FEATURES:
 
             // Nutshell errors...
             notFoundError: `Uh oh, the page was not found! Double check the link:`,
-            loadingError: `Uh oh, the page was found but didn't hand over its content! Check that the other site has Nutshell installed or CORS enabled:`,
+            wikiError: `Uh oh, Wikipedia's not loading, or the link is broken. Please double check:`,
+            corsError: `Uh oh, the page was found but didn't hand over its content! Check that the other site has Nutshell installed or CORS enabled:`,
             sectionIDError: `Uh oh, there's no section that matches the ID #[ID]! Watch out for typos & regional spelling differences.`,
+            noSectionIDError: `Uh oh, you forgot to give a #SectionID in the URL! Go put that # in there.`,
 
             // Embed modal!
             embedStep0: `You can embed this as an "expandable explanation" in your own blog/site!
@@ -234,6 +235,11 @@ OTHER FEATURES:
                          <a href="javascript:alert('like that link')">:colon</a>,
                          so Nutshell knows to make it expandable.`,
             embedStep3: `Step 3) That's all, folks! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
 
         }
     };
@@ -281,7 +287,8 @@ OTHER FEATURES:
             if(ex.nextSibling && ex.nextSibling.nodeValue){
                 let nextChar;
                 // get next char, is it punctuation?
-                while( END_PUNCTUATION.indexOf(nextChar=ex.nextSibling.nodeValue[0]) >= 0 ){
+                let keepPunctuation = Nutshell.getLocalizedText('keepPunctuation');
+                while( keepPunctuation.indexOf(nextChar=ex.nextSibling.nodeValue[0]) >= 0 ){
                     ex.nextSibling.nodeValue = ex.nextSibling.nodeValue.slice(1); // slice off the rest
                     punctuation.innerHTML += nextChar; // slap it on
                 }
@@ -291,7 +298,7 @@ OTHER FEATURES:
             // Follow up by repeating last sentence, UNLESS IT'S THE START/END OF PARAGRAPH ALREADY.
             let hasWordsAfterExpandable = punctuation.nextSibling
                                           && punctuation.nextSibling.nodeValue
-                                          && punctuation.nextSibling.nodeValue.trim().length>3;
+                                          && punctuation.nextSibling.nodeValue.trim().length>1;
             let followupSpan = document.createElement('span');
             followupSpan.style.display = 'none';
             followupSpan.className = 'nutshell-followup';
@@ -302,17 +309,18 @@ OTHER FEATURES:
                 longFollowupHTML = '';
             if(hasWordsAfterExpandable){
 
-                // Get last sentence *including html markup*...
-                let htmlBeforeThisLink = ex.parentNode.innerHTML.split( ex.outerHTML )[0],
-                    sentencesBeforeThisLink = htmlBeforeThisLink.split(/[.?!]\s/g),
+                // Get last sentence...
+                let htmlBeforeThisLink = ex.parentNode.innerHTML.split( ex.outerHTML )[0]; // everything BEFORE this html
+                // Convert to raw text
+                let tmpSpan = document.createElement('span');
+                    tmpSpan.innerHTML = htmlBeforeThisLink;
+                // Get immediately previous sentence
+                let textBeforeThinkLink = tmpSpan.innerText,
+                    sentencesBeforeThisLink = textBeforeThinkLink.split(Nutshell.getLocalizedText('endPunctuation')),
                     lastSentenceHTML = sentencesBeforeThisLink[sentencesBeforeThisLink.length-1];
 
-                // Hack: convert to TEXT not html. Strip out <a>, <i>, <b>, etc
-                followupSpan.innerHTML = lastSentenceHTML;
-                longFollowupHTML = followupSpan.innerText;
-
-                // ...then the expandable text in bold, then punctuation
-                longFollowupHTML += '<b>' + ex.innerHTML + '</b>' + punctuation.innerHTML;
+                // Follow up with prev sentence, then expandable text in bold, then punctuation
+                longFollowupHTML = lastSentenceHTML + '<b>' + ex.innerHTML + '</b>' + punctuation.innerHTML;
 
             }
 
@@ -392,32 +400,54 @@ OTHER FEATURES:
             if(_isWikipedia(url)){
 
                 // IT'S WIKIPEDIA! USE THAT API.
-                // The article title is the last bit of the URL
-                let splitURL = url.split("/"),
-                    articleTitle = splitURL[splitURL.length-1];
+                let urlObject = new URL(url);
+                // The article title is the last bit of the path
+                let splitPath = urlObject.pathname.split('/');
+                    articleTitle = splitPath[splitPath.length-1];
+                // Which language wikipedia? (including Simple...)
+                let domain = urlObject.host.split('.')[0];
 
                 // Fetch lede
                 let resourceParams = {
                     // Request from anywhere, in JSON
                     action: "query", origin: "*", format: "json",
-                    // Extract just the lead paragraph
-                    prop: "extracts", exintro: "",
+                    // Extract just the lead paragraph & thumbnail
+                    prop: "extracts|pageimages", exintro: "", pithumbsize:500,
                     // THIS PAGE
                     titles: articleTitle
                 }
                 let resourceQueryString = _objectToURLParams(resourceParams);
-                let resourceURL = `https://simple.wikipedia.org/w/api.php?${resourceQueryString}`;
+                let resourceURL = `https://${domain}.wikipedia.org/w/api.php?${resourceQueryString}`;
                 fetch(resourceURL)
                     .then(response => response.json())
                     .then(data => {
-                        // TODO: Handle Wikipedia link fail
+
+                        // Get extract
                         let pageKey = Object.keys(data.query.pages)[0],
                             pageHTML = data.query.pages[pageKey].extract;
+
+                        // Prepend thumbnail, if any
+                        if(data.query.pages[pageKey].thumbnail){
+                            pageHTML = `<p><img width=300 src='${data.query.pages[pageKey].thumbnail.source}'/></p>`+ pageHTML;
+                        }
+
                         // Cache it
                         Nutshell.htmlCache[url] = pageHTML;
+
                         // FULFIL THE PROPHECY
                         resolveProcessedHTML(pageHTML);
+
                     });
+
+                // (Wait some time before giving up, and telling user)
+                setTimeout(()=>{
+                    rejectProcessedHTML(
+                        `<p>
+                        ${Nutshell.getLocalizedText("wikiError")}
+                        <a target='_blank' href='${url}'>${url}</a>
+                        </p>`
+                    );
+                },LOAD_WAIT_TIME);
 
             }else{
 
@@ -484,11 +514,11 @@ OTHER FEATURES:
                                     _removeIframeAndListener();
                                     rejectProcessedHTML(
                                         `<p>
-                                        ${Nutshell.getLocalizedText("loadingError")}
+                                        ${Nutshell.getLocalizedText("corsError")}
                                         <a target='_blank' href='${url}'>${url}</a>
                                         </p>`
                                     );
-                                },CORS_WAIT_TIME);
+                                },LOAD_WAIT_TIME);
 
                             }
                         });
@@ -496,39 +526,45 @@ OTHER FEATURES:
 
                 // SECOND, make PROCESSED HTML
                 getRawHTMLPromise.then((rawHTML)=>{
-
-                    // DOMPurify: no styles, no scripts, iframes allowed (but sandboxed later)
-                    let cleanHTML = DOMPurify.sanitize(rawHTML,{
-                        FORBID_ATTR: ['style'],
-                        FORBID_TAGS: ['style'],
-                        ADD_TAGS: ['iframe']
-                    });
-
-                    // A <span> for further editing the clean HTML.
-                    let cleanSpan = document.createElement('div');
-                    cleanSpan.innerHTML = cleanHTML;
-
-                    // Sandbox all iframes
-                    [...cleanSpan.querySelectorAll('iframe')].forEach(iframe=>{
-                        iframe.setAttribute('sandbox','allow-scripts');
-                    });
-
-                    // Image src's + link href's to absolute
-                    _convertRelativeToAbsoluteLinks("img", "src", url, cleanSpan);
-                    _convertRelativeToAbsoluteLinks("a", "href", url, cleanSpan);
-
-                    // Make all links open in new tab, don't ruin reading flow.
-                    [...cleanSpan.querySelectorAll('a')].forEach((a)=>{
-                        a.target = "_blank";
-                    });
-
-                    // THEN CACHE & GIMME
-                    Nutshell.htmlCache[url] = cleanSpan.innerHTML;
+                    // Cache & gimme.
+                    Nutshell.htmlCache[url] = _purifyHTML(rawHTML, url);
                     resolveProcessedHTML( Nutshell.htmlCache[url] );
-
                 });
             }
         });
+    };
+
+    // PURIFY.
+    let _purifyHTML = (rawHTML, baseURL)=>{
+
+        // DOMPurify: no styles, no scripts, iframes allowed (but sandboxed later)
+        let cleanHTML = DOMPurify.sanitize(rawHTML,{
+            FORBID_ATTR: ['style'],
+            FORBID_TAGS: ['style'],
+            ADD_TAGS: ['iframe']
+        });
+
+        // A <span> for further editing the clean HTML.
+        let cleanSpan = document.createElement('div');
+        cleanSpan.innerHTML = cleanHTML;
+
+        // Sandbox all iframes
+        [...cleanSpan.querySelectorAll('iframe')].forEach(iframe=>{
+            iframe.setAttribute('sandbox','allow-scripts');
+        });
+
+        // Image src's + link href's to absolute
+        _convertRelativeToAbsoluteLinks("img", "src", baseURL, cleanSpan);
+        _convertRelativeToAbsoluteLinks("a", "href", baseURL, cleanSpan);
+
+        // Make all links open in new tab, don't ruin reading flow.
+        [...cleanSpan.querySelectorAll('a')].forEach((a)=>{
+            a.target = "_blank";
+        });
+
+        // Gimme
+        return cleanSpan.innerHTML;
+
     };
 
     // Is it Wikipedia? Special edge case.
@@ -583,6 +619,14 @@ OTHER FEATURES:
             // The container for the Section
             let container = document.createElement('div'),
                 containerHTML = '';
+
+            // IF NO SECTION ID, ERROR.
+            if(!sectionID || sectionID.trim()==''){
+                // IF SOMETHING ALONG THIS ENTIRE PROCESS WENT WRONG, TELL USER.
+                container.innerHTML = Nutshell.getLocalizedText('noSectionIDError');
+                resolve(container);
+                return;
+            }
 
             // After getting the processed HTML,
             // find the section using #SectionID,
@@ -666,7 +710,7 @@ OTHER FEATURES:
                 }
 
                 // Now deliver the promised container, containing the section!
-                container.innerHTML = containerHTML;
+                container.innerHTML = _addSource(url) + containerHTML;
                 resolve(container);
 
             }).catch((message)=>{
@@ -680,6 +724,16 @@ OTHER FEATURES:
         });
 
     };
+
+    // Add "from" source paragraph, if source is not THIS page
+    let _addSource = (url)=>{
+        if(url == Nutshell.thisPageURL){
+            return ''; // nah.
+        }else{
+            let urlSansProtocol = url.split("://")[1];
+            return `<p class='nutshell-bubble-from'> from <a target='_blank' href='${url}'>${urlSansProtocol}</a></p>`
+        }
+    }
 
     // Do a forgiving match between two strings: src, test
     // Capitalization & punctuation insensitive + src at least CONTAINS test
@@ -860,6 +914,7 @@ OTHER FEATURES:
 
                 // Dots: add a dot per second...
                 let dots = document.createElement("p");
+                dots.innerHTML = '...'; // start with 3.
                 // Doing recursive setTimeout instead of "setInterval"
                 // so I don't deal with figuring out how to clear an interval
                 // from the above Promise with a totally different scope:
@@ -923,10 +978,10 @@ OTHER FEATURES:
     // Convert <h*> headers: On hover, show embed option
     ///////////////////////////////////////////////////////////
 
-    Nutshell.convertHeaders = ()=>{
+    Nutshell.convertHeaders = (el=document.body)=>{
 
         // For each header, a container that only shows on hover!
-        _getAllHeaders().forEach((header)=>{
+        _getAllHeaders(el).forEach((header)=>{
 
             // So it can show stuff on hover
             header.classList.add('nutshell-header');
@@ -949,11 +1004,11 @@ OTHER FEATURES:
 
     };
 
-    let _getAllHeaders = ()=>{
+    let _getAllHeaders = (el=document.body)=>{
         let allHeaders = [];
         for(let i=0; i<HEADER_TAGS.length; i++){
             let tag = HEADER_TAGS[i];
-            allHeaders = allHeaders.concat( [...document.body.querySelectorAll(tag)] ); // big ol' array
+            allHeaders = allHeaders.concat( [...el.querySelectorAll(tag)] ); // big ol' array
         }
         return allHeaders;
     }
@@ -962,13 +1017,13 @@ OTHER FEATURES:
     // If header begins with colon, replace it and following section with just a link!
     ///////////////////////////////////////////////////////////
 
-    Nutshell.hideHeaders = ()=>{
+    Nutshell.hideHeaders = (el=document.body)=>{
 
         // Temporary dividers to remove later...
         let tmpDividers = [];
 
         // For each found header with :colon...
-        _getAllHeaders().filter((header)=>{
+        _getAllHeaders(el).filter((header)=>{
             return header.innerText.trim()[0]==":";
         }).forEach((header)=>{
 
@@ -1214,6 +1269,7 @@ OTHER FEATURES:
 
         /* It's nice & speech-bubble-lookin' */
         border: 1px solid black;
+        /*border: 1px solid #ddd;*/
         border-radius: 20px;
 
         /* For the speech-bubble arrow */
@@ -1234,6 +1290,7 @@ OTHER FEATURES:
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
         border-bottom: 20px solid #000;
+        /*border-bottom: 20px solid #ddd;*/
         position: absolute;
         top: -20px;
         pointer-events: none; /* don't block clicking */
@@ -1306,9 +1363,17 @@ OTHER FEATURES:
     }
     .nutshell-bubble-overflow-section .nutshell-bubble{
         /* So that recursive bubbles don't get squashed too quickly */
-        width: calc(100% + 40px - 6px); /* undo section's padding, minus a gap */
+        width: calc(100% + 2em - 6px); /* undo section's padding, minus a gap */
         position: relative;
         right: calc(1em - 2px);
+    }
+
+    /* From */
+    .nutshell-bubble-from{
+        font-size: 0.69em;
+        /* line-height: 0.69em; */
+        margin-bottom: -0.69em;
+        opacity: 0.69;
     }
 
     /* Foot: is a close button, too. */
@@ -1331,6 +1396,25 @@ OTHER FEATURES:
     }
     .nutshell-bubble-overflow-close:hover{
         opacity:1;
+    }
+
+    /* Misc styling for bubbles. I am a busybody. */
+    .nutshell-bubble li{
+        margin-bottom: 0.5em;
+    }
+    .nutshell-bubble code{
+        background: #ddd;
+        border-radius: 5px;
+        font-weight:100;
+        padding: 0 5px;
+    }
+    .nutshell-bubble blockquote{
+        /*background: #eee;*/
+        margin-left: 0px;
+        margin-right: 0px;
+        border-left: 0.5em solid #eee;
+        padding: 1px 1em 1px 1.5em;
+        margin-top: 0;
     }
 
     /***************************************************
