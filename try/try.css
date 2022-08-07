@@ -32,6 +32,20 @@ body, html{
     width: 100%;
     text-align: center;
 }
+/* Copy Snow's CSS */
+#right-half code, #right-half pre{
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    font-size: 85%;
+    padding: 2px 4px;
+}
+#right-half blockquote{
+    border-left: 4px solid #ccc;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-left: 16px;
+    margin-left:0;
+}
 
 /* Titles saying what's what */
 .half-title{

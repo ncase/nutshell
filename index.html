@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <title>Nutshell: make expandable explanations</title>
     <link rel="stylesheet" href="index.css"></link>
-    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
 
     <!-- Nutshell, as promised! -->
-    <script src="nutshell.js"></script>
+    <script src="src/nutshell.js"></script>
 
 </head>
 
@@ -24,11 +24,31 @@
     <br>
     <a href="#WhatInspiredThis">:What inspired this?</a>
     <br>
+    <a href="#WhatInspiredThis&cut=4">:What inspired this? (cut)</a>
+    <br>
     <a href="#WhoMadeThis">:Who made this?</a>
 </span>
 
 <p>
     <a href="misc/malicious.html#HurtYou">:malicious</a>
+</p>
+
+<p>
+    <a href="test.html">:test post plz ignore</a>
+    <br>
+    <a href="test.html#start=mechanism design">:test mech</a>
+    <br>
+    <a href="test.html#start=mechanism design&length=4">:test mech 2</a>
+    <br>
+    <a href="test.html#start=mechanism design&length=4&before=hola, [:link](%23WhoMadeThis)&after=gayyyy<img src='x' onerror='alert(12345)'>">:test mech before/after</a>
+    <br>
+    <a href="test.html#start=mechanism design&end=less stupid">:test mech end</a>
+    <br>
+    <a href="test.html#start=blerp">:fail</a>
+    <br>
+    <a href="https://youtu.be/qSqDx1YCEtg">:video</a>
+    <br>
+    <a href="https://www.youtube.com/watch?v=qSqDx1YCEtg">:video</a>
 </p>
 
 <hr>
@@ -99,7 +119,7 @@ all work and no play makes jack a dull boy</p>
 
 <p>Then, as shown in the screenshot above, just write sections with headers &amp; paragraphs as you normally would, then embed those sections with links. (but the link text needs a :colon in the front, so that Nutshell &quot;knows&quot; to make it expandable.)</p>
 
-<p>For more possibilities, check out <a href="TODO">Try Nutshell: Advanced Features</a>.</p>
+<p>For more possibilities, check out <a href="try#AdvancedFeatures">Try Nutshell: Advanced Features</a>.</p>
 
 <p>You can also download &amp; remix my code <a href="TODO">from Github</a>.</p>
 

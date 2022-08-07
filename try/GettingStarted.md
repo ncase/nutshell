@@ -1,50 +1,44 @@
-## To write a Nutshell section, start with a header...
+# Getting Started
 
-...then put a bunch of words in a paragraph.
+## To Install Nutshell
 
-Or two.
-
-(Bonus! On the right-hand side of this page, the "converted" section, you can hover over a header to see its "embed this Nutshell" button. Try it out!)
-
-## Then, to embed a Nutshell...
-
-Make a link, yo...
-
-* with a :colon as the first character of the link text, so Nutshell knows to convert it.
-* link to `SomeWebsite.com/SomePage#TextOfTheHeader`.
-
-(If it's the same website, you can just link to `SomePage/#TextOfTheHeader`. If it's the same page, you can just link to `#TextOfTheHeader`. Also, capitalization/spaces/punctuation doesn't matter, and you don't need the entire text of the header: if the header is "Then, to embed a Nutshell..." you can just use `#EmbedANutshell`, `#embed-a-nutshell`, `#eMbED A NuT sHEll!!!!!`, etc)
-
-Three examples:
-* A :link-with-colon to a section from a different website. :What is RSS? (Note that you can embed writings from before Nutshell was made! This is because Nutshell needs no special format, just the headers & paragraphs you're used to.)
-* A :link-with-colon to an above section from this page. :To write a Nutshell section...
-* A :link-with-colon to this section itself. :To embed a Nutshell...
-
-
-## (Try it yourself! Replace this header with whatever text you want...)
-
-(Then write a :link-with-colon to #WhateverTextYouWant. Remember that :colon!)
-
-(Finally, press "refresh" at the top-right of this page to see it live!)
-
-
-
-## P.S: on embedding from other websites
-
-If you're embedding Nutshells from within the same website, all's good. But if you're embedding from another website, it must either:
-
-* Have Nutshell also installed on at least just the webpage you want,
-if not the whole site. And/or,
-* Have CORS enabled
-
-Not sure if a webpage has Nutshell or CORS enabled? Just make a :link to it in this Try Nutshell page to test it! Here's the fail-message you get from :a link to something without Nutshell or CORS.
-
-## P.S: first step last – to install Nutshell in your blog / site...
-
-Just copy-paste this one line of code into your site, to include the script:
+Just copy this code onto your site. This includes the Nutshell script, hosted somewhere else:
 
 `<script src=""></script>`
 
-Alternatively, download the script here (TODO) & include it manually yourself!
+Or, download the script here (TODO) & host it yourself!
 
-(Most blogging platforms – like Wordpress, Tumblr, Ghost, Github Pages, etc – allow you to add your own custom code. Sadly, some – like Medium – don't. Check your platform to see if you're even allowed to add *one* line of code!)
+(Note: most blogging platforms – Wordpress, Tumblr, Ghost, Github Pages, etc – let you add your own custom code. Sadly, some – like Medium – don't. Check your platform to see if you can add code!)
+
+## To write a section
+
+Just use headers & paragraphs! You can also embed images:
+
+// TODO
+
+(Bonus: when Nutshell "converts" a page – which you can see on the right-hand side of this demo – you can hover over headers, to see an "embed this section" button. Try it out!)
+
+
+## To embed a section
+
+Just use a link, with :colon at the front! (the :colon is so Nutshell "knows" to convert that link) [:Like this!](#ToWriteASection)
+
+If the link is to a section on...
+
+* the same page, link to `#SectionHeaderText`
+* a different page on the same site, link to `/other-page/#SectionHeaderText`
+* a different site, link to `https://other-site.com/other-page/#SectionHeaderText`
+
+Note: for the section header text, capitalization/spaces/punctuation doesn't matter, and you don't even need the whole text. For example, if the header's text is "To Embed A Section", you can use `#ToEmbedASection`, `#tO-eMBeD_a-SECtioN`, or even just `#embed`.
+
+
+## P.S: Two caveats on embedding from other pages
+
+First, if you're embedding from another page, the page must either:
+
+* also have Nutshell installed on *at least* that page,
+* have [:CORS](../#cors) enabled // TODO
+
+Not sure if a page has Nutshell/CORS? Try making a :link to it in this demo, to test it! Here's the fail-message you'll get if a page doesn't have Nutshell or CORS. :Fail Message // TODO
+
+Second, like linking to or embedding from *any* external source, *make sure you trust that source.* The external source can change its content at any time, or go offline. You can mitigate these problems by mirroring the site's content.

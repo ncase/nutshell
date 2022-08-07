@@ -50,6 +50,8 @@ let loadFromMarkdownFile = (src)=>{
             // Refresh preview!
             refreshPreview();
 
+            // TODO: SCROLL EDITOR TO TOP.
+
         })
 
 };
@@ -71,6 +73,8 @@ let refreshPreview = ()=>{
             break;
     }
     Nutshell.start(output);
+
+    // TODO: SCROLL PREVIEW TO TOP.
 };
 
 /* Switch tool... */
