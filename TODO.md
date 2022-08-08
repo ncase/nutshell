@@ -11,13 +11,8 @@ WRITING
 * Tips on writing
 
 FEATURES
-* Close all Nutshells
-* Can embed YouTube
 * CDN and Embed works
 * Patreon Wall of Thanks iframe self-scroll
-* "Main article" auto-detect
-* Advanced snippet-er ???
-* Embed Vimeo?
 
 FIXES
 * Example interactive
@@ -31,4 +26,11 @@ FIXES
 PROMO
 * Thumb
 * Copy for newsletter, blog, patreon, twitter, etc
-* Share via Mail????
+
+====================
+
+MAYBE FOR LATER
+* Embed Vimeo?
+* YouTube: time embed, before/afters allowed???
+* Nutshell where it's just text
+* Share via Mail???? option

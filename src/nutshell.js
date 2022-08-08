@@ -153,7 +153,9 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             Nutshell.convertLinksToExpandables(el);
             Nutshell.convertHeaders(el);
 
-            // Fill out embed modal with localized text
+            // Fill out other UI with localized text
+            // (only set by user after Nutshell.js file included, hence this)
+            Nutshell.fillCloseAllText();
             Nutshell.fillEmbedModalText();
 
         }else{
@@ -193,7 +195,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         en: {
 
             // Button text
-            closeAllNutshells: `close all nutshells`, // currently not used anywhere, might add in future
+            closeAllNutshells: `close all nutshells`,
 
             // Nutshell errors...
             notFoundError: `Uh oh, the page was not found! Double check the link:`,
@@ -302,50 +304,130 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                 longFollowupHTML = lastSentenceHTML + '<b>' + ex.innerHTML + '</b>' + punctuation.innerHTML;
 
             }
-
-            // OPEN & CLOSE THAT BUBBLE.
-            let _bubble = null;
-            ex.close = ()=>{ // close() but not open() needs to be publicly accessible,
-                               // because there's 2 ways to close but only 1 to open.
-                _bubble.close();
-                _bubble = null;
-                ex.setAttribute("mode", "closed");
-                setTimeout(ex.updateAfterAnimation, ANIM_TIME);
-            };
-            ex.updateAfterAnimation = ()=>{ // accessible so bubble can update it when content loads
-                if(!_bubble || !hasWordsAfterExpandable){
-                    // if closed (or no words after), hide
+            // Method needs to be publicly accessible, I guess
+            ex.updateFollowupText = ()=>{
+                if(!bubble || !hasWordsAfterExpandable){
+                    // if closed (or no words after), hide followup span
                     followupSpan.style.display = 'none';
                 }else{
                     // if open, show only if bubble's textContent is above 50 words
-                    let longEnough = (_bubble.textContent.trim().split(" ").length>=50);
+                    let longEnough = (bubble.textContent.trim().split(" ").length>=50);
                     followupSpan.style.display = 'inline';
                     followupSpan.innerHTML = longEnough ? longFollowupHTML : shortFollowupHTML;
                 }
             };
+
+            // OPEN & CLOSE THAT BUBBLE.
+            let bubble = null;
+            ex.isOpen = false;
+            ex.open = (mouseEvent)=>{
+
+                // Hi
+                ex.isOpen = true;
+
+                // Insert a bubble
+                bubble = Nutshell.createBubble(ex, mouseEvent.offsetX);
+                ex.parentNode.insertBefore(bubble, punctuation.nextSibling); // place the bubble AFTER PUNCTUATION
+                ex.setAttribute("mode", "open");
+                ex.updateFollowupText();
+
+                // One more
+                Nutshell._nutshellsOpen++;
+                Nutshell._updateCloseAllNutshells();
+            };
+            ex.close = ()=>{
+
+                // Bye
+                ex.isOpen = false;
+
+                // Close that bubble
+                bubble.close(); // handles its own UI
+                bubble = null;
+                ex.setAttribute("mode", "closed");
+                setTimeout(ex.updateFollowupText, ANIM_TIME);
+
+                // One less
+                Nutshell._nutshellsOpen--;
+                Nutshell._updateCloseAllNutshells();
+
+            };
             // ON CLICK: toggle open/closed
             ex.addEventListener('click',(e)=>{
-
                 // Don't actually go to that link.
                 e.preventDefault();
-
                 // Toggle create/close
-                if(!_bubble){
-                    // Is closed, make OPEN
-                    _bubble = Nutshell.createBubble(ex, e.offsetX);
-                    ex.parentNode.insertBefore(_bubble, punctuation.nextSibling); // place the bubble AFTER PUNCTUATION
-                    ex.setAttribute("mode", "open");
-                    ex.updateAfterAnimation();
-                }else{
-                    // Is open, make CLOSED
-                    ex.close();
-                }
-
+                if(!ex.isOpen) ex.open(e); // Is closed, make OPEN
+                else ex.close(e); // Is open, make CLOSED
             });
 
         });
     };
 
+    /////////////////////////////////////////////////////////////////////
+    // ⭐️ CLOSE ALL NUTSHELLS
+    /////////////////////////////////////////////////////////////////////
+
+    // Keep count
+    Nutshell._nutshellsOpen = 0;
+
+    // Close 'em all
+    Nutshell.closeAllNutshells = ()=>{
+
+        // Close only the top level ones...
+        let allExpandables = [...document.querySelectorAll('.nutshell-expandable')],
+            nestedExpandables = [...document.querySelectorAll('.nutshell-expandable .nutshell-expandable')];
+            onlyOpenTops = allExpandables.filter( (ex)=>{
+                return ex.isOpen && !nestedExpandables.includes(ex);
+            });
+
+        // Close all open tops
+        onlyOpenTops.forEach((ex)=>{ex.close()});
+
+        // And after some time, reset the "close all nutshells" count & button
+        setTimeout(()=>{
+            Nutshell._nutshellsOpen = 0;
+            Nutshell._updateCloseAllNutshells();
+        },ANIM_TIME+100);
+
+    };
+
+    // MAKE UI: Floating in top right
+    Nutshell.closeAllButton = document.createElement('div');
+    let _ca = Nutshell.closeAllButton;
+    _ca.id = "nutshell-close-all";
+    _ca.setAttribute('show', 'no');
+    _ca.onclick = Nutshell.closeAllNutshells;
+
+    // When Nutshell starts, populate with text localization
+    Nutshell.fillCloseAllText = ()=>{
+        _ca.innerText = Nutshell.getLocalizedText('closeAllNutshells');
+        document.body.appendChild(_ca);
+    };
+
+    // If 2 or more, show it, else hide it.
+    Nutshell._updateCloseAllNutshells = ()=>{
+        if(Nutshell._nutshellsOpen>=2){
+
+            // Show it if hidden
+            if(_ca.getAttribute('show')=='no'){
+                _ca.style.display = 'block';
+                setTimeout(()=>{
+                    _ca.setAttribute('show', 'yes');
+                },1);
+            }
+
+        }else{
+
+            // Hide it if shown
+            if(_ca.getAttribute('show')=='yes'){
+                _ca.setAttribute('show', 'no');
+                setTimeout(()=>{
+                    _ca.style.display = 'none';
+                },1000);
+            }
+
+        }
+    };
 
 
     /////////////////////////////////////////////////////////////////////
@@ -437,14 +519,18 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                 }
 
                 // Gimme, easy peasy.
-                resolvePurifiedHTML(`<p>
-                    <iframe width="560" height="315"
-                        src="https://www.youtube-nocookie.com/embed/${videoID}"
-                        title="YouTube video player"
-                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
-                </p>`);
+                resolvePurifiedHTML(`
+                    <div style="width:100%;padding-top:56.25%;position:relative;margin:1em 0;">
+                        <iframe
+                            style="position:absolute;width:100%;height:100%;top:0;left:0;"
+                            src="https://www.youtube-nocookie.com/embed/${videoID}"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                `);
 
             }else{
 
@@ -632,7 +718,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                     // If it's Wikipedia or YouTube, just give it, it's already ready!
                     containerHTML = purifiedHTML;
                 }else{
-                    
+
                     // Otherwise, gotta EXTRACT out the section from the HTML...
 
                     /***
@@ -1039,14 +1125,12 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             section.innerHTML = '';
             section.appendChild(content);
 
-            // TODO: ONLY SHOW EMBED & FROM IF *SUCCESSFUL* LOAD
-
-            // And animate! Go to full height, then auto.
+            // And animate expand for new content! Go to full height, then auto.
             overflow.style.height = section.getBoundingClientRect().height+"px";
             setTimeout(()=>{ overflow.style.height="auto"; }, ANIM_TIME);
 
-            // Oh, and update expandable's followup animation
-            expandable.updateAfterAnimation();
+            // Update followup text
+            expandable.updateFollowupText();
 
             // Yes.
             _isSectionLoadedYet = true;
@@ -1103,6 +1187,10 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                 bubble.parentNode.removeChild(bubble);
                 expandable.setAttribute("mode", "closed"); // and tell Expandable to show it, too
             }, ANIM_TIME+1);
+
+            // Count the killed bubbles inside, subtract from Nutshell._nutshellsOpen
+            Nutshell._nutshellsOpen -= bubble.querySelectorAll('.nutshell-bubble').length;
+            Nutshell._updateCloseAllNutshells();
 
         };
 
@@ -1306,7 +1394,6 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         _e.setAttribute("mode","hidden");
         setTimeout(()=>{ _e.style.display='none'; },ANIM_TIME);
     };
-
 
 
     /////////////////////////////////////////////////////////////////////
@@ -1656,6 +1743,29 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         width: 100%;
         font-size: 14px;
         font-family: monospace;
+    }
+
+    /***************************************************
+    CLOSE ALL NUTSHELLS
+    ***************************************************/
+
+    #nutshell-close-all{
+        font-size: 0.7em;
+        line-height: 1.2em;
+        width: 5em;
+        position: fixed;
+        top: 1em;
+        right: 1em;
+        transition: opacity 0.9s ease-in-out;
+        opacity: 0;
+        text-align: right;
+        cursor: pointer;
+    }
+    #nutshell-close-all[show=yes]{
+        opacity:1;
+    }
+    #nutshell-close-all[show=no]{
+        opacity:0;
     }
 
     `;
