@@ -1,12 +1,12 @@
 /*************************************************************************
 
 
-███╗░░██╗██╗░░░██╗████████╗░██████╗██╗░░██╗███████╗██╗░░░░░██╗░░░░░░░░░░░░░██╗░██████╗
-████╗░██║██║░░░██║╚══██╔══╝██╔════╝██║░░██║██╔════╝██║░░░░░██║░░░░░░░░░░░░░██║██╔════╝
-██╔██╗██║██║░░░██║░░░██║░░░╚█████╗░███████║█████╗░░██║░░░░░██║░░░░░░░░░░░░░██║╚█████╗░
-██║╚████║██║░░░██║░░░██║░░░░╚═══██╗██╔══██║██╔══╝░░██║░░░░░██║░░░░░░░░██╗░░██║░╚═══██╗
-██║░╚███║╚██████╔╝░░░██║░░░██████╔╝██║░░██║███████╗███████╗███████╗██╗╚█████╔╝██████╔╝
-╚═╝░░╚══╝░╚═════╝░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝╚═╝░╚════╝░╚═════╝░
+███╗░░██╗██╗░░░██╗████████╗░██████╗██╗░░██╗███████╗██╗░░░░░██╗░░░░░
+████╗░██║██║░░░██║╚══██╔══╝██╔════╝██║░░██║██╔════╝██║░░░░░██║░░░░░
+██╔██╗██║██║░░░██║░░░██║░░░╚█████╗░███████║█████╗░░██║░░░░░██║░░░░░
+██║╚████║██║░░░██║░░░██║░░░░╚═══██╗██╔══██║██╔══╝░░██║░░░░░██║░░░░░
+██║░╚███║╚██████╔╝░░░██║░░░██████╔╝██║░░██║███████╗███████╗███████╗
+╚═╝░░╚══╝░╚═════╝░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
 
 You know how in Memento, the amnesia guy tattoos reminders on his body?
 That is how I document my code. The following "documentation"
@@ -621,8 +621,10 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     let _purifyHTML = (rawHTML, baseURL)=>{
 
         // DOMPurify: no styles, no scripts, iframes allowed (but sandboxed later)
+        // TODO: allow style, but only floating?
+        // TODO: LaTeX?
         let cleanHTML = DOMPurify.sanitize(rawHTML,{
-            FORBID_ATTR: ['style'],
+            FORBID_ATTR: ['style','id','class'],
             FORBID_TAGS: ['style'],
             ADD_TAGS: ['iframe','audio','video']
         });
@@ -1593,6 +1595,15 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     }
     .nutshell-bubble-overflow-section img{
         max-width:100%; /* so it fits */
+    }
+    /* Total hack for nice styling */
+    .nutshell-bubble-overflow-section img[data-float=left]{
+        float: left;
+        margin: 1em;
+    }
+    .nutshell-bubble-overflow-section img[data-float=right]{
+        float: left;
+        margin: 1em;
     }
     .nutshell-bubble-overflow-section iframe{
         max-width:100%; /* so it fits */

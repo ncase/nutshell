@@ -1,0 +1,1 @@
+montage point*.png -tile 1x -geometry +0+0 -background none point.png

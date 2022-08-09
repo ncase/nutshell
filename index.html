@@ -5,29 +5,34 @@
 
     <meta charset="utf-8">
     <title>Nutshell: make expandable explanations</title>
-    <link rel="stylesheet" href="index.css"></link>
     <link rel="icon" type="image/png" href="favicon.png">
 
+    <!-- Shtuff for this indexpage -->
+    <link rel="stylesheet" href="indexpage/index.css"></link>
+    <script src="indexpage/index.js"></script>
+
     <!-- Nutshell, as promised! -->
-    <script src="src/nutshell.js"></script>
+    <script src="nutshell.js"></script>
 
 </head>
 
 <body>
 
-<span style="font-size:50px; line-height:1.75em;">
-    <a href="#WhatIsNutshell">:What is Nutshell?</a>
-    <br>
-    <a href="#HowDoIUse">:How do I use Nutshell?</a>
-    <br>
-    <a href="#TipsForWriting">:Tips for writing Nutshells</a>
-    <br>
-    <a href="#WhatInspiredThis">:What inspired this?</a>
-    <br>
-    <a href="#WhatInspiredThis&cut=4">:What inspired this? (cut)</a>
-    <br>
-    <a href="#WhoMadeThis">:Who made this?</a>
-</span>
+    <span style="font-size:50px; line-height:1.75em;">
+        <a href="#WhatIsNutshell" id="pointys_target">:What is Nutshell?</a>
+        <br>
+        <a href="#HowDoIUse">:How do I use Nutshell?</a>
+        <br>
+        <a href="#TipsForWriting">:Tips for writing Nutshells</a>
+        <br>
+        <a href="#WhatInspiredThis">:What inspired this?</a>
+        <br>
+        <a href="#WhatInspiredThis&cut=4">:What inspired this? (cut)</a>
+        <br>
+        <a href="#WhoMadeThis">:Who made this?</a>
+    </span>
+
+    <div id="PointyMcPointFace"></div>
 
 <p>
     <a href="misc/malicious.html#HurtYou">:malicious</a>
@@ -57,7 +62,12 @@
     <b>...and here's all the Nutshells made for this page:</b>
 </p>
 
+<!-- To preload the splash animation...-->
+<img src="indexpage/sprites/splash.png" width="1" height="1" style="position:absolute;top:-100px"/>
+
 <h2>: What is Nutshell?</h2>
+
+<iframe width="750" height="300" src="indexpage/splash.html" data-splash="yes"></iframe>
 
 <p><strong>Nutshell</strong> is a tool for putting &quot;expandable explanations&quot; in your blog or site, like this! They can even be <a href="#recursion">:recursive</a>.</p>
 
@@ -78,6 +88,8 @@
 <p>Bite-sized, yet nutritious. Let&#39;s get cracking with Nutshell!</p>
 
 <h2 id="toc_1">: Recursion</h2>
+
+<img src="indexpage/sprites/recursion.gif" data-float="left" width="200"/>
 
 <p><strong>Recursion</strong> is when something contains a version of itself – think of the film Inception&#39;s <em>dream-within-a-dream</em> plot, or a Russian nesting doll&#39;s <em>doll-within-a-doll</em> design.</p>
 

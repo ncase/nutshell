@@ -15,6 +15,7 @@ FEATURES
 * Patreon Wall of Thanks iframe self-scroll
 
 FIXES
+* Dots are off in Firefox (make 'em work in both)
 * Example interactive
 * Demo page fix all glitches with quill
 * Demo page GIF
@@ -30,6 +31,7 @@ PROMO
 ====================
 
 MAYBE FOR LATER
+* Advanced Nutshell Creation Tool
 * Embed Vimeo?
 * YouTube: time embed, before/afters allowed???
 * Nutshell where it's just text

@@ -1,0 +1,43 @@
+body {
+
+    width: calc(100% - 100px);
+    max-width: 800px;
+    margin: 60px auto;
+
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+    line-height: 1.6em;
+
+    background-color: white;
+
+}
+b, strong{
+    font-weight: bold;
+}
+hr{
+    border:none;
+    border-top: 3px dashed #ddd;
+    margin-bottom: 2em;
+    margin-top: 30em;
+}
+
+#PointyMcPointFace{
+    position: absolute;
+    top: 54px;
+    right: 90px;
+    width: 400px;
+    height: 350px;
+    background: url(sprites/point.png);
+    background-position-y: 0%;
+    background-size: 100%;
+    pointer-events: none;
+    transition: opacity 0.2s, right 0.2s;
+}
+
+/* hack to target splash */
+iframe[data-splash=yes]{
+    border: none !important;
+    margin: 0 auto !important;
+    display: block !important;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    html,body{
+        width:100%; height:100%;
+        margin:0;
+    }
+    #splash{
+        position:absolute;
+        width: 750px;
+        height: 300px;
+        background: url(sprites/splash.png);
+        background-position-y: 0%;
+        background-size: 100%;
+    }
+</style>
+</head>
+<body>
+    <div id="splash"></div>
+</body>
+</html>
+
+<script>
+    let frame = 0,
+        firstLoop = 0,
+        splash = document.querySelector("#splash");
+
+    setInterval(()=>{
+
+        splash.style.backgroundPositionY = -(frame*100)+'%';
+        frame++;
+
+        // First loop, loop twice (yeah, 0-indexed...)
+        /*if(firstLoop<1 && frame>=21){
+            firstLoop++;
+            frame = 0;
+        }*/
+
+        // Second loop
+        if(frame>=54){
+            frame=35;
+        }
+
+    }, 1000/12);
+</script>
