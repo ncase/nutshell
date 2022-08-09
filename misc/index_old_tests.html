@@ -3,16 +3,71 @@
 
 <head>
 
-<meta charset="utf-8">
-<title>index_words</title>
+    <meta charset="utf-8">
+    <title>Nutshell: make expandable explanations</title>
+    <link rel="icon" type="image/png" href="favicon.png">
 
+    <!-- Shtuff for this indexpage -->
+    <link rel="stylesheet" href="indexpage/index.css"></link>
+    <script src="indexpage/index.js"></script>
 
+    <!-- Nutshell, as promised! -->
+    <script src="nutshell.js"></script>
 
 </head>
 
 <body>
 
-<h1 id="toc_0">: What is Nutshell?</h1>
+    <span style="font-size:50px; line-height:1.75em;">
+        <a href="#WhatIsNutshell" id="pointys_target">:What is Nutshell?</a>
+        <br>
+        <a href="#HowDoIUse">:How do I use Nutshell?</a>
+        <br>
+        <a href="#TipsForWriting">:Tips for writing Nutshells</a>
+        <br>
+        <a href="#WhatInspiredThis">:What inspired this?</a>
+        <br>
+        <a href="#WhatInspiredThis&cut=4">:What inspired this? (cut)</a>
+        <br>
+        <a href="#WhoMadeThis">:Who made this?</a>
+    </span>
+
+    <div id="PointyMcPointFace"></div>
+
+<p>
+    <a href="misc/malicious.html#HurtYou">:malicious</a>
+</p>
+
+<p>
+    <a href="test.html">:test post plz ignore</a>
+    <br>
+    <a href="test.html#start=mechanism design">:test mech</a>
+    <br>
+    <a href="test.html#start=mechanism design&length=4">:test mech 2</a>
+    <br>
+    <a href="test.html#start=mechanism design&length=4&before=hola, [:link](%23WhoMadeThis)&after=gayyyy<img src='x' onerror='alert(12345)'>">:test mech before/after</a>
+    <br>
+    <a href="test.html#start=mechanism design&end=less stupid">:test mech end</a>
+    <br>
+    <a href="test.html#start=blerp">:fail</a>
+    <br>
+    <a href="https://youtu.be/qSqDx1YCEtg">:video</a>
+    <br>
+    <a href="https://www.youtube.com/watch?v=qSqDx1YCEtg">:video</a>
+</p>
+
+<hr>
+
+<p>
+    <b>...and here's all the Nutshells made for this page:</b>
+</p>
+
+<!-- To preload the splash animation...-->
+<img src="indexpage/sprites/splash.png" width="1" height="1" style="position:absolute;top:-100px"/>
+
+<h2>: What is Nutshell?</h2>
+
+<iframe width="750" height="300" src="indexpage/splash.html" data-splash="yes"></iframe>
 
 <p><strong>Nutshell</strong> is a tool for putting &quot;expandable explanations&quot; in your blog or site, like this! They can even be <a href="#recursion">:recursive</a>.</p>
 
@@ -22,9 +77,9 @@
 
 <p><strong>Unlike links, Nutshell doesn&#39;t break your flow of reading</strong>, and get you lost in a jungle of new tabs. Everything stays on one page. Even if an expanded explanation <a href="#interruption">:interrupts a sentence</a>, Nutshell will &quot;recap&quot; the sentence afterwards, so you always stay in context.</p>
 
-<p><strong>Unlike <a href="#Wikipedia&#x27;sHover">:Wikipedia&#39;s hover-to-preview</a>, Nutshell works <em>across websites</em>.</strong> You can embed explanations from <em>other authors</em>, and others can share your explanations in return. You can even embed stuff <em>written long before Nutshell even existed</em>, because Nutshell needs no special format – just good ol&#39; headers &amp; paragraphs! (<a href="TODO">:example, from a 2014 blog post</a>) This way, you can re-use what you – and others – have written before. Standing on the shoulders of giants, etc etc.</p>
+<p><strong>Unlike <a href="#Wikipedia&#x27;sHover">:Wikipedia&#39;s hover-to-preview</a>, Nutshell works <em>across websites</em>.</strong> You can embed explanations from <em>other authors</em>, and others can share your explanations in return. You can even embed stuff <em>written long before Nutshell even existed</em>, because Nutshell needs no special format – just good ol&#39; headers &amp; paragraphs! (<a href="https://blog.ncase.me/explorable-explanations/#ProceduralRhetoric">:example, from a 2014 blog post</a>) This way, you can re-use what you – and others – have written before. Standing on the shoulders of giants, etc etc.</p>
 
-<p><strong>But wait, there&#39;s more! You can embed more than just text &amp; pictures.</strong> You can also embed – (click the following for examples) – playable interactives, YouTube clips, audio files, code/math snippets, even sections from Wikipedia and Simple Wikipedia!</p>
+<p><strong>But wait, there&#39;s more! You can embed more than just text &amp; pictures.</strong> You can also embed – (click the following for examples) – playable interactives, and the article introductions <a href="https://en.wikipedia.org/wiki/Pet_door">:from Wikipedia</a>, in <a href="https://fr.wikipedia.org/wiki/Baguette_(pain)">:any language</a>, even <a href="https://simple.wikipedia.org/wiki/Universe">:Simple Wikipedia</a>!</p>
 
 <p>Some people just want to watch the world learn.</p>
 
@@ -32,7 +87,9 @@
 
 <p>Bite-sized, yet nutritious. Let&#39;s get cracking with Nutshell!</p>
 
-<h3 id="toc_1">: Recursion</h3>
+<h2 id="toc_1">: Recursion</h2>
+
+<img src="indexpage/sprites/recursion.gif" data-float="left" width="200"/>
 
 <p><strong>Recursion</strong> is when something contains a version of itself – think of the film Inception&#39;s <em>dream-within-a-dream</em> plot, or a Russian nesting doll&#39;s <em>doll-within-a-doll</em> design.</p>
 
@@ -74,7 +131,7 @@ all work and no play makes jack a dull boy</p>
 
 <p>Then, as shown in the screenshot above, just write sections with headers &amp; paragraphs as you normally would, then embed those sections with links. (but the link text needs a :colon in the front, so that Nutshell &quot;knows&quot; to make it expandable.)</p>
 
-<p>For more possibilities, check out <a href="TODO">Try Nutshell: Advanced Features</a>.</p>
+<p>For more possibilities, check out <a href="try#AdvancedFeatures">Try Nutshell: Advanced Features</a>.</p>
 
 <p>You can also download &amp; remix my code <a href="TODO">from Github</a>.</p>
 
@@ -99,6 +156,12 @@ all work and no play makes jack a dull boy</p>
 <blockquote>
 <p>By the way, if you see something <a href="TODO">:like this</a>, you can click it to &quot;expand&quot; it into an explanation, without breaking your reading flow. Try it out, click the above thing!</p>
 </blockquote>
+
+<p>
+    <code>asdadas asd ssd</code>
+    <s>strike</s>
+    <u>underline</u>
+</p>
 
 <p>Then again, I&#39;m not your mom. These are soft guidelines, not hard-coded rules. Do whatever you want, write an experimental non-linear hyperlinked novella, surprise me!</p>
 
@@ -151,6 +214,8 @@ all work and no play makes jack a dull boy</p>
 
 <p>p.s, <a href="#VsNutshell">:why would I bother you with yet another implementation? (or: comparing Nutshell with previous StretchText-like tools)</a></p>
 
+<h3 id="toc_9">: Test</h3>
+
 <h3 id="toc_9">: StretchText Original Document</h3>
 
 <p>// img</p>
@@ -191,7 +256,7 @@ all work and no play makes jack a dull boy</p>
 <li>Nerdy economics solution: use a &quot;collective threshold pledge&quot; where people pledge to join <em>if and only if</em> enough other people do the same. (Kickstarter does this for project funding... but I can&#39;t think of any famous examples of threshold-pledging for, say, activist action, leaving Facebook &amp; Twitter, or joining the world&#39;s first Vanessa-only dating site.)</li>
 </ol>
 
-<h1 id="toc_12">: Who made this?</h1>
+<h3 id="toc_12">: Who made this?</h3>
 
 <p>Nutshell was started by <a href="#NickyCase">:Nicky Case</a> in 2020, who then procrastinated on it for two years, before finally rewriting all of it from scratch within two weeks on April 2022.</p>
 
@@ -217,6 +282,8 @@ all work and no play makes jack a dull boy</p>
 ~ Nicky Case</p>
 
 <h3 id="toc_13">: Nicky Case</h3>
+
+<p><a href="javascript:alert('xss')">xss</a></p>
 
 <p>Nicky Case is an internet person who explains stuff with games, &quot;games&quot;, and pictures with words on them. You can see what they&#39;ve wrought upon humanity at <a href="https://ncase.me">ncase.me</a>.</p>
 

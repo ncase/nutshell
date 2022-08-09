@@ -1,10 +1,7 @@
 # TODO: FINISH EVERYTHING FOR V1.0
 
 ART
-* Anim: click here
-* Anim: NUTSHELL!
-* Favicon with dots
-* Recursive pic, float left pic
+* Nicky Case Crappy Pic
 
 WRITING
 * Rewrite frontpage more concisely
@@ -15,6 +12,7 @@ FEATURES
 * Patreon Wall of Thanks iframe self-scroll
 
 FIXES
+* Main page that <br> is big
 * Dots are off in Firefox (make 'em work in both)
 * Example interactive
 * Demo page fix all glitches with quill

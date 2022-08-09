@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }, 690);
     pointyTarget.onclick = pointyTarget.onmouseover = ()=>{
         pointy.style.opacity = 0;
-        pointy.style.right = '85px';
+        pointy.style.right = '-6px';
         setTimeout(()=>{
             clearInterval(pointyInterval);
         },1000);

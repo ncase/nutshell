@@ -971,9 +971,9 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     // Capitalization & punctuation insensitive + src at least CONTAINS test
     let _forgivingMatchTest = (src, test)=>{
 
-        // Lowercase & strip everything but letters
-        src = src.toLowerCase().replace(/[^a-z]/g,'');
-        test = test.toLowerCase().replace(/[^a-z]/g,'');
+        // Lowercase & strip everything but letters & numbers
+        src = src.toLowerCase().replace(/[^a-z0-9]/g,'');
+        test = test.toLowerCase().replace(/[^a-z0-9]/g,'');
 
         // Src at least CONTAINS test?
         let srcContainsTest = (src.indexOf(test)>=0);
@@ -1225,7 +1225,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             // Info needed for embed & permalink
             let headerText = header.innerText,
-                sectionID = headerText.replace(/[^A-Za-z]/g,''), // bye punctuation
+                sectionID = headerText.replace(/[^A-Za-z0-9]/g,''), // bye punctuation
                 permalink = Nutshell.thisPageURL+"#"+sectionID;
 
             // Embed button
@@ -1264,7 +1264,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             // Put a link before the header
             let link = document.createElement("a");
-            link.href = "#" + header.innerText.replace(/[^A-Za-z]/g,''), // A section ID
+            link.href = "#" + header.innerText.replace(/[^A-Za-z0-9]/g,''), // A section ID
             link.innerText = ":" + header.innerText.trim().slice(1).trim(); // remove first char
             header.parentNode.insertBefore(link, header);
 

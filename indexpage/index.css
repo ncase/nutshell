@@ -1,3 +1,7 @@
+html{
+    width:100%;
+    margin:0;
+}
 body {
 
     width: calc(100% - 100px);
@@ -11,6 +15,8 @@ body {
 
     background-color: white;
 
+    position: relative;
+
 }
 b, strong{
     font-weight: bold;
@@ -22,10 +28,15 @@ hr{
     margin-top: 30em;
 }
 
+#big_nuts{
+    font-size:50px;
+    line-height:1.75em;
+}
+
 #PointyMcPointFace{
     position: absolute;
-    top: 54px;
-    right: 90px;
+    top: -6px;
+    right: 6px;
     width: 400px;
     height: 350px;
     background: url(sprites/point.png);
