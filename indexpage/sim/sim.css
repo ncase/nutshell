@@ -1,0 +1,24 @@
+body{
+	margin:0;
+	background:#eee;
+	overflow: hidden;
+}
+#canvas{
+}
+#canvas[cursor=none]{
+}
+#canvas[cursor=pointer]{
+	cursor:pointer;
+}
+#canvas[cursor=grab]{
+	cursor: -webkit-grab;
+	cursor: -moz-grab;
+	cursor: -ms-grab; /*what's edge's prefix now?*/
+	cursor: grab;
+}
+#canvas[cursor=grabbing]{
+	cursor: -webkit-grabbing;
+	cursor: -moz-grabbing;
+	cursor: -ms-grabbing; /*what's edge's prefix now?*/
+	cursor: grabbing;
+}

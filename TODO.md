@@ -12,6 +12,7 @@ FEATURES
 * Patreon Wall of Thanks iframe self-scroll
 
 FIXES
+* no need for "..." after "recursive."
 * Main page that <br> is big
 * Dots are off in Firefox (make 'em work in both)
 * Example interactive
@@ -21,6 +22,7 @@ FIXES
 * Cross-browser test & fix
 * In embed modal, the arrow isn't pointing correctly
 * Weird glitch in big bottom margin for the main page expandables
+* alt or title for pics???
 
 PROMO
 * Thumb

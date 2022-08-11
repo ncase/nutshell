@@ -18,6 +18,17 @@ body {
     position: relative;
 
 }
+a, span[data-fake-link]{
+    color: hsl(200,80%,60%);
+    transition: color 0.1s;
+}
+a:hover, span[data-fake-link]:hover{
+    color: hsl(200,80%,80%);
+}
+span[data-fake-link]{
+    cursor: pointer;
+    text-decoration: underline;
+}
 b, strong{
     font-weight: bold;
 }
@@ -26,6 +37,9 @@ hr{
     border-top: 3px dashed #ddd;
     margin-bottom: 2em;
     margin-top: 30em;
+}
+strike{
+    opacity: 0.2;
 }
 
 #big_nuts{

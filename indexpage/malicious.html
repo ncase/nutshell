@@ -1,0 +1,34 @@
+<!doctype>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>MALICIOUS PAGE</title>
+</head>
+<body>
+
+    <script>
+        document.body.style.background = "#ff4040";
+        alert("OH NO I AM A MALICIOUS PAGE");
+        setInterval(()=>{
+            let rotation = Math.floor( (Math.random()*2-1) * 30 );
+            document.body.style.transform = `rotate(${rotation}deg)`
+        },1000);
+    </script>
+    <style>
+    body{
+        font-family: 'Comic Sans MS';
+    }
+    </style>
+
+    <h2 id="toc_8">: Interactive Play</h2>
+
+    <p>Here&#39;s an interactive from <a href="https://ncase.me/attractors/">my explainer on &quot;attractors&quot;</a>:</p>
+
+    <iframe src="sim/sim.html?mode=1" scrolling="no" width="400" height="380"></iframe>
+
+    <p>But wait, isn&#39;t running scripts a security issue? Yup – that&#39;s why Nutshell uses <a href="https://github.com/cure53/DOMPurify#dompurify">DOMPurify</a> and sandboxed iframes to <em>safely</em> include fun playthings! In fact, if you check <a href="#">the page this Nutshell is pulled from</a>, you&#39;ll see it <em>is</em> a malicious page. Yet Nutshell makes it safe.</p>
+
+    <p>(Note: if you&#39;re embedding Nutshells from others&#39; sites, they can change text &amp; images without warning. But that&#39;s a problem with regular links, too. Only embed Nutshells from sites you trust, or make an archive/mirror and embed from that!)</p>
+
+</body>
+</html>

@@ -34,8 +34,9 @@
     <!-- Pointy McPointFace -->
     <div id="PointyMcPointFace"></div>
 
-    <!-- Preloading the splash animation sprite -->
-    <img src="indexpage/sprites/splash.png" width="1" height="1" style="position:absolute;top:-100px"/>
+    <!-- Preloading the splash animation -->
+    <img src="indexpage/sprites/splash.png" width="1" height="1" style="position:absolute; top:-100px; left:-100px;"/>
+    <iframe src="indexpage/splash.html" width="1" height="1" style="position:absolute; top:-100px; left:-100px;"></iframe>
 
     <!-- The hidden nutshells -->
     <hr>
@@ -49,76 +50,76 @@
 
 <iframe width="750" height="300" src="indexpage/splash.html" data-splash="yes"></iframe>
 
-<p><strong>Nutshell</strong> is a tool to help you make &quot;expandable explanations&quot;, like this one! They can even be <a href="#Recursion">:recursive</a>.</p>
+<p><strong>Nutshell</strong> is a tool to make &quot;expandable explanations&quot;, like this! They can even be <a href="#Recursion">:recursive</a>. This lets your readers learn only the details they need, just-in-time, always-in-context.</p>
 
-<p>Why the heck did I make this? Well, I want to write about technical stuff... but I want it to remain accessible to everyone... but I don&#39;t want to have to <em>re-</em>explain stuff over and over... and using links suck.</p>
+<p>Unlike links, Nutshell lets you include only the snippet you need, not the whole page. Plus, instead of being lost in a jungle of new tabs, your reader stays on one page, keeping their flow of reading. Even if you <a href="#Interruption">:interrupt a sentence</a>, Nutshell recaps the sentence afterwards, so your reader never loses context.</p>
 
-<p><em>Unlike links</em>, Nutshell lets you only include the snippet you need, not the whole page. Moreover, instead of being lost in a jungle of new tabs, your reader stays on the same page, not losing the flow of reading. Even if you <a href="#Interruption">:interrupt a sentence</a>, an &quot;expanded explanation&quot; recaps the sentence afterwards, so your reader never loses context.</p>
+<p>Unlike <a href="#HoverToPreview">:Wikipedia&#39;s &quot;Hover to Preview Article&quot; feature</a>, <strong>you can re-use explanations from other websites and authors, <em>even stuff that was written long ago!</em></strong> (Example: a snippet from <a href="https://blog.ncase.me/explorable-explanations/#ProceduralRhetoric">:my pretentious 2014 blog post</a>.) This works because Nutshell doesn&#39;t require writing in a new format – just the good ol&#39; headers, paragraphs, and links you&#39;re used to.</p>
 
-<p><em>Unlike <a href="#HoverToPreview">:Wikipedia&#39;s hover-to-preview-article</a>,</em> you can go multiple layers deep without losing flow. Not only that, you can re-use explanations <em>from other websites and authors, even stuff that was written long ago!</em> (For example, here&#39;s a snippet from <a href="todo">:my pretentious 2014 blog post</a>.) This works because Nutshell doesn&#39;t require you write in any new format, just the good ol&#39; headers &amp; paragraphs you&#39;re used to.</p>
+<p><em>But wait, there&#39;s more!</em> It&#39;s not just text &amp; pictures you can embed! You can also embed <a href="indexpage/malicious.html#InteractivePlay">:interactive playthings</a>, <a href="https://www.youtube.com/watch?v=i_RLYSaPvak">:YouTube videos</a>, and – hey, why not – <a href="https://en.wikipedia.org/wiki/Catgirl">:Wikipedia articles</a>. (That includes <a href="https://fr.wikipedia.org/wiki/Baguette_(pain)">:other languages</a> and <a href="https://simple.wikipedia.org/wiki/Universe">:Simple Wikipedia</a>, too!)</p>
 
-<p><em>But wait, there&#39;s more!</em> It&#39;s not just text &amp; pictures you can embed! You can embed <a href="todo">:interactive stuff</a>, <a href="todo_billy_mays">:YouTube videos</a>, and – hey, why not – <a href="todo">:Wikipedia articles</a>. (That includes <a href="todo">:other languages</a> and <a href="todo">:Simple Wikipedia</a>, too!)</p>
-
-<p>So if you&#39;re writing a blog, a news article, educational material, or code documentation... I hope Nutshell helps you help your readers, by giving them an option to learn just-in-time, always-in-context.</p>
+<p>So: if you&#39;re writing a blog, a news article, a glossary, educational material, or code documentation... I hope Nutshell helps you help <em>your</em> readers.</p>
 
 <p>Bite-sized, yet nutritious. Let&#39;s get crackin&#39; with Nutshell!</p>
 
 <h1 id="toc_1">: How do I use Nutshell?</h1>
 
-<p>It&#39;s dead-parrot simple! Just copy-paste this one line anywhere on your website: (todo: which sites can do this? how?)</p>
+<p>It&#39;s dead-parrot simple! Just copy-paste this <em>one line</em> onto your site: (<a href="#HowToIncludeNutshell">how-to details</a>)</p>
 
-<p>// src</p>
+<iframe src='indexpage/include_nutshell.html?full' width='700' height='20'></iframe>
 
-<p>Then, to embed a snippet from a web page, just make a link – but put a :colon in front, so that Nutshell &quot;knows&quot; to convert it into an expandable explanation. Like so:</p>
+<p>Then, to write a Nutshell snippet, just use headers &amp; paragraphs. And to embed a snippet, just make a link, but with a <span data-fake-link>:colon</span> in the link text, so that Nutshell knows to convert it. Like this:</p>
 
-<p>// pic</p>
+<p>// gif/mp4/video</p>
 
-<p>And that&#39;s all! Well, for the basics anyway. You can try out Nutshell for yourself online, and learn about more features, through my &quot;interactive-documentation-slash-demo&quot;:</p>
+<p>And that&#39;s all! To try Nutshell online, and to see more features &amp; details, check out the interactive documentation-demo:</p>
 
-<p>TRY NUTSHELL</p>
-
-<p>// gif</p>
+<p>✨✨✨✨✨✨✨✨✨✨<br>
+👉 <strong><a href="try">TRY NUTSHELL</a></strong> 👈<br>
+✨✨✨✨✨✨✨✨✨✨    </p>
 
 <h1 id="toc_2">: Tips on writing Nutshells</h1>
 
-<p>If you&#39;d like to explain something in a nutshell (ayyyyy there&#39;s the title drop!), here&#39;s some advice:</p>
+<p>If you&#39;d like to explain something in a nutshell (ayyyyy title drop), here&#39;s some advice:</p>
 
 <ul>
 <li>Show, <em>then</em> tell. Start with concrete examples &amp; pictures, <em>then</em> lay down the abstract definitions.</li>
-<li>Write your first draft, then cut 10% of it. To do that: get a word count (for example, use <a href="todo">wordcounter.net</a>), multiply that by 0.9 to get your new target word count, then cut useless words until you meet your target.</li>
-<li>This ain&#39;t Wikipedia. You can actually use your own voice, not Neutralese.</li>
-<li>I know recursion is fun, but <em>do</em> show restraint, and <a href="#DontDoThis2">:don&#39;t</a> <a href="#DontDoThis">:stuff</a> <a href="#DontDoThis">:your</a> <a href="#DontDoThis">:explanations</a> <a href="#DontDoThis">:with</a> <a href="#DontDoThis">:Nutshells</a> <a href="#DontDoThis">:like</a> <a href="#DontDoThis2">:this</a>. Only embed what&#39;s essential.</li>
+<li>Write your first draft, get a word count (e.g. use <a href="https://wordcounter.net/">wordcounter.net</a>), then cut 10% of your words.</li>
+<li>This ain&#39;t Wikipedia. Use your own voice, not Neutralese.</li>
+<li>I know recursion is fun, but <em>do</em> show restraint. <a href="#DontDoThis">:Don&#39;t</a> <a href="#DontDoThis">:stuff</a> <a href="#DontDoThis">:your</a> <a href="#DontDoThis">:explanations</a> <a href="#DontDoThis">:with</a> <a href="#DontDoThis">:Nutshells</a> <a href="#DontDoThis">:like</a> <a href="#DontDoThis2">:this</a>. Embed only what&#39;s essential.</li>
 </ul>
+
+<p>For more advice, see <a href="https://youtu.be/ojjzXyQCzso?t=512">:3Blue1Brown on making math explainers</a>, my <a href="https://www.youtube.com/watch?v=b-M2U3Jl1Cg#with_summary">:Stanford mini-talk</a>, or <a href="https://ncase.me/faq/#writing_accessible_explanations">:my FAQ</a></p>
 
 <h1 id="toc_3">: What inspired this?</h1>
 
-<p>Once upon a time, back when people actually believed that connecting the world&#39;s people would bring forth a new era of empathy and enlightenment (ha ha <em>ha hA HA HA<strong>AAAAA--</strong></em>)</p>
+<p>Once upon a time, back when folks believed connecting the world&#39;s people would birth a new era of empathy and enlightenment (ha ha h<em>a hA HA HAAAAA--</em>)</p>
 
-<p>...in that time, Ted Nelson, the inventor of hypertext, proposed something called <strong>StretchText</strong>. The idea was you have an article at a high-level narrative, but could &quot;stretch&quot; sentences into more detail. Then you stretch <em>that</em> detail into more detail, and so on, while everything stays in one continuous story – not a jungle of new tabs.</p>
+<p>...in that time, the inventor Ted Nelson proposed something called <strong>StretchText</strong>. The idea was this: you&#39;re reading an article at a high-level, but can &quot;stretch&quot; sentences into more detail. Then you can stretch <em>that</em> detail into more detail, and so on, while everything stays in one continuous context.</p>
 
-<p>(See <a href="#StretchTextOriginalDocument">:the original 1967 document for StretchText</a>, and Nelson <a href="#doc">:showing it in a documentary</a>)</p>
+<p>(See <a href="#StretchTextOriginal">:its original 1967 design document</a>, and Nelson <a href="https://youtu.be/Bqx6li5dbEY?t=150">:showing it off in a Werner Herzog documentary</a>)</p>
 
-<p>Since then, this idea&#39;s been re-discovered a few times. In 2008, a viral website named <a href="https://www.telescopictext.org/text/KPx0nlXlKTciC">Telescopic Text</a> let you stretch &quot;I made tea&quot; into a whole short story. In 2018, Wikipedia added a <a href="#Wikipedia&#x27;s%20Hover">:&quot;hover to preview article&quot;</a> feature. (<a href="todo">:more &quot;prior art&quot; examples</a>)</p>
+<p>Since then, the idea&#39;s been re-discovered a few times. In 2008, a viral website named <a href="https://www.telescopictext.org/text/KPx0nlXlKTciC">Telescopic Text</a> let you stretch &quot;I made tea&quot; into a short story. In 2018, Wikipedia added a &quot;hover to preview article&quot; feature. (<a href="#MoreStretchTextExamples">:more StretchText-likes</a>)</p>
 
-<p>And now, in 2022, I&#39;m giving you Nutshell! My main value-add, compared to previous StretchText-likes, is that you can embed snippets from <em>other websites &amp; authors, even stuff written long ago</em>. This way, we can build upon each others&#39; explanations, standing upon the shoulders of others who are standing upon the shoulders of others who are standing upon the shoulders of... and so on. </p>
+<p>And now, in 2022, I give you Nutshell! My main value-add, compared to previous StretchText-likes, is that you can embed snippets from <em>other websites &amp; authors, even stuff written long ago</em>. That way, we can build upon each others&#39; explanations.</p>
 
-<p>Maybe <em>that</em>&#39;ll bring about that new era of empathy and enlightenment!</p>
+<p>Hey, maybe <em>that&#39;ll</em> birth that new era of empathy and enlightenment!</p>
 
-<p><code>[NARRATOR: it didn&#39;t.]</code></p>
+<p><code>NARRATOR: it didn&#39;t.</code></p>
 
 <h1 id="toc_4">: Who made this?</h1>
 
-<p><a href="#NickyCase">:Nicky Case</a> is to blame for this thing. Also, this thing is <a href="#OpenSource">:open source</a>, with full code available <a href="TODO">on Github</a>.</p>
+<p><a href="#NickyCase">:Nicky Case</a> is to blame for this thing. This thing is <a href="#OpenSource">:open source</a>, all code available <a href="https://github.com/ncase/nutshell">on Github</a>.</p>
 
-<p><strong>Special Thanks to</strong>: Ss, ss, ss, ss for beta-testing this. <a href="todo">Kaira Imer</a> for writing code on an earlier version. //// for inspiring the &quot;dots opening &amp; closing&quot; animation.</p>
+<p><strong>Special Thanks to</strong>: Andy Matuschak, DominoPivot, Mike Cook, NachoBIT for gifting early feedback; <a href="https://github.com/spaciecat">Kaira Imer</a> for writing code on an previous version; <a href="https://twitter.com/ProQuesAsker/status/1440125223685165061">Amber Thomas</a> for inspiring the &quot;dots opening &amp; closing&quot; animation.</p>
 
-<p>Nicky <strike>panhandles on the internet</strike> was funded by these kind folks via Patreon:</p>
+<p>Nicky <strike>panhandles on the internet</strike> was supported by these kind folks on Patreon:</p>
 
 <p>// iframe</p>
 
-<p>If you&#39;d wanna help Nicky keep making free educational stuff and talk about themselves in the third person, you can dispose of your disposable cash <a href="https://www.patreon.com/ncase">on their Patreon!</a></p>
+<p>If you&#39;d like to help Nicky keep making free educational stuff &amp; talking about themselves in the third person, dispose of your disposable cash <a href="https://www.patreon.com/ncase">on their Patreon!</a></p>
 
-<p>But seriously, thank you to everyone above. It&#39;s been a rough few years and I appreciate y&#39;all.</p>
+<p>But seriously, thank you to everyone above. I appreciate y&#39;all.</p>
 
 <p>💖,<br>
 ~ Nicky Case</p>
@@ -139,32 +140,71 @@
 
 <p>This thing:</p>
 
-<p>// gif</p>
+<p><img src="indexpage/wiki.gif" alt="" title="a GIF showing Wiki&#39;s hover-to-preview feature; when a cursor hovers over a link, a preview of the article shows up in a bubble"></p>
 
-<p>It only goes one level deep, and only previews 1 or 2 paragraphs, but it <em>is</em> helpful, and a large inspiration for this project.</p>
+<p>It only goes one level deep &amp; only previews a few paragraphs, but it <em>is</em> helpful, and an inspiration for Nutshell.</p>
 
-<p>Wikipedia is awesome, ok? Give Jimmy your money.</p>
+<p>Wikipedia is cool, ok? Give Jimmy your money.</p>
 
-<h2 id="toc_8">: Don&#39;t Do This</h2>
+<h2 id="toc_8">: How To Include Nutshell</h2>
+
+<p>If you use <a href="todo-tut">WordPress</a>, <a href="todo-tut">Tumblr</a>, <a href="todo-tut">GitHub Pages</a>, or can otherwise change your site&#39;s <a href="#HTML">:HTML</a>, just paste this code anywhere, preferably the <head>:</p>
+
+<iframe src='indexpage/include_nutshell.html?full' width='700' height='20'></iframe>
+
+<p>Or, the smaller (&quot;minified&quot;) file:</p>
+
+<iframe src='indexpage/include_nutshell.html?min' width='700' height='20'></iframe>
+
+<p>You can also download &amp; re-host the files yourself (<a href="todo">full</a>, <a href="todo">minified</a>). </p>
+
+<p>(Fun fact: Nutshell doesn&#39;t require a package manager; I copy-pasted all dependencies into it. Like a savage.)</p>
+
+<p>Alas, some platforms like Medium and Substack don&#39;t let you add <em>any</em> code, not even <em>one line.</em> You can&#39;t use Nutshell on those platforms. (&quot;The web will empower the people&quot;, they said...)</p>
+
+<h2 id="toc_9">: HTML/CSS/JS</h2>
+
+<p>Webpages are made of code. Specifically, 3 kinds of code: HTML, CSS, and JavaScript.</p>
+
+<p><strong>HTML</strong> is the page&#39;s raw content. (HTML = HyperText Markup Language) </p>
+
+<p><strong>CSS</strong> tells the page how to be stylish. (CSS = Cascading Style Sheets) </p>
+
+<p><strong>JavaScript</strong> tells the page how to be interactive. (JavaScript has nothing to do with the programming language Java. It was... some marketing thing? Ugh, programming sucks.)</p>
+
+<h2 id="toc_10">: Don&#39;t Do This</h2>
 
 <p>don&#39;t do this.</p>
 
-<h2 id="toc_9">: Don&#39;t Do This 2</h2>
+<h2 id="toc_11">: Don&#39;t Do This 2</h2>
 
-<p>you <em>really</em> had to open all of these, didn&#39;t you?</p>
+<p>you just <em>had</em> to open all of these, didn&#39;t you?</p>
 
-<h2 id="toc_10">: Nicky Case</h2>
+<h2 id="toc_12">: Stretch Text Original Document</h2>
 
-<p>Nicky Case is an internet person who explains stuff with games, &quot;games&quot;, and pictures with words on them. You can see what they&#39;ve wrought upon humanity at <a href="https://ncase.me">ncase.me</a>.</p>
+<p><img src="indexpage/StretchText.png" alt=""></p>
 
-<h2 id="toc_11">: Open Source</h2>
+<h2 id="toc_13">: MoreStretchTextExamples</h2>
+
+<p>// pic</p>
+
+<p>From left-to-right: Wikiwand, LessWrong, Gwern.net</p>
+
+<p>There&#39;s probably way more examples, but I didn&#39;t hear about them.</p>
+
+<h2 id="toc_14">: Nicky Case</h2>
+
+<p><img src="indexpage/sprites/nicky.png" data-float="left" width="200"/></p>
+
+<p>Nicky Case is an internet person who explains stuff with games, &quot;games&quot;, and pictures with words. See what they&#39;ve wrought upon humanity at <a href="https://ncase.me">ncase.me</a>.</p>
+
+<h2 id="toc_15">: Open Source</h2>
 
 <p><strong>Open source</strong> code is (<em>usually but not always*</em>) code that&#39;s free to use, remix &amp; re-distribute – even for profit, with no or few** requirements.</p>
 
 <p>* &quot;Free&quot; is an annoyingly confusing word. <em>Very roughly speaking,</em> think &quot;free as in freedom of the press&quot;, not necessarily &quot;free as in Wi-Fi at Starbucks.&quot;</p>
 
 <p>** One common requirement is &quot;give credit&quot;. Fair enough. Some open source licenses go further: they require that your remix <em>also</em> be published under the same license. These are called <strong>copyleft</strong> licenses. Licenses without that requirement are called <strong>permissive</strong> licenses.</p>
-
 
 </body>
 </html>

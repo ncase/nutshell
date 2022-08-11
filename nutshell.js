@@ -639,6 +639,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         });
 
         // Image src's + link href's to absolute
+        _convertRelativeToAbsoluteLinks("iframe", "src", baseURL, cleanSpan);
         _convertRelativeToAbsoluteLinks("img", "src", baseURL, cleanSpan);
         _convertRelativeToAbsoluteLinks("a", "href", baseURL, cleanSpan);
 
@@ -1458,6 +1459,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
     }
     .nutshell-expandable:hover{
+        color: inherit;
         opacity: 0.8;
     }
     .nutshell-expandable .nutshell-expandable-text{
