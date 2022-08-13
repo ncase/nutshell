@@ -1,8 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+html,body{
+    margin:0;
+    width:100%;
+    overflow: hidden;
+}
+#clickme{
+    border:none;
+    font-family:monospace;
+    background:#333; color:#fff;
+    border-radius: 5px;
+    padding:2px 5px;
+    font-size: 13.5px;
+    width: 730px;
+}
+</style>
 </head>
-<body style="margin:0">
-    <input style="border:none; font-family:monospace; background:#333; color:#fff; border-radius: 2px; padding:2px 5px; font-size: 14.5px; width:100%" value="<script src=&quot;https://cdn.jsdelivr.net/gh/ncase/nutshell-beta@0.0.3/nutshell.js&quot;></script>" onclick="this.select();">
+<body>
+    <input id="clickme">
 </body>
+<script src='include_nutshell.js'></script>
 </html>

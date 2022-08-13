@@ -510,20 +510,27 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             }else if(_isYouTube(url)){
 
-                // Get the video ID
+                // Get the video ID - youtube.com or youtu.be
                 let videoID;
                 if(url.indexOf("youtube.com")>=0){
                     videoID = url.split("v=")[1];
                 }else if(url.indexOf("youtu.be")>=0){
                     videoID = url.split("be/")[1];
                 }
+                if(videoID.indexOf("?")>=0){ // cut out other params
+                    videoID = videoID.split("?")[0];
+                }
+
+                // Any URL params... like time
+                let urlParams = new URL(url),
+                    t = urlParams.searchParams.get("t") || urlParams.searchParams.get("start") || '';
 
                 // Gimme, easy peasy.
                 resolvePurifiedHTML(`
                     <div style="width:100%;padding-top:56.25%;position:relative;margin:1em 0;">
                         <iframe
                             style="position:absolute;width:100%;height:100%;top:0;left:0;"
-                            src="https://www.youtube-nocookie.com/embed/${videoID}"
+                            src="https://www.youtube-nocookie.com/embed/${videoID}?start=${t}"
                             title="YouTube video player"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

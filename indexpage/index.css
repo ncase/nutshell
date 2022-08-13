@@ -39,7 +39,7 @@ hr{
     margin-top: 30em;
 }
 strike{
-    opacity: 0.2;
+    opacity: 0.3;
 }
 
 #big_nuts{
@@ -60,9 +60,12 @@ strike{
     transition: opacity 0.2s, right 0.2s;
 }
 
-/* hack to target splash */
+/* hack to target iframes */
 iframe[data-splash=yes]{
     border: none !important;
     margin: 0 auto !important;
     display: block !important;
+}
+iframe[data-include=yes]{
+    border: none !important;
 }

@@ -31,6 +31,7 @@ PROMO
 ====================
 
 MAYBE FOR LATER
+* LaTeX
 * Advanced Nutshell Creation Tool
 * Embed Vimeo?
 * YouTube: time embed, before/afters allowed???
