@@ -745,7 +745,7 @@ It's too late to change now, sorry.
                     * By header:
                         #Header – Find header whose text matches,
                           get everything up to next header or break.
-                        #Header&cut=[integer] – Same, but skp last [cut] elements
+                        #Header&cut=[integer] – Same, but skip last [cut] elements
                     * By paragraph text:
                         #start=[text] – Get FIRST paragraph containing that text
                         #start=[text]&length=[integer] – same, w/ followup <p>

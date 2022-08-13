@@ -66,7 +66,7 @@ Hey, maybe *that'll* birth the new era of empathy and enlightenment!
 
 [:Nicky Case](#NickyCase) is to blame for this thing. This thing is [:open source](#OpenSource), available [on Github](https://github.com/ncase/nutshell).
 
-**Special Thanks to**: Andy Matuschak, DominoPivot, Mike Cook, NachoBIT for gifting early feedback; [Kaira Imer](https://github.com/spaciecat) for writing code on an previous version; [Amber Thomas](https://twitter.com/ProQuesAsker/status/1440125223685165061) for inspiring the "dots opening & closing" animation.
+**Special Thanks to**: Andy Matuschak, DominoPivot, Mike Cook, NachoBIT for gifting early feedback; [Kaira Imer](https://github.com/spaciecat) for writing code on an previous version; [Amber Thomas](https://twitter.com/ProQuesAsker/status/1440125223685165061) for inspiring the "dots opening & closing" animation; [DOMPurify](https://github.com/cure53/DOMPurify) & [Marked](https://github.com/markedjs/marked) for being two libraries Nutshell uses.
 
 Nicky <strike>panhandles on the internet</strike> was supported by these kind folks on Patreon:
 
