@@ -1,6 +1,6 @@
 # Nutshell: make expandable explanations
 
-![](thumbnails/share.png)
+![](pics/thumbnail.png)
 
 **[Check out the demo here!](https://ncase.me/nutshell)**
 
@@ -12,7 +12,7 @@
 ## There will be no Version 2.0.0
 
 > “Running a successful open source project is just Good Will Hunting in reverse, where you start out as a respected genius and end up being a janitor who gets into fights.”
-> 
+>
 > ~ [Byrne Hobart](https://www.thediff.co/p/working-in-public-and-the-economics)
 
 *Nutshell* is open-source (Creative Commons Zero), but this is *not* a "I am going to take requests & maintain this for the rest of my pathetic Sisyphean life" kind of project. I am pre-committing, right here, to keeping Nutshell minimalist, and only publishing minor tweaks & fixes. There will be no Version 2.0.0 of Nutshell.
@@ -102,6 +102,18 @@ For security reasons, Nutshell can't allow things to be embedded willy-nilly. Bu
 
 **audio** and **video**: just use as per normal.
 
+### Hiding Headings
+
+What if you want write a section for a Nutshell bubble, but *don't* want the section to appear without being manually clicked & expanded? (e.g. for hint systems)
+
+If you put a `:` *at the start of* a heading, that entire section will be collapsed into an expandable link when Nutshell starts:
+
+// pic
+
+If you put `:x` at the start of a heading, that entire section will be *invisible*. (But you can still include it elsewhere!)
+
+// pic
+
 ### Other ways to set embedded-expanded content
 
 Remember, you can test all of these in the [Try Nutshell](https://ncase.me/nutshell/try) demo! The below examples are written in Markdown for convenience, but will work with rich text or raw HTML too.
@@ -150,4 +162,4 @@ k that's all the features I have for now, thx, bye.
 
 [Nicky's Website](https://ncase.me) · [Nicky's Patreon](https://patreon.com/ncase)
 
-![](thumbnails/the_end.png)
+![](pics/the_end.png)
