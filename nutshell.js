@@ -495,7 +495,7 @@ It's too late to change now, sorry.
 
                         // Prepend thumbnail, if any
                         if(data.query.pages[pageKey].thumbnail){
-                            pageHTML = `<p><img width=300 src='${data.query.pages[pageKey].thumbnail.source}'/></p>`+ pageHTML;
+                            pageHTML = `<img width=300 src='${data.query.pages[pageKey].thumbnail.source}' data-float=right />`+ pageHTML;
                         }
 
                         // Cache it
@@ -531,14 +531,14 @@ It's too late to change now, sorry.
 
                 // Any URL params... like time
                 let urlParams = new URL(url),
-                    t = urlParams.searchParams.get("t") || urlParams.searchParams.get("start") || '';
+                    t = urlParams.searchParams.get("t") || urlParams.searchParams.get("start") || '0';
 
                 // Gimme, easy peasy.
                 resolvePurifiedHTML(`
                     <div style="width:100%;padding-top:56.25%;position:relative;margin:1em 0;">
                         <iframe
                             style="position:absolute;width:100%;height:100%;top:0;left:0;"
-                            src="https://www.youtube-nocookie.com/embed/${videoID}?start=${t}"
+                            src="https://www.youtube-nocookie.com/embed/${videoID}?start=${t}&rel=0"
                             title="YouTube video player"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -1619,7 +1619,7 @@ It's too late to change now, sorry.
         margin: 1em;
     }
     .nutshell-bubble-overflow-section img[data-float=right]{
-        float: left;
+        float: right;
         margin: 1em;
     }
     .nutshell-bubble-overflow-section iframe{

@@ -9,6 +9,7 @@ MISC
 * Death to empty paragraphs
 * In embed modal, the arrow isn't pointing correctly
 * alt or title for pics???
+* oh god where's embed heading NOW.
 
 PROMO
 * Thumb

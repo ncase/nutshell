@@ -2,7 +2,7 @@
 
 <iframe width="750" height="300" src="indexpage/splash.html" data-splash="yes"></iframe>
 
-**Nutshell** is a tool to make "expandable explanations", like this! They can even be [:recursive](#Recursion). (←click) This lets your readers learn only the details they need, just-in-time, always-in-context.
+**Nutshell** is a tool to make "expandable explanations", like this! They can even be [:recursive](#Recursion). (← click me 👆) This lets your readers learn only the details they need, just-in-time, always-in-context.
 
 Unlike links, Nutshell lets you include *only* the snippet you need, not the whole page. Plus, instead of being lost in a jungle of new tabs, your reader stays on one page, keeping their flow of reading. Even if you [:interrupt a sentence](#Interruption), Nutshell recaps the sentence afterwards, so your reader never loses context.
 
@@ -16,11 +16,11 @@ Bite-sized, yet nutritious. Let's get crackin' with Nutshell!
 
 # : How do I use Nutshell?
 
-It's dead-parrot simple! Just copy-paste this *one line* onto your site: ([:how-to details](#HowToIncludeNutshell))
+It's dead-parrot simple! Just copy-paste this *one line* onto your site: ([:more details](#HowToIncludeNutshell))
 
 <iframe src='indexpage/include_nutshell.html?url=full' width='750' height='22' data-include='yes'></iframe>
 
-Then, to write a Nutshell snippet, just use headings & paragraphs. And to embed a snippet, just make a link, but with a <span data-fake-link>:colon</span> in the link text, so that Nutshell knows to convert it. *Click to play the below video:*
+Then, to write a Nutshell snippet, just use headings & paragraphs. To embed a snippet, just make a link, but with a <span data-fake-link>:colon</span> in the link text, so that Nutshell knows to convert it. ([:more details](#LinkingToOtherPages)) *Click to play the below 1-minute tuorial video:*
 
 <video width="615" controls>
     <source src="indexpage/screenies/instructions.mp4" type="video/mp4">
@@ -126,6 +126,32 @@ Webpages are made of code. Specifically, 3 kinds of code: HTML, CSS, and JavaScr
 **CSS** tells the page how to be stylish. (CSS = Cascading Style Sheets) 
 
 **JavaScript** tells the page how to be interactive. (JavaScript has nothing to do with the programming language Java. It was... some marketing thing? Ugh, programming sucks.)
+
+## : Linking To Other Pages
+
+See the [interactive demo](try) for more ways to make links!
+
+Alas, an annoying catch: the other webpage needs to *also* have Nutshell installed, or [:CORS](#CORS) enabled. If they don't, you'll have to mirror/copy their webpage. Sorry!
+
+## : CORS
+
+**Cross-Origin Resource Sharing (CORS)** are rules that exist because web security programmers are paranoid, and rightfully so.
+
+Let's say you're visiting Facebook.com. Your web browser (Firefox, Chrome, Safari, Microsoft Edge, etc) pings Facebook, and Facebook gives you back your personal info. So far so good.
+
+But now let's say you visit TotallyNotCyberCriminals.com. *If it weren't for CORS, this could happen:* the sneaky site makes your browser ping Facebook, Facebook sends back your info, and *bam*, the sneaky site now has your info. (Well, a different sneaky site.)
+
+Browsers *could* say, "A site can only get info from itself: Facebook can only get info from Facebook, etc". But that'd make it impossible to do cool web things, like Nutshell.
+
+So the security programmers chose a compromise: Site X can get info from Site Y _only if Site Y says Site X (or \*all\* sites) can have it._ These are rules for sharing resources across different sites, different origins. Hence: "Cross-Origin Resource Sharing".
+
+P.S: [:a message for you web developers](#CORSForWebDevs)
+
+## : CORS For Web Devs
+
+If your webpage has no private info, I highly recommend setting your CORS rules to "*everyone* can get this page's info". That way, cool tools like Nutshell can easily embed your stuff!
+
+Check out [Enable-CORS.org](https://enable-cors.org/) for how to do this. Personally, I host all my sites on [Github Pages](https://pages.github.com/) – *I promise this message is not sponsored* – which enables permissive CORS by default.
 
 ## : Don't Do This
 
