@@ -44,6 +44,7 @@ let loadFromMarkdownFile = (src)=>{
 
             // Set editors
             quill.setContents( quill.clipboard.convert(rawHTML), 'silent');
+            quill.root.innerHTML = quill.root.innerHTML.replaceAll("<p><br></p>",""); // horrifying hack
             codemirror_md.setValue(rawMD);
             codemirror_html.setValue(prettyHTML);
 
@@ -109,11 +110,5 @@ let switchTool = (tool, dontUpdatePreview)=>{
 }
 
 /* START */
-let hash = window.location.hash.slice(1);
-let filenames = ['NutshellInANutshell','GettingStarted','AdvancedFeatures'];
-if(filenames.indexOf(hash)>=0){
-    loadFromMarkdownFile(hash+'.md');
-}else{
-    loadFromMarkdownFile('GettingStarted.md');
-}
+loadFromMarkdownFile('NutshellInANutshell.md');
 switchTool('rich', true);

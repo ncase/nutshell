@@ -1,4 +1,15 @@
-# To write a section
-Just use headers & paragraphs, then...
-# To embed a section
-Just make a link, with :colon at the front! [:Like This](#ToWriteASection).
+## To write a section,
+
+just use headings & paragraphs like this! Then...
+
+## To embed a section,
+
+just make a link with :colon at the front... [:LIKE THIS](#ToWriteASection)!
+
+## Other ways to make links
+
+// no section
+
+// to other pages (CORS / Nutshell)
+
+// wikipedia & youtube

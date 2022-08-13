@@ -1,27 +1,13 @@
 # TODO: FINISH EVERYTHING FOR V1.0
 
-ART
-* Nicky Case Crappy Pic
-
-WRITING
-* Rewrite frontpage more concisely
-* Tips on writing
-
-FEATURES
-* CDN and Embed works
+MISC
 * Patreon Wall of Thanks iframe self-scroll
-
-FIXES
+* Crossbrowser test & fix
 * no need for "..." after "recursive."
 * Main page that <br> is big
 * Dots are off in Firefox (make 'em work in both)
-* Example interactive
-* Demo page fix all glitches with quill
-* Demo page GIF
 * Death to empty paragraphs
-* Cross-browser test & fix
 * In embed modal, the arrow isn't pointing correctly
-* Weird glitch in big bottom margin for the main page expandables
 * alt or title for pics???
 
 PROMO

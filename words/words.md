@@ -6,7 +6,7 @@
 
 Unlike links, Nutshell lets you include *only* the snippet you need, not the whole page. Plus, instead of being lost in a jungle of new tabs, your reader stays on one page, keeping their flow of reading. Even if you [:interrupt a sentence](#Interruption), Nutshell recaps the sentence afterwards, so your reader never loses context.
 
-Unlike [:Wikipedia's "Hover to Preview Article" feature](#HoverToPreview), **you can re-use explanations from other websites and authors, _even stuff that was written long ago!_** (Example: a snippet from [:my pretentious 2014 blog post](https://blog.ncase.me/explorable-explanations/#ProceduralRhetoric).) This works because Nutshell doesn't require writing in a new format – just the good ol' headers, paragraphs, and links you're used to.
+Unlike [:Wikipedia's "Hover to Preview Article" feature](#HoverToPreview), **you can re-use explanations from other websites and authors, _even stuff that was written long ago!_** (Example: a snippet from [:my pretentious 2014 blog post](https://blog.ncase.me/explorable-explanations/#ProceduralRhetoric).) This works because Nutshell doesn't require writing in a new format – just the good ol' headings, paragraphs, and links you're used to.
 
 *But wait, there's more!* It's not just text & pictures you can embed! You can also embed [:interactive playthings](indexpage/malicious.html#InteractivePlay), [:YouTube videos](https://www.youtube.com/watch?v=i_RLYSaPvak), and – hey, why not – [:Wikipedia articles](https://en.wikipedia.org/wiki/Catgirl). (That includes [:other languages](https://fr.wikipedia.org/wiki/Baguette_(pain)) and [:Simple Wikipedia](https://simple.wikipedia.org/wiki/Universe), too!)
 
@@ -20,7 +20,7 @@ It's dead-parrot simple! Just copy-paste this *one line* onto your site: ([:how-
 
 <iframe src='indexpage/include_nutshell.html?url=full' width='750' height='22' data-include='yes'></iframe>
 
-Then, to write a Nutshell snippet, just use headers & paragraphs. And to embed a snippet, just make a link, but with a <span data-fake-link>:colon</span> in the link text, so that Nutshell knows to convert it. *Click to play the below video:*
+Then, to write a Nutshell snippet, just use headings & paragraphs. And to embed a snippet, just make a link, but with a <span data-fake-link>:colon</span> in the link text, so that Nutshell knows to convert it. *Click to play the below video:*
 
 <video width="615" controls>
     <source src="indexpage/screenies/instructions.mp4" type="video/mp4">
@@ -95,7 +95,7 @@ all work and no play makes jack a dull boy all work and no play makes jack a dul
 
 This thing:
 
-![](indexpage/wiki.gif "a GIF showing Wiki's hover-to-preview feature; when a cursor hovers over a link, a preview of the article shows up in a bubble")
+![](indexpage/screenies/wiki.gif "a GIF showing Wiki's hover-to-preview feature; when a cursor hovers over a link, a preview of the article shows up in a bubble")
 
 It only goes one level deep & only previews a few paragraphs, but it *is* helpful, and an inspiration for Nutshell.
 

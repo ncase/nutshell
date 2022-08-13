@@ -45,6 +45,8 @@ strike{
 #big_nuts{
     font-size:50px;
     line-height:1.75em;
+    list-style: none;
+    padding-left: 0;
 }
 
 #PointyMcPointFace{

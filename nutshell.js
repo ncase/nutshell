@@ -52,6 +52,8 @@ Expandable: a button you can click to get an "expandable explanation"
 
 Bubble: the box that expands below an expandable, containing a Nutshell Section
 
+[TYPO] I thought <h> tags were called "headers", not "headings".
+It's too late to change now, sorry.
 
 
 ========================================
@@ -119,6 +121,10 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
     // it me
     window.Nutshell = {};
+
+    // Version! & CDN
+    Nutshell.version = '1.0.0';
+    Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
 
 
     /////////////////////////////////////////////////////////////////////
@@ -326,7 +332,9 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                 ex.isOpen = true;
 
                 // Insert a bubble
-                bubble = Nutshell.createBubble(ex, mouseEvent.offsetX);
+                //debugger;
+                let clickX = mouseEvent.clientX - ex.parentNode.getBoundingClientRect().x; // relative to parent, I guess???
+                bubble = Nutshell.createBubble(ex, clickX);
                 ex.parentNode.insertBefore(bubble, punctuation.nextSibling); // place the bubble AFTER PUNCTUATION
                 ex.setAttribute("mode", "open");
                 ex.updateFollowupText();
@@ -1047,8 +1055,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         // Position the arrow, starting at 20px left of the click...
         // SO HACKY.
         {
-            // (since 20px is half the arrow's width)
-            let arrowX = clickX-20;
+            // (since 22px is half the arrow's width, plus border)
+            let arrowX = clickX - 22;
 
             // What's width of the paragraph the expandable is in?
             let p = _findFirstParentWithFilter(expandable,(p)=>{
@@ -1366,7 +1374,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         // Step 1: Code for head
         _p1.innerHTML = Nutshell.getLocalizedText("embedStep1")
             .replace(`[HEAD]`, `<span style="font-family:monospace">&lt;head&gt;</span>`)
-            .replace(`[CODE]`, `<input style="width:100%" value="code code code" onclick="select()"/>`);
+            .replace(`[CODE]`, `<input style="width:100%" value="${Nutshell.cdn}" onclick="select()"/>`);
 
         // Step 2: Link
         _p2.innerHTML = Nutshell.getLocalizedText("embedStep2")

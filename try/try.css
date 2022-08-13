@@ -10,8 +10,8 @@ body, html{
 #container{
 
     /* Big ol' block */
-    width: 1220px;
-    height: 600px;
+    width: 1100px;
+    height: 560px;
 
     /* In the middle */
     position:absolute;
@@ -21,8 +21,8 @@ body, html{
 }
 #left-half, #right-half{
     position: absolute;
-    width:600px;
-    height:540px;
+    width:540px;
+    height:495px;
 }
 #left-half{     left:0;     }
 #right-half{    right:0;    }
@@ -50,7 +50,7 @@ body, html{
 /* Titles saying what's what */
 .half-title{
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 100;
     line-height: 1.3em;
 }
@@ -87,13 +87,13 @@ body, html{
     display:none; /* don't clutter, to start */
 }
 #editor-rich-textbox{
-    width: 600px;
-    height: 400px;
+    width: 540px;
+    height: 360px;
     font-size: 16px;
 }
 #editor-md, #editor-html{
-    width: 600px;
-    height: 440px;
+    width: 540px;
+    height: 400px;
     border: 1px solid #ccc;
 }
 .CodeMirror {
@@ -116,8 +116,8 @@ body, html{
 
     position: absolute;
     bottom:0;
-    width: 560px;
-    height: 390px;
+    width: 500px;
+    height: 350px;
     padding: 20px;
     padding-top: 30px;
     border: 1px solid #ccc;
@@ -129,4 +129,7 @@ body, html{
     overflow-y: scroll;
     overflow-x: hidden;
 
+}
+#try-nutshell-output img{
+    max-width: 100%;
 }
