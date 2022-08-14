@@ -28,10 +28,10 @@ In the `nutshell.js` file, there's a JSON object containing all of Nutshell's En
 ```
 Nutshell.language = {
 	en: {
-	
+
 		// Button text
 		closeAllNutshells: `close all nutshells`,
-			
+
 		// Nutshell errors...
 		notFoundError: `Uh oh, the page was not found! Double check the link:`,
 		wikiError: `Uh oh, Wikipedia's not loading, or the link is broken. Please double check:`,
@@ -45,7 +45,7 @@ To help translate Nutshell:
 1. Copy the "en" object
 2. Add a new object to `Nutshell.language` with [the 2-letter code for your target language](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
 3. Translate everything (~150 words) in backtick-quotes (but leave alone the stuff inside `[square brackets]` or `<angular brackets>`!!!)
-4. Send a Pull Request! 🎉 
+4. Send a Pull Request! 🎉
 5. Give me two weeks to slog through my Sisyphean inbox & finally merge it.
 
 Note: I'm only accepting translations for the Nutshell *library*, not the demo website.
@@ -69,10 +69,8 @@ If you're curious, here's some minor features I *maybe MAYBE* might add:
 	* A general "plug-in" system so that 1) I don't have a giant if-elseif-elseif statement for handling Wikipedia/YouTube/Vimeo/Wiktionary/Images/etc, and 2) other folks can write their own plug-ins.
 * Allowing _very limited_ styling of content in Nutshells. (the problem is to avoid cross-site vandalism that spills _outside_ of the bubble. So, maybe only `background`, `color`, `font-size`, and `float`?)
 * An easy tool to make Nutshell links with advanced features, rather than making you go through the documentation & test it in the Try Nutshell demo
-* [I DO NOT LIKE THIS FEATURE, BUT AM LISTING IT COZ I KNOW IT'LL BE REQUESTED A LOT]: Option to show bubble-previews on hover, hide on mouse-out? (May suck for long, recursive nutshells. And mouse-out may be a very fragile interface.)
+* [I DO NOT LIKE THIS IDEA, BUT AM LISTING IT COZ IT'LL BE REQUESTED A LOT]: Configuration option to show bubbles on hover, hide on mouse-out? (May suck for long, recursive nutshells. And mouse-out seems very fragile – move cursor 1px and whoops 3 layers of explanation vanish – plus, won't work on mobile anyway...)
 * Put this on npm? For "serious developer" points.
-
-And now, here's the features that *do* exist right now:
 
 ## Advanced features & options
 
@@ -84,13 +82,12 @@ After including Nutshell (e.g. where you put `<script src="nutshell.js"><script>
 <script>
 Nutshell.setOptions({
     startOnLoad: true, // Start Nutshell on load? (default: true)
-    customCSS: '', // Add your own style (default: none)
     lang: 'en' // Language (default: 'en', which is English)
 });
 </script>
 ```
 
-There are currently only 3 options:
+There are currently only 2 options:
 
 **startOnLoad (default: true).** Set this to `false` if you *don't* want Nutshell to immediately run on page load. (e.g. if your article is asynchronously loaded). Later, to *actually* start Nutshell, call:
 
@@ -100,9 +97,20 @@ By default, Nutshell tries to convert the whole page. To limit Nutshell to conve
 
 `Nutshell.start(element);`
 
-**customCSS.** The raw CSS you want to put *after* Nutshell's default CSS. You can see Nutshell's default CSS in `nutshell.js`; search for `Nutshell.defaultStyle`.
-
 **lang (default: 'en').** If Nutshell supports your language, you can make Nutshell speak it by setting `lang` to your language's [two-letter code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). (Currently, Nutshell only supports English, but there'll be more fan-translations soon! If you're comfortable with programming/Github, see [how you can help translate it](https://github.com/ncase/nutshell#on-translating))
+
+**Want to change Nutshell's style?** Just put CSS after the Nutshell script! To see the classes Nutshell uses (all prepended .nutshell-\*), look at `Nutshell.defaultStyle` in `nutshell.js`.
+
+For example, this turns the pretty dotted-lines under expandables (the default) into big ugly marker-lines:
+
+```
+<script src="nutshell.js"></script>
+<style>
+.nutshell-expandable{
+    border-bottom: solid 10px;
+}
+</style>
+```
 
 ### Stuff you can put in embedded sections
 
