@@ -28,7 +28,7 @@ just make a link with :colon at the front... [:LIKE THIS](#ToWriteASection)!
 
 3) The other site must either also have Nutshell installed, or [:CORS](../#cors) enabled. If you don't know if the other site has Nutshell/CORS, test out linking to it in this demo page.
 
-## Other Fun Stuff 
+## Other Fun Stuff
 
 You want to embed an explanation, but no-one's written it yet & you can't be bothered to either? **Get the intro from a Wikipedia article** by linking to it!
 
@@ -42,4 +42,4 @@ You want to embed an explanation, but no-one's written it yet & you can't be bot
 
 [:Knife-Wielding Tentacle, starting at 0:36](https://youtu.be/pQ2dI_B_Ycg?t=36) links to `https://youtu.be/pQ2dI_B_Ycg?t=36`
 
-For more advanced features and "features", check out [the documentation!](TODO)
+For more advanced features and "features", check out [the documentation!](https://github.com/ncase/nutshell#advanced-features--options)

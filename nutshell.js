@@ -635,8 +635,6 @@ It's too late to change now, sorry.
     let _purifyHTML = (rawHTML, baseURL)=>{
 
         // DOMPurify: no styles, no scripts, iframes allowed (but sandboxed later)
-        // TODO: allow style, but only floating?
-        // TODO: LaTeX?
         let cleanHTML = DOMPurify.sanitize(rawHTML,{
             FORBID_ATTR: ['style','id','class'],
             FORBID_TAGS: ['style'],
