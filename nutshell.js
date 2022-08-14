@@ -1266,8 +1266,9 @@ It's too late to change now, sorry.
         return allHeaders;
     }
 
-    // If header *begins* with colon,
+    // If header *begins* with ":",
     // replace it and following section with just a link!
+    // (And if it starts with ":x", DELETE ENTIRELY.)
     Nutshell.hideHeaders = (el=document.body)=>{
 
         // Temporary dividers to remove later...
@@ -1278,21 +1279,28 @@ It's too late to change now, sorry.
             return header.innerText.trim()[0]==":";
         }).forEach((header)=>{
 
-            // Put a link before the header
-            let link = document.createElement("a");
-            link.href = "#" + header.innerText.replace(/[^A-Za-z0-9]/g,''), // A section ID
-            link.innerText = ":" + header.innerText.trim().slice(1).trim(); // remove first char
-            header.parentNode.insertBefore(link, header);
+            // Unless it's ":x", in which case DO NOT ADD LINK.
+            if(header.innerText.trim().toLowerCase().slice(0,2)!=":x"){
 
-            // And insert a <br> after the link
-            let br = document.createElement("br");
-            link.parentNode.insertBefore(br, link.nextSibling);
+                // Put a link before the header
+                let link = document.createElement("a");
+                link.href = "#" + header.innerText.replace(/[^A-Za-z0-9]/g,''), // A section ID
+                link.innerText = ":" + header.innerText.trim().slice(1).trim(); // remove first char
+                header.parentNode.insertBefore(link, header);
 
+                // And insert a <br> after the link
+                let br = document.createElement("br");
+                link.parentNode.insertBefore(br, link.nextSibling);
+
+            }
+
+            // [I'M NOT SURE WHY I PUT THIS CODE HERE, IT SEEMS TO DO NOTHING]
+            // [LEAVING IT COMMENTED OUT IN CASE IT'S IMPORTANT]
             // Put a <hr> before the link,
             // so it won't be confused with a previous section.
-            let hr = document.createElement("hr");
-            link.parentNode.insertBefore(hr, link);
-            tmpDividers.push(hr);
+            //let hr = document.createElement("hr");
+            //link.parentNode.insertBefore(hr, link);
+            //tmpDividers.push(hr);
 
             // Then delete every node following until next header, hr, or end of post.
             let currentNode = header,
@@ -1325,9 +1333,9 @@ It's too late to change now, sorry.
         });
 
         // NOW remove all those temporary dividers
-        tmpDividers.forEach((hr)=>{
-            hr.parentNode.removeChild(hr);
-        });
+        //tmpDividers.forEach((hr)=>{
+        //    hr.parentNode.removeChild(hr);
+        //});
 
     };
 
