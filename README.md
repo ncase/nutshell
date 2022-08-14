@@ -15,7 +15,7 @@
 >
 > ~ [Byrne Hobart](https://www.thediff.co/p/working-in-public-and-the-economics)
 
-*Nutshell* is open-source, but this is *not* a "I will take requests & maintain this for the rest of my pathetic life" kind of project. I am pre-committing, right here, to keeping Nutshell minimalist, and only making minor tweaks. There will be no Version 2.0.0 of Nutshell.
+*Nutshell* is open-source ([Creative Commons Zero](https://creativecommons.org/publicdomain/zero/1.0/)), but this is *not* a "I will take requests & maintain this for the rest of my pathetic life" kind of project. I am pre-committing, right here, to keeping Nutshell minimalist, and only making minor tweaks. There will be no Version 2.0.0 of Nutshell.
 
 That said, I'm accepting two kinds of Pull Requests! **1) Bug fixes, and 2) Translations**.
 
