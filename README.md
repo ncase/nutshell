@@ -19,7 +19,11 @@
 
 That said, I'm accepting two kinds of Pull Requests! **1) Bug fixes, and 2) Translations**.
 
-Bug fixes are self-explanatory. Translations are slightly harder. In the `nutshell.js` file, there's a JSON object containing all of Nutshell's English text:
+Bug fixes are self-explanatory. Translations are slightly harder.
+
+### On translating:
+
+In the `nutshell.js` file, there's a JSON object containing all of Nutshell's English text:
 
 ```
 Nutshell.language = {
@@ -36,7 +40,7 @@ Nutshell.language = {
 
 ```
 
-### To help translate Nutshell:
+To help translate Nutshell:
 
 1. Copy the "en" object
 2. Add a new object to `Nutshell.language` with [the 2-letter code for your target language](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
@@ -49,6 +53,8 @@ Note: I'm only accepting translations for the Nutshell *library*, not the demo w
 I'm also *not* accepting Pull Requests for new features, but feel free to suggest some in the Issues tab, and emoji-upvote (👍) others' suggestions! *This will not determine what I make,* I'm just curious what y'all want. I am pre-committing: _I will only implement minor features \*I\* personally want_.
 
 (If there's a feature you want but I don't, make a fork! Then post your fork in the corresponding Issue, so everyone who also wants that feature can use it, too.)
+
+### Possible future shtuff
 
 If you're curious, here's some minor features I *maybe MAYBE* might add:
 
@@ -96,7 +102,7 @@ By default, Nutshell tries to convert the whole page. To limit Nutshell to conve
 
 **customCSS.** The raw CSS you want to put *after* Nutshell's default CSS. You can see Nutshell's default CSS in `nutshell.js`; search for `Nutshell.defaultStyle`.
 
-**lang (default: 'en').** If Nutshell supports your language, you can make Nutshell speak it by setting `lang` to your language's [two-letter code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). (Currently, Nutshell only supports English, but there'll be more fan-translations soon! If you're comfortable with programming/Github, see [how you can help translate it](https://github.com/ncase/nutshell#to-help-translate-nutshell))
+**lang (default: 'en').** If Nutshell supports your language, you can make Nutshell speak it by setting `lang` to your language's [two-letter code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). (Currently, Nutshell only supports English, but there'll be more fan-translations soon! If you're comfortable with programming/Github, see [how you can help translate it](https://github.com/ncase/nutshell#on-translating))
 
 ### Stuff you can put in embedded sections
 
