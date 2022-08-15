@@ -22,8 +22,8 @@ let codemirror_html = CodeMirror(document.querySelector('#editor-html'), {
     lineWrapping: true,
     mode: 'xml'
 });
-codemirror_md.setSize(600, 440);
-codemirror_html.setSize(600, 440);
+codemirror_md.setSize(540, 400);
+codemirror_html.setSize(540, 400);
 
 /* Load from MD file & set editors */
 let showdownConverter = new showdown.Converter();

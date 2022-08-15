@@ -136,3 +136,38 @@ b, strong{
 #try-nutshell-output p img{
     max-width: 100%;
 }
+
+/* MOBILE */
+.show-only-when-desktop{
+    display:inline;
+}
+.show-only-when-mobile{
+    display:none;
+}
+@media (max-width: 600px){
+    #container{
+        width: 540px;
+        height: 940px;
+    }
+    #left-half {
+      top: 0;
+    }
+    #right-half {
+      top: 470px;
+    }
+    #left-half, #right-half {
+      height: 455px;
+    }
+    #bottom{
+        bottom: -18px;
+    }
+    .show-only-when-desktop{
+        display:none;
+    }
+    .show-only-when-mobile{
+        display:inline;
+    }
+    #editor-rich-textbox, #try-nutshell-output{
+        font-size: 22px;
+    }
+}

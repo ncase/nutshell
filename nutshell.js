@@ -123,6 +123,9 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     Nutshell.version = '1.0.0';
     Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
 
+    // What's THIS page's URL? (WITH QUERYSTRING)
+    Nutshell.thisPageURL = location.protocol + '//' + location.host + location.pathname + location.search;
+
 
     /////////////////////////////////////////////////////////////////////
     // ⭐️ Start Nutshell!
@@ -437,9 +440,6 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     /////////////////////////////////////////////////////////////////////
     // ⭐️ Get purified HTML, given a source URL.
     /////////////////////////////////////////////////////////////////////
-
-    // What's THIS page's URL?
-    Nutshell.thisPageURL = location.protocol + '//' + location.host + location.pathname;
 
     // Not very picky about what's in the cache
     // Could be just <p>'s, or the entire <body> with nav & comments

@@ -3,9 +3,14 @@
 
 <head>
 
-    <meta charset="utf-8">
+    <!-- Meta -->
     <title>Nutshell: make expandable explanations</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <meta name="viewport" content="width=600"> <!-- mobile -->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png"/>
 
     <!-- Shtuff for this indexpage -->
     <link rel="stylesheet" href="indexpage/index.css"></link>
@@ -20,8 +25,8 @@
 
     <!-- BIG NUTSHELLS -->
     <ul id="big_nuts">
-        <li>
-            <a href="#WhatIsNutshell" id="pointys_target">:What is Nutshell?</a>
+        <li id="pointys_target">
+            <a href="#WhatIsNutshell">:What is Nutshell?</a>
         </li>
         <li>
             <a href="#HowDoIUse">:How do I use Nutshell?</a>
@@ -41,7 +46,6 @@
     <div id="PointyMcPointFace"></div>
 
     <!-- Preloading the splash animation -->
-    <img src="indexpage/sprites/splash.png" width="1" height="1" style="position:absolute; top:-100px; left:-100px;"/>
     <iframe src="indexpage/splash.html" width="1" height="1" style="position:absolute; top:-100px; left:-100px;"></iframe>
 
     <!-- The hidden nutshells -->
@@ -76,7 +80,7 @@
 
 <p>Then, to write a Nutshell snippet, just use headings &amp; paragraphs. To embed a snippet, just make a link, but with a :colon in the front, <span data-fake-link>:like this</span>, so that Nutshell knows to make it expandable. (<a href="#CaveatOnLinking">:caveat</a>) <em>Click to play the below 1-minute tuorial video:</em></p>
 
-<p><video width="615" controls autoplay loop>
+<p><video width="615" controls>
     <source src="indexpage/screenies/instructions.mp4" type="video/mp4">
     oh no! your browser does not support the video tag. :(
 </video></p>

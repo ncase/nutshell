@@ -71,3 +71,27 @@ iframe[data-splash=yes]{
 iframe[data-include=yes]{
     border: none !important;
 }
+
+/* MOBILE */
+@media (max-width: 810px){
+    body{
+        font-size: 30px;
+        font-weight: normal;
+    }
+    #PointyMcPointFace{
+        visibility: hidden;
+    }
+    #pointys_target{
+        animation: blinker 1.38s linear infinite;
+        border-radius: 1em;
+    }
+    iframe[data-splash=yes]{
+        width: 580px;
+        height: 210px;
+    }
+}
+@keyframes blinker {
+    0% { background:#fff; }
+    50% { background:hsl(200,80%,80%); }
+    100% { background:#fff; }
+}
