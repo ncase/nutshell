@@ -5,31 +5,25 @@
     html,body{
         width:100%; height:100%;
         margin:0;
-        background: url(sprites/loading.png);
-        background-size: 100%;
     }
-    #splash{
-        position:absolute;
+    #splash_video{
         width: 750px;
-        height: 300px;
-        background: url(sprites/splash.png);
-        background-position-y: 0%;
-        background-size: 100%;
     }
 </style>
 </head>
 <body>
-    <div id="splash"></div>
+    <video id="splash_video" autoplay muted>
+        <source src="screenies/splash.mp4" type="video/mp4">
+    </video>
 </body>
 </html>
 
 <script>
-    let frame = -5, // it takes a while to load...
-        firstLoop = 0,
-        splash = document.querySelector("#splash");
-    setInterval(()=>{
-        splash.style.backgroundPositionY = -(Math.max(frame,0)*100)+'%';
-        frame++;
-        if(frame>=33) frame=14; // Loop
-    }, 1000/12);
+let splash = document.getElementById('splash_video');
+splash.play();
+splash.addEventListener('ended',(e)=>{
+    console.log(splash.currentTime);
+    splash.currentTime = 35/12; // 35th frame at 12fps.
+    console.log(splash.currentTime);
+},false);
 </script>

@@ -530,6 +530,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                     t = urlParams.searchParams.get("t") || urlParams.searchParams.get("start") || '0';
 
                 // Gimme, easy peasy.
+                // weird css hack to make the iframe scale aspect-ratio.
                 resolvePurifiedHTML(`
                     <div style="width:100%;padding-top:56.25%;position:relative;margin:1em 0;">
                         <iframe

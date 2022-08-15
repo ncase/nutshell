@@ -1,10 +1,12 @@
 let clickme = document.querySelector("#clickme");
 clickme.onclick = (e)=>{
-    e.target.select();
+    setTimeout(()=>{
+        e.target.select();
+    },1);
 }
-clickme.onmouseout = (e)=>{
+/*clickme.onmouseout = (e)=>{
     e.target.blur();
-}
+}*/
 
 let fullURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell@1.0.0/nutshell.js',
     minURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell@1.0.0/nutshell.min.js',
