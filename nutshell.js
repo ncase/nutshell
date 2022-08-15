@@ -21,7 +21,7 @@ If you find it helpful, that is a side effect.
 =========================
 
 Dead Simple:
-Just put a <script> in the header and that's it.
+Just put a <script> in the heading and that's it.
 That's why this file even contains the CSS & others' minified libraries
 (This library doesn't even have any dependencies! <3)
 
@@ -52,9 +52,6 @@ Expandable: a button you can click to get an "expandable explanation"
 
 Bubble: the box that expands below an expandable, containing a Nutshell Section
 
-[TYPO] I thought <h> tags were called "headers", not "headings".
-It's too late to change now, sorry.
-
 
 ========================================
 === WHAT NUTSHELL NEEDS TO DO (SPEC) ===
@@ -63,16 +60,16 @@ It's too late to change now, sorry.
 1) Convert the top page (or a given element):
 
   a. Turn :links into expandable buttons
-    <a href="pageURL#Header">:link text</a>
+    <a href="pageURL#Heading">:link text</a>
     should be converted to an expandable labeled "link text", that when clicked,
     expands a bubble with the section found inside the purified HTML.
 
     Ways to get a section:
     * pageURL – Get whole article
-    * By header:
-        #Header – Find header whose text matches,
-          get everything up to next header or break.
-        #Header&cut=[integer] – Same, but skip last [cut] elements
+    * By heading:
+        #Heading – Find heading whose text matches,
+          get everything up to next heading or break.
+        #Heading&cut=[integer] – Same, but skip last [cut] elements
     * By paragraph text:
         #start=[text] – Get FIRST paragraph containing that text
         #start=[text]&length=[integer] – same, w/ followup <p>
@@ -80,7 +77,7 @@ It's too late to change now, sorry.
     * Add before & after:
         &before=[markdown]&after=[markdown] – add html like pre-req's, commentary.
 
-  b. Give <h*> headers two reveal-on-hover buttons:
+  b. Give <h*> headings two reveal-on-hover buttons:
     one for permalink, one to embed that Nutshell
 
   c. A modal dialogue to let readers embed Nutshells
@@ -107,7 +104,7 @@ It's too late to change now, sorry.
 
   b. Make an element to contain the Section
 
-    Get the Section's HTML from "#Header", &before, &after, &start, &end, etc
+    Get the Section's HTML from "#Heading", &before, &after, &start, &end, etc
     Do very forgiving search: case-insensitive, don't care about punctuation.
     Convert :links inside it to Nutshell Expandables, too (yay, recursion!)
 
@@ -155,9 +152,9 @@ It's too late to change now, sorry.
 
             // Add styles & convert page
             Nutshell.addStyles();
-            Nutshell.hideHeaders(el);
+            Nutshell.hideHeadings(el);
             Nutshell.convertLinksToExpandables(el);
-            Nutshell.convertHeaders(el);
+            Nutshell.convertHeadings(el);
 
             // Fill out other UI with localized text
             // (only set by user after Nutshell.js file included, hence this)
@@ -214,8 +211,8 @@ It's too late to change now, sorry.
                          Click to preview → [EXAMPLE]`,
             embedStep1: `Step 1) Copy this code into the [HEAD] of your site: [CODE]`,
             embedStep2: `Step 2) In your article, create a link to [LINK]
-                         and make sure the link text starts with a
-                         <a href="javascript:alert('like that link')">:colon</a>,
+                         and make sure the link text starts with a :colon,
+                         <a href="#">:like this</a>,
                          so Nutshell knows to make it expandable.`,
             embedStep3: `Step 3) That's all, folks! 🎉`,
 
@@ -739,10 +736,10 @@ It's too late to change now, sorry.
                     /***
                     Ways to get a section:
                     * pageURL – Get whole article
-                    * By header:
-                        #Header – Find header whose text matches,
-                          get everything up to next header or break.
-                        #Header&cut=[integer] – Same, but skip last [cut] elements
+                    * By heading:
+                        #Heading – Find heading whose text matches,
+                          get everything up to next heading or break.
+                        #Heading&cut=[integer] – Same, but skip last [cut] elements
                     * By paragraph text:
                         #start=[text] – Get FIRST paragraph containing that text
                         #start=[text]&length=[integer] – same, w/ followup <p>
@@ -775,48 +772,48 @@ It's too late to change now, sorry.
                         }
                     });
 
-                    // If the first term has no "=", then we're searching by header.
+                    // If the first term has no "=", then we're searching by heading.
                     // Otherwise, we're searching by text in paragraphs.
-                    let isSearchingByHeader = (queryStringBroken[0].indexOf("=")<0);
+                    let isSearchingByHeading = (queryStringBroken[0].indexOf("=")<0);
 
                     //////////////////////////
                     // SEARCH BY HEADER...
                     //////////////////////////
 
-                    if(isSearchingByHeader){
+                    if(isSearchingByHeading){
 
                         let sectionID = queryStringBroken[0];
 
-                        // Forgiving-search the <headers> for #Header
-                        let foundHeader = null;
+                        // Forgiving-search the <headings> for #Heading
+                        let foundHeading = null;
                         for(let i=0; i<HEADER_TAGS.length; i++){
                             let tag = HEADER_TAGS[i],
-                                headers = [...safeEl.querySelectorAll(tag)];
-                            // ...and for each header of that <h*> tag...
-                            for(let j=0; j<headers.length; j++){
-                                let header = headers[j];
+                                headings = [...safeEl.querySelectorAll(tag)];
+                            // ...and for each heading of that <h*> tag...
+                            for(let j=0; j<headings.length; j++){
+                                let heading = headings[j];
                                 // Do _forgivingMatchTest, return THE FIRST ONE THAT WORKS, BREAK.
-                                if(_forgivingMatchTest(header.innerText, sectionID)){
-                                    foundHeader = header;
+                                if(_forgivingMatchTest(heading.innerText, sectionID)){
+                                    foundHeading = heading;
                                 }
-                                if(foundHeader) break;
+                                if(foundHeading) break;
                             }
-                            if(foundHeader) break;
+                            if(foundHeading) break;
                         }
 
                         // If after all that, STILL none, tell user the error.
-                        if(!foundHeader){
+                        if(!foundHeading){
                             containerHTML = `<p>${Nutshell.getLocalizedText("sectionIDError").replace('[ID]',sectionID)}</p>`;
                         }else{
 
-                            // Now get everything from the start of the section (right after header)
-                            // to end of section (next header, <hr>, or end-of-post)
+                            // Now get everything from the start of the section (right after heading)
+                            // to end of section (next heading, <hr>, or end-of-post)
 
                             // HTMLs to add (making an array so can cut in retrospect)
                             let htmlsToAdd = [];
 
                             // Iterate node by node...
-                            let currentNode = foundHeader,
+                            let currentNode = foundHeading,
                                 foundEndOfSection = false;
                             while(!foundEndOfSection){
                                 // Do I even have a next sibling?
@@ -825,7 +822,7 @@ It's too late to change now, sorry.
 
                                     // If yes, what's its tag?
                                     if(currentNode.tagName){
-                                        // If it's a header or <hr>, FOUND END.
+                                        // If it's a heading or <hr>, FOUND END.
                                         let currentTag = currentNode.tagName.toLowerCase();
                                         if(HEADER_TAGS.indexOf(currentTag)>=0 || currentTag=='hr'){
                                             foundEndOfSection = true;
@@ -1225,65 +1222,65 @@ It's too late to change now, sorry.
 
 
     /////////////////////////////////////////////////////////////////////
-    // ⭐️ Convert <h*> headers: On hover, show embed option
+    // ⭐️ Convert <h*> headings: On hover, show embed option
     /////////////////////////////////////////////////////////////////////
 
-    Nutshell.convertHeaders = (el=document.body)=>{
+    Nutshell.convertHeadings = (el=document.body)=>{
 
-        // For each header, a container that only shows on hover!
-        _getAllHeaders(el).forEach((header)=>{
+        // For each heading, a container that only shows on hover!
+        _getAllHeadings(el).forEach((heading)=>{
 
             // So it can show stuff on hover
-            header.classList.add('nutshell-header');
+            heading.classList.add('nutshell-heading');
 
             // Info needed for embed & permalink
-            let headerText = header.innerText,
-                sectionID = headerText.replace(/[^A-Za-z0-9]/g,''), // bye punctuation
+            let headingText = heading.innerText,
+                sectionID = headingText.replace(/[^A-Za-z0-9]/g,''), // bye punctuation
                 permalink = Nutshell.thisPageURL+"#"+sectionID;
 
             // Embed button
             let embedButton = document.createElement('div');
-            embedButton.className = 'nutshell-header-embed';
+            embedButton.className = 'nutshell-heading-embed';
             embedButton.innerHTML = `<img src='${Nutshell._dataURIImage}'/>`;
             embedButton.onclick = ()=>{
-                Nutshell.showEmbedModal(permalink, headerText);
+                Nutshell.showEmbedModal(permalink, headingText);
             };
-            header.appendChild(embedButton);
+            heading.appendChild(embedButton);
 
         });
 
     };
 
-    let _getAllHeaders = (el=document.body)=>{
-        let allHeaders = [];
+    let _getAllHeadings = (el=document.body)=>{
+        let allHeadings = [];
         for(let i=0; i<HEADER_TAGS.length; i++){
             let tag = HEADER_TAGS[i];
-            allHeaders = allHeaders.concat( [...el.querySelectorAll(tag)] ); // big ol' array
+            allHeadings = allHeadings.concat( [...el.querySelectorAll(tag)] ); // big ol' array
         }
-        return allHeaders;
+        return allHeadings;
     }
 
-    // If header *begins* with ":",
+    // If heading *begins* with ":",
     // replace it and following section with just a link!
     // (And if it starts with ":x", DELETE ENTIRELY.)
-    Nutshell.hideHeaders = (el=document.body)=>{
+    Nutshell.hideHeadings = (el=document.body)=>{
 
         // Temporary dividers to remove later...
         let tmpDividers = [];
 
-        // For each found header with :colon...
-        _getAllHeaders(el).filter((header)=>{
-            return header.innerText.trim()[0]==":";
-        }).forEach((header)=>{
+        // For each found heading with :colon...
+        _getAllHeadings(el).filter((heading)=>{
+            return heading.innerText.trim()[0]==":";
+        }).forEach((heading)=>{
 
             // Unless it's ":x", in which case DO NOT ADD LINK.
-            if(header.innerText.trim().toLowerCase().slice(0,2)!=":x"){
+            if(heading.innerText.trim().toLowerCase().slice(0,2)!=":x"){
 
-                // Put a link before the header
+                // Put a link before the heading
                 let link = document.createElement("a");
-                link.href = "#" + header.innerText.replace(/[^A-Za-z0-9]/g,''), // A section ID
-                link.innerText = ":" + header.innerText.trim().slice(1).trim(); // remove first char
-                header.parentNode.insertBefore(link, header);
+                link.href = "#" + heading.innerText.replace(/[^A-Za-z0-9]/g,''), // A section ID
+                link.innerText = ":" + heading.innerText.trim().slice(1).trim(); // remove first char
+                heading.parentNode.insertBefore(link, heading);
 
                 // And insert a <br> after the link
                 let br = document.createElement("br");
@@ -1299,8 +1296,8 @@ It's too late to change now, sorry.
             //link.parentNode.insertBefore(hr, link);
             //tmpDividers.push(hr);
 
-            // Then delete every node following until next header, hr, or end of post.
-            let currentNode = header,
+            // Then delete every node following until next heading, hr, or end of post.
+            let currentNode = heading,
                 foundEndOfSection = false;
             while(!foundEndOfSection){
 
@@ -1317,7 +1314,7 @@ It's too late to change now, sorry.
                 }else{
                     // If yes, what's its tag? (if any?)
                     if(nextNode.tagName){
-                        // If it's a header or <hr>, FOUND END.
+                        // If it's a heading or <hr>, FOUND END.
                         let currentTag = nextNode.tagName.toLowerCase();
                         if(HEADER_TAGS.indexOf(currentTag)>=0 || currentTag=='hr'){
                             foundEndOfSection = true;
@@ -1432,12 +1429,12 @@ It's too late to change now, sorry.
     HEADERS with link / embed options
     ***************************************************/
 
-    .nutshell-header{
+    .nutshell-heading{
         position:relative;
     }
-    .nutshell-header-embed{
+    .nutshell-heading-embed{
 
-        /* Position at end of header text */
+        /* Position at end of heading text */
         width: 0; /* don't force newline */
         display: inline-block;
         position: relative;
@@ -1449,14 +1446,14 @@ It's too late to change now, sorry.
         transition: all 0.1s ease-in-out;
 
     }
-    .nutshell-header-embed img{
+    .nutshell-heading-embed img{
         width:1em; height:1em;
     }
-    .nutshell-header:hover .nutshell-header-embed{
+    .nutshell-heading:hover .nutshell-heading-embed{
         left:0.25em;
         opacity:0.33;
     }
-    .nutshell-header:hover .nutshell-header-embed:hover{
+    .nutshell-heading:hover .nutshell-heading-embed:hover{
         opacity:1;
     }
 
@@ -1784,16 +1781,23 @@ It's too late to change now, sorry.
     ***************************************************/
 
     #nutshell-close-all{
-        font-size: 0.7em;
-        line-height: 1.2em;
-        width: 5em;
+
         position: fixed;
-        top: 1em;
-        right: 1em;
+        top: 0;
+        right: 0;
+
         transition: opacity 0.9s ease-in-out;
         opacity: 0;
         text-align: right;
         cursor: pointer;
+
+        font-size: 0.7em;
+        line-height: 1.2em;
+
+        background: inherit;
+        padding: 0.7em;
+        border-radius: 0 0 0 1em;
+
     }
     #nutshell-close-all[show=yes]{
         opacity:1;
@@ -1804,15 +1808,43 @@ It's too late to change now, sorry.
 
     `;
 
+    // I give up on hoping that CSS will be rendered
+    // consistently across browsers.
+    Nutshell.firefoxStyle = `
+        /* Ball animation! Depends on open/closed, hover */
+        .nutshell-expandable[mode=closed] .nutshell-ball-up{            top:0.2em;  }
+        .nutshell-expandable[mode=closed] .nutshell-ball-down{          top:0.5em;  }
+        .nutshell-expandable[mode=closed]:hover .nutshell-ball-up{      top:0.0em;  }
+        .nutshell-expandable[mode=closed]:hover .nutshell-ball-down{    top:0.7em;  }
+        .nutshell-expandable[mode=open] .nutshell-ball-up{              top:0.2em;  }
+        .nutshell-expandable[mode=open] .nutshell-ball-down{            top:0.5em;  }
+        .nutshell-expandable[mode=open]:hover .nutshell-ball-up{        top:0.35em; }
+        .nutshell-expandable[mode=open]:hover .nutshell-ball-down{      top:0.35em; }
+    `;
+
+
     // Add the above styles, and any custom the user may have added!
     Nutshell.addStyles = ()=>{
-        let styleEl = document.createElement("style");
+
+        // PREPENDING styles, in reverse order.
+        // Prepend so that so user-made CSS can override!
+        let styleEl;
+
+        // Firefox?
+        if(navigator.userAgent.indexOf("Firefox")>0){
+            styleEl = document.createElement("style");
+            styleEl.innerHTML = Nutshell.firefoxStyle;
+            document.head.prepend(styleEl);
+        }
+
+        // Default
+        styleEl = document.createElement("style");
         styleEl.innerHTML = Nutshell.defaultStyle;
-        document.head.prepend(styleEl); // *prepend* so user-made CSS can override!
+        document.head.prepend(styleEl);
+
     };
 
 }
-
 
 
 /*************************************************************************

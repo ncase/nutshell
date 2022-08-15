@@ -4,7 +4,7 @@ html{
 }
 body {
 
-    width: calc(100% - 100px);
+    width: calc(100% - 20px);
     max-width: 800px;
     margin: 60px auto;
 

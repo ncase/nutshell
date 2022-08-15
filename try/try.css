@@ -133,6 +133,6 @@ b, strong{
     overflow-x: hidden;
 
 }
-#try-nutshell-output img{
+#try-nutshell-output p img{
     max-width: 100%;
 }

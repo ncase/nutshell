@@ -4,6 +4,8 @@
 
 **[Check out the demo here!](https://ncase.me/nutshell)**
 
+Nutshell builds upon the open-source libraries [DOMPurify](https://github.com/cure53/DOMPurify) & [Marked](https://github.com/markedjs/marked). Other than that, all my original content in this repo – code, art & words – are dedicated to the public domain under the [Creative Commons Zero](https://creativecommons.org/publicdomain/zero/1.0/) waiver.
+
 **Readme's Table of Contents:**
 
 * [There will be no version 2.0.0](https://github.com/ncase/nutshell#there-will-be-no-version-200) (Why Nutshell is minimalist, contributions I accept, _possible_ future tweaks)
@@ -15,7 +17,7 @@
 >
 > ~ [Byrne Hobart](https://www.thediff.co/p/working-in-public-and-the-economics)
 
-*Nutshell* is open-source ([Creative Commons Zero](https://creativecommons.org/publicdomain/zero/1.0/)), but this is *not* a "I will take requests & maintain this for the rest of my pathetic life" kind of project. I am pre-committing, right here, to keeping Nutshell minimalist, and only making minor tweaks. There will be no Version 2.0.0 of Nutshell.
+*Nutshell* is open-source, but this is *not* a "I will take requests & maintain this for the rest of my pathetic life" kind of project. I am pre-committing, right here, to keeping Nutshell minimalist, and only making minor tweaks. There will be no Version 2.0.0 of Nutshell.
 
 That said, I'm accepting two kinds of Pull Requests! **1) Bug fixes, and 2) Translations**.
 

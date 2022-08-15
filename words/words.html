@@ -30,11 +30,11 @@
 
 <h1 id="toc_1">: How do I use Nutshell?</h1>
 
-<p>It&#39;s dead-parrot simple! Just copy-paste this <em>one line</em> onto your site: (<a href="#HowToIncludeNutshell">:more details</a>)</p>
+<p>It&#39;s dead-parrot simple! Just copy-paste this <em>one line</em> onto your site: (<a href="#IncludingNutshell">:more details</a>)</p>
 
 <iframe src='indexpage/include_nutshell.html?url=full' width='750' height='22' data-include='yes'></iframe>
 
-<p>Then, to write a Nutshell snippet, just use headings &amp; paragraphs. To embed a snippet, just make a link, but with a <span data-fake-link>:colon</span> in the link text, so that Nutshell knows to convert it. (<a href="#LinkingToOtherPages">:more details</a>) <em>Click to play the below 1-minute tuorial video:</em></p>
+<p>Then, to write a Nutshell snippet, just use headings &amp; paragraphs. To embed a snippet, just make a link, but with a :colon in the front, <span data-fake-link>:like this</span>, so that Nutshell knows to make it expandable. (<a href="#CaveatOnLinking">:caveat</a>) <em>Click to play the below 1-minute tuorial video:</em></p>
 
 <p><video width="615" controls>
     <source src="indexpage/screenies/instructions.mp4" type="video/mp4">
@@ -47,7 +47,7 @@
 👉 <a href="try"><strong>TRY NUTSHELL</strong>: the interactive demo!</a> 👈<br>
 ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨    </p>
 
-<p>And for more features &amp; details, check out the documentation!</p>
+<p>For more features &amp; options, <a href="https://github.com/ncase/nutshell#advanced-features--options">check out the documentation!</a></p>
 
 <h1 id="toc_2">: Tips on writing Nutshells</h1>
 
@@ -84,15 +84,15 @@
 
 <p><strong>Special Thanks to</strong>: Andy Matuschak, DominoPivot, Mike Cook, NachoBIT for gifting early feedback; <a href="https://github.com/spaciecat">Kaira Imer</a> for writing code on an previous version; <a href="https://twitter.com/ProQuesAsker/status/1440125223685165061">Amber Thomas</a> for inspiring the &quot;dots opening &amp; closing&quot; animation.</p>
 
-<p>Nicky <strike>panhandles on the internet</strike> was supported by these kind folks on Patreon:</p>
+<p>Nicky <strike>panhandles on the internet</strike> was supported by these kind folks:</p>
 
-<p>// iframe</p>
+<iframe src='https://ncase.me/thanks/?credits=1' width='750px' height='400px'></iframe>
 
-<p>If you&#39;d like to help Nicky keep making free educational stuff &amp; talking about themselves in the third person, dispose of your disposable cash <a href="https://www.patreon.com/ncase">on their Patreon!</a></p>
+<p>If you&#39;d like to help Nicky keep making free educational stuff &amp; talking about themselves in the third person, dispose of your disposable cash <strong><a href="https://www.patreon.com/ncase">on their Patreon!</a></strong></p>
 
 <p>But seriously, thank you to everyone above. I appreciate y&#39;all.</p>
 
-<p>💖,<br>
+<p>🥜,<br>
 ~ Nicky Case</p>
 
 <h2 id="toc_5">: Recursion</h2>
@@ -117,7 +117,7 @@
 
 <p>Wikipedia is cool, ok? Give Jimmy your money.</p>
 
-<h2 id="toc_8">: How To Include Nutshell</h2>
+<h2 id="toc_8">: Including Nutshell</h2>
 
 <p>To install Nutshell, you need to be able to edit the <a href="#HTML">:HTML</a> of your blog/site. Here&#39;s instructions on how to do so <a href="https://wordpress.com/support/adding-code-to-headers/">for WordPress</a>, <a href="https://help.tumblr.com/hc/en-us/articles/230778847-Custom-HTML">for Tumblr</a>, and <a href="https://ghost.org/tutorials/use-code-injection-in-ghost/#add-js-to-the-site-footer">for Ghost</a>. I personally use <a href="https://pages.github.com/">GitHub Pages</a>.</p>
 
@@ -137,17 +137,15 @@
 
 <p>Webpages are made of code. Specifically, 3 kinds of code: HTML, CSS, and JavaScript.</p>
 
-<p><strong>HTML</strong> is the page&#39;s raw content. (HTML = HyperText Markup Language) </p>
+<p><strong>HTML</strong> is the page&#39;s raw content. (HTML = HyperText Markup Language)</p>
 
-<p><strong>CSS</strong> tells the page how to be stylish. (CSS = Cascading Style Sheets) </p>
+<p><strong>CSS</strong> tells the page how to be stylish. (CSS = Cascading Style Sheets)</p>
 
 <p><strong>JavaScript</strong> tells the page how to be interactive. (JavaScript has nothing to do with the programming language Java. It was... some marketing thing? Ugh, programming sucks.)</p>
 
-<h2 id="toc_10">: Linking To Other Pages</h2>
+<h2 id="toc_10">: Caveat on Linking</h2>
 
-<p>See the <a href="try">interactive demo</a> for more ways to make links!</p>
-
-<p>Alas, an annoying catch: the other webpage needs to <em>also</em> have Nutshell installed, or <a href="#CORS">:CORS</a> enabled. If they don&#39;t, you&#39;ll have to mirror/copy their webpage. Sorry!</p>
+<p>Alas, an annoying catch: the other webpage needs to <em>also</em> have Nutshell installed, or <a href="#CORS">:CORS</a> enabled. If you own the other page, that&#39;s not a problem! But if not, you&#39;ll have to mirror/copy the other page. Sorry!</p>
 
 <h2 id="toc_11">: CORS</h2>
 

@@ -16,11 +16,11 @@ Bite-sized, yet nutritious. Let's get crackin' with Nutshell!
 
 # : How do I use Nutshell?
 
-It's dead-parrot simple! Just copy-paste this *one line* onto your site: ([:more details](#HowToIncludeNutshell))
+It's dead-parrot simple! Just copy-paste this *one line* onto your site: ([:more details](#IncludingNutshell))
 
 <iframe src='indexpage/include_nutshell.html?url=full' width='750' height='22' data-include='yes'></iframe>
 
-Then, to write a Nutshell snippet, just use headings & paragraphs. To embed a snippet, just make a link, but with a <span data-fake-link>:colon</span> in the link text, so that Nutshell knows to convert it. ([:more details](#LinkingToOtherPages)) *Click to play the below 1-minute tuorial video:*
+Then, to write a Nutshell snippet, just use headings & paragraphs. To embed a snippet, just make a link, but with a :colon in the front, <span data-fake-link>:like this</span>, so that Nutshell knows to make it expandable. ([:caveat](#CaveatOnLinking)) *Click to play the below 1-minute tuorial video:*
 
 <video width="615" controls>
     <source src="indexpage/screenies/instructions.mp4" type="video/mp4">
@@ -33,7 +33,7 @@ And that's all! To try Nutshell online, check out:
 👉 [**TRY NUTSHELL**: the interactive demo!](try) 👈    
 ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨    
 
-And for more features & details, check out the documentation!
+For more features & options, [check out the documentation!](https://github.com/ncase/nutshell#advanced-features--options)
 
 # : Tips on writing Nutshells
 
@@ -66,17 +66,17 @@ Hey, maybe *that'll* birth the new era of empathy and enlightenment!
 
 [:Nicky Case](#NickyCase) is to blame for this thing. This thing is [:open source](#OpenSource), available [on Github](https://github.com/ncase/nutshell).
 
-**Special Thanks to**: Andy Matuschak, DominoPivot, Mike Cook, NachoBIT for gifting early feedback; [Kaira Imer](https://github.com/spaciecat) for writing code on an previous version; [Amber Thomas](https://twitter.com/ProQuesAsker/status/1440125223685165061) for inspiring the "dots opening & closing" animation; [DOMPurify](https://github.com/cure53/DOMPurify) & [Marked](https://github.com/markedjs/marked) for being two libraries Nutshell uses.
+**Special Thanks to**: Andy Matuschak, DominoPivot, Mike Cook, NachoBIT for gifting early feedback; [Kaira Imer](https://github.com/spaciecat) for writing code on an previous version; [Amber Thomas](https://twitter.com/ProQuesAsker/status/1440125223685165061) for inspiring the "dots opening & closing" animation.
 
-Nicky <strike>panhandles on the internet</strike> was supported by these kind folks on Patreon:
+Nicky <strike>panhandles on the internet</strike> was supported by these kind folks:
 
-// iframe
+<iframe src='https://ncase.me/thanks/?credits=1' width='750px' height='400px'></iframe>
 
-If you'd like to help Nicky keep making free educational stuff & talking about themselves in the third person, dispose of your disposable cash [on their Patreon!](https://www.patreon.com/ncase)
+If you'd like to help Nicky keep making free educational stuff & talking about themselves in the third person, dispose of your disposable cash **[on their Patreon!](https://www.patreon.com/ncase)**
 
 But seriously, thank you to everyone above. I appreciate y'all.
 
-💖,    
+🥜,    
 ~ Nicky Case
 
 ## : Recursion
@@ -101,7 +101,7 @@ It only goes one level deep & only previews a few paragraphs, but it *is* helpfu
 
 Wikipedia is cool, ok? Give Jimmy your money.
 
-## : How To Include Nutshell
+## : Including Nutshell
 
 To install Nutshell, you need to be able to edit the [:HTML](#HTML) of your blog/site. Here's instructions on how to do so [for WordPress](https://wordpress.com/support/adding-code-to-headers/), [for Tumblr](https://help.tumblr.com/hc/en-us/articles/230778847-Custom-HTML), and [for Ghost](https://ghost.org/tutorials/use-code-injection-in-ghost/#add-js-to-the-site-footer). I personally use [GitHub Pages](https://pages.github.com/).
 
@@ -121,17 +121,15 @@ Alas, some platforms like Medium and Substack don't let you add *any* code, not 
 
 Webpages are made of code. Specifically, 3 kinds of code: HTML, CSS, and JavaScript.
 
-**HTML** is the page's raw content. (HTML = HyperText Markup Language) 
+**HTML** is the page's raw content. (HTML = HyperText Markup Language)
 
-**CSS** tells the page how to be stylish. (CSS = Cascading Style Sheets) 
+**CSS** tells the page how to be stylish. (CSS = Cascading Style Sheets)
 
 **JavaScript** tells the page how to be interactive. (JavaScript has nothing to do with the programming language Java. It was... some marketing thing? Ugh, programming sucks.)
 
-## : Linking To Other Pages
+## : Caveat on Linking
 
-See the [interactive demo](try) for more ways to make links!
-
-Alas, an annoying catch: the other webpage needs to *also* have Nutshell installed, or [:CORS](#CORS) enabled. If they don't, you'll have to mirror/copy their webpage. Sorry!
+Alas, an annoying catch: the other webpage needs to *also* have Nutshell installed, or [:CORS](#CORS) enabled. If you own the other page, that's not a problem! But if not, you'll have to mirror/copy the other page. Sorry!
 
 ## : CORS
 
