@@ -4,7 +4,7 @@
 
 **[Check out the demo here!](https://ncase.me/nutshell)**
 
-Nutshell builds upon the open-source libraries [DOMPurify](https://github.com/cure53/DOMPurify) & [Marked](https://github.com/markedjs/marked). Other than that, all my original content in this repo – code, art & words – are dedicated to the public domain under the [Creative Commons Zero](https://creativecommons.org/publicdomain/zero/1.0/) waiver.
+Nutshell uses the open-source libraries [DOMPurify](https://github.com/cure53/DOMPurify) & [Marked](https://github.com/markedjs/marked). Other than that, all my original content in this repo – code, art & words – are dedicated to the public domain under the [Creative Commons Zero](https://creativecommons.org/publicdomain/zero/1.0/) waiver.
 
 **Readme's Table of Contents:**
 

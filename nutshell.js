@@ -1617,6 +1617,9 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     .nutshell-bubble-overflow-section img{
         max-width:100%; /* so it fits */
     }
+    .nutshell-bubble-overflow-section video{
+        max-width:100%; /* so it fits */
+    }
     /* Total hack for nice styling */
     .nutshell-bubble-overflow-section img[data-float=left]{
         float: left;
@@ -1648,8 +1651,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     /* Foot: is a close button, too. */
     .nutshell-bubble-overflow-close{
 
-        /* A lightweight &times; sign */
-        font-weight: 100;
+        /* A &times; sign */
+        /*font-weight:100;*/
         text-align: center;
 
         /* Whole-width bottom */
@@ -1674,7 +1677,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     .nutshell-bubble code{
         background: #ddd;
         border-radius: 5px;
-        font-weight:100;
+        /*font-weight:100;*/
         padding: 0 5px;
     }
     .nutshell-bubble blockquote{
@@ -1749,7 +1752,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
         /* Just a times sign */
         font-size: 40px;
-        font-weight: 100;
+        /*font-weight: 100;*/
         height: 40px;
 
         /* Anim */
@@ -1783,19 +1786,23 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
     #nutshell-close-all{
 
+        /* Top-right */
         position: fixed;
-        top: 0;
-        right: 0;
+        top: 0; right: 0;
 
+        /* Fades in & out */
         transition: opacity 0.9s ease-in-out;
         opacity: 0;
         text-align: right;
         cursor: pointer;
 
+        /* Little text */
         font-size: 0.7em;
         line-height: 1.2em;
 
-        background: inherit;
+        /* Rounded corner */
+        /*background: inherit;*/
+        background: #fff;
         padding: 0.7em;
         border-radius: 0 0 0 1em;
 

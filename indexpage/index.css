@@ -47,6 +47,7 @@ strike{
     line-height:1.75em;
     list-style: none;
     padding-left: 0;
+    margin-bottom: 0;
 }
 
 #PointyMcPointFace{
@@ -60,6 +61,20 @@ strike{
     background-size: 100%;
     pointer-events: none;
     transition: opacity 0.2s, right 0.2s;
+}
+
+#share{
+    text-align: right;
+    font-size: 0.75em;
+    line-height: 1.3em;
+    margin-top: 1em;
+    color: #999;
+}
+#share a{
+    color: #aaa;
+}
+#share a:hover{
+    color: #ccc;
 }
 
 /* hack to target iframes */

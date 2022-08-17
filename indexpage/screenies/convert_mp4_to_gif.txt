@@ -1,0 +1,5 @@
+ffmpeg -i splash.mp4 -vf scale=560:-1 -r 20 frames/x%3d.png
+convert -delay 5 -loop 0 frames/x*.png splash.gif
+
+SCALE: width 560px for twitter
+FRAME RATE: 20fps, whatever.

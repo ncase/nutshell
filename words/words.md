@@ -70,7 +70,7 @@ Hey, maybe *that'll* birth the new era of empathy and enlightenment!
 
 Nicky <strike>panhandles on the internet</strike> was supported by these kind folks:
 
-<iframe src='https://ncase.me/thanks/?credits=1' width='750px' height='400px'></iframe>
+<iframe src='https://ncase.me/thanks/aug2022.html?credits=1' width='750px' height='400px'></iframe>
 
 If you'd like to help Nicky keep making free educational stuff & talking about themselves in the third person, dispose of your disposable cash **[on their Patreon!](https://www.patreon.com/ncase)**
 

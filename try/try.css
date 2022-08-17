@@ -137,6 +137,11 @@ b, strong{
     max-width: 100%;
 }
 
+/* Hack */
+#nutshell-close-all{
+    font-size:15px;
+}
+
 /* MOBILE */
 .show-only-when-desktop{
     display:inline;
@@ -145,9 +150,19 @@ b, strong{
     display:none;
 }
 @media (max-width: 600px){
+    body, html{
+        overflow:visible;
+        font-weight: normal;
+    }
+    body{
+        margin: 1em 0;
+    }
     #container{
         width: 540px;
         height: 940px;
+        position:relative;
+        margin-bottom: 3em;
+        margin-top: 1em;
     }
     #left-half {
       top: 0;
