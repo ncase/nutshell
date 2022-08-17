@@ -224,6 +224,32 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[.?!]\s/g
 
+        },
+        eo: {
+            // Button text
+            closeAllNutshells: `fermu ĉiujn nuksŝeloj`,
+
+            // Nutshell errors...
+            notFoundError: `Ho ne, la paĝo ne estis trovita! Kontroli denove la ligilo:`,
+            wikiError: `Ho ne, Vikipedio ne ŝargiĝas, aŭ la ligilo estas rompita. Bonvolu kontroli denove:`,
+            corsError: `Ho ne, la paĝo estis trovita sed ne transdonis ĝian enhavon! Kontrolu, ke la alia retejo havas Nutshell instalita aŭ CORS ebligita:`,
+            sectionIDError: `Ho ne, ne ekzistas sekcio kiu kongruas kun la ID #[ID]! Atentu tajperarojn kaj regionajn literumajn diferencojn.`,
+            startTextError: `Ho ne, ne estas paragrafo kiu havas la tekston “[start]”! Atentu tajperarojn.`,
+
+            // Embed modal!
+            embedStep0: `Vi povas enmeti ĉi tion kiel "vastigebla klarigo" en via propra blogo/retejo!
+                            Klaku por antaŭrigardi → [EXAMPLE]`,
+            embedStep1: `Step 1) Kopiu ĉi tiun kodon en la [HEAD] de via retejo: [CODE]`,
+            embedStep2: `Step 2) En via artikolo, kreu ligilon al [LINK]
+                            kaj certigu, ke la ligteksto komenciĝas per :dupunkto,
+                            <a href="#">:kiel tio</a>,
+                            por tiu nuksoŝelo sciu certigi, ke ĝi disvastiĝas.`,
+            embedStep3: `Step 3) Tio estas ĉio, homoj! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
         }
     };
 
