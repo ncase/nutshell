@@ -225,6 +225,34 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             endPunctuation: /[.?!]\s/g
 
         }
+        nl: {
+
+            // Button text
+            closeAllNutshells: `sluit alle Nutshells`,
+
+            // Nutshell errors...
+            notFoundError: `Uh oh, deze pagina kon niet worden gevonden! Controleer de link nogmaals:`,
+            wikiError: `Uh oh, Wikipedia kan niet worden geladen, of de link doet het niet. Controleer nogmaals:`,
+            corsError: `Uh oh, de pagina was gevoden, maar wilde zijn content niet doorgeven! Controleer of de andere site Nutshell heeft geïnstalleerd of CORS heeft geactiveerd.`,
+            sectionIDError: `Uh oh, er is geen sectie die overeenkomt met ID #[ID]! Let op tikfouten en alternatieve spellingen.`,
+            startTextError: `Uh oh, er is geen sectie met de tekst “[start]”! Pas op voor tikfouten.`,
+
+            // Embed modal!
+            embedStep0: `Je kunt deze 'uitklapbare uitleg' embedden in je eigen blog/site!
+                         Klik voor een voorbeeld → [EXAMPLE]`,
+            embedStep1: `Stap 1) Kopieer deze code naar de [HEAD] van je site: [CODE]`,
+            embedStep2: `Stap 2) In je artikel, maak een link naar [LINK]
+                         en zorg ervoor dat de link start met een :dubbelepunt,
+                         <a href="#">:zoals dit</a>,
+                         zodat Nutshell weet dat deze link moet uitklappen.`,
+            embedStep3: `Step 3) Dat is alles! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+
+        }
     };
 
     Nutshell.getLocalizedText = (textID)=>{
