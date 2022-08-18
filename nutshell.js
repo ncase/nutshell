@@ -225,6 +225,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             endPunctuation: /[.?!]\s/g
 
         },
+
         eo: {
             // Button text
             closeAllNutshells: `fermu ĉiujn nuksŝeloj`,
@@ -250,7 +251,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             keepPunctuation: `.,?!)_~'"’”`,
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[.?!]\s/g
-        }
+        },
         nl: {
 
             // Button text
@@ -272,6 +273,34 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                          <a href="#">:zoals dit</a>,
                          zodat Nutshell weet dat deze link moet uitklappen.`,
             embedStep3: `Step 3) Dat is alles! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+
+        },
+        de: {
+
+            // Button text
+            closeAllNutshells: `alle Nutshells schließen`,
+
+            // Nutshell errors...
+            notFoundError: `Ups, die Seite konnte nicht gefunden werden! Prüfe den Link nochmals:`,
+            wikiError: `Ups, Wikipedia konnt nicht geladen werden, oder der Link ist kaputt. Bitte prüfen:`,
+            corsError: `Ups, die Seite wurde gefunden, hat ihren Inhalt jedoch nicht übergeben! Stelle sicher, dass bei der anderen Site Nutshell installiert oder CORS aktiviert ist:`,
+            sectionIDError: `Ups, es gibt keine Sektion passend zur ID #[ID]! Prüfe auf Schreibfehler & regionsabhängige Unterschiede der Schreibweise.`,
+            startTextError: `Ups, es gibt keinen Absatz mit dem Text “[start]”! Prüfe auf Schreibfehler.`,
+
+            // Embed modal!
+            embedStep0: `Du kannst dies als eine "ausklappbare Erklärung" auf deinem eigenen Blog/deiner eigenen Site einbinden!
+                         Klick für eine Vorschau → [EXAMPLE]`,
+            embedStep1: `Schritt 1) Kopiere diesen Code in den [HEAD] deiner Site: [CODE]`,
+            embedStep2: `Schritt 2) Erzeuge einen Link zu [LINK] in deinem Artikel
+                         und stelle dabei sicher, dass der Linktext mit einem :Doppelpunkt beginnt,
+                         <a href="#">:also so</a>,
+                         sodass Nutshell weiß, dass er ausklappbar sein soll.`,
+            embedStep3: `Step 3) Das wars! 🎉`,
 
             // What punctuation (in this language) should we KEEP after an expandable opens?
             keepPunctuation: `.,?!)_~'"’”`,
