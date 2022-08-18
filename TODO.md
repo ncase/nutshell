@@ -6,3 +6,4 @@
 	* no need for "..." after "recursive."
    * ":YouTube videos" should have pre-sentence
 * Wall of Thanks: fluid width
+* Hidden messages for lack of JS (RSS, Pocket) etc fallback
