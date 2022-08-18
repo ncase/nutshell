@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
             if(pointyY>1) pointyY=0;
             pointy.style.backgroundPositionY = (pointyY*100)+'%';
         }, 690);
-    pointyTarget.onclick = pointyTarget.onmouseover = ()=>{
+    pointyTarget.onclick = pointyTarget.onmousemove = ()=>{
         pointy.style.opacity = 0;
         pointy.style.right = '-6px';
         pointyTarget.style.animation = 'none'; // stop

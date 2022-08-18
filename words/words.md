@@ -113,7 +113,7 @@ Or, smaller "minified" file:
 
 <iframe src='indexpage/include_nutshell.html?url=min' width='750' height='22' data-include='yes'></iframe>
 
-(You can also download & re-host the files yourself {[full](https://cdn.jsdelivr.net/gh/ncase/nutshell@1.0.0/nutshell.js), [minified](https://cdn.jsdelivr.net/gh/ncase/nutshell@1.0.0/nutshell.min.js)}. Also, Nutshell doesn't require a package manager; I copy-pasted all dependencies into it. Like a *savage*.)
+(You can also download & re-host the files yourself {[full](https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js), [minified](https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.min.js)}. Also, Nutshell doesn't require a package manager; I copy-pasted all dependencies into it. Like a *savage*.)
 
 Alas, some platforms like Medium and Substack don't let you add *any* code, not even *one line.* You can't use Nutshell on those platforms. ("The web will empower the people", they said...)
 

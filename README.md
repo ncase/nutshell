@@ -162,7 +162,7 @@ To do this, use `&before=[content]` and/or `&after=[content]` to the end of your
 
 Example:
 
-`[:controversial](url#Heading&before=RETWEETS ARE NOT ENDORSEMENTS&after=AGAIN, I DO NOT NECESSARILY ENDORSE THIS)`
+`[:controversial](url#Heading&before=RETWEETS%20ARE%20NOT%20ENDORSEMENTS&after=AGAIN,%20I%20DO NOT%20NECESSARILY%20ENDORSE%20THIS)`
 
 Example with recursive nutshell in 'before': (note that it's gone through encodeURIComponent)
 

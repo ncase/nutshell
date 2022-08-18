@@ -8,6 +8,8 @@
 ██║░╚███║╚██████╔╝░░░██║░░░██████╔╝██║░░██║███████╗███████╗███████╗
 ╚═╝░░╚══╝░╚═════╝░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
 
+v1.0.1 - "there were bugs immediately after launch"
+
 You know how in Memento, the amnesia guy tattoos reminders on his body?
 That is how I document my code. The following "documentation"
 is for future Nicky to remember what the heck they were doing.
@@ -120,7 +122,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     window.Nutshell = {};
 
     // Version! & CDN
-    Nutshell.version = '1.0.0';
+    Nutshell.version = '1.0.1';
     Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
 
     // What's THIS page's URL? (WITH QUERYSTRING)
