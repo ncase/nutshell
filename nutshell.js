@@ -224,6 +224,34 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[.?!]\s/g
 
+        },
+        pl: {
+
+            // Button text
+            closeAllNutshells: `zamknij wszystkie nutshelle`,
+
+            // Nutshell errors...
+            notFoundError: `Ups, nie znaleziono strony! Sprawdź link ponownie:`,
+            wikiError: `Ups, Wikipedia się nie ładuje lub link nie działa. Sprawdź ponownie:`,
+            corsError: `Ups, stronę znaleziono, ale nie przekazała ona swojej treści! Sprawdź, czy tamta witryna ma zainstalowany Nutshell lub włączone CORS:`,
+            sectionIDError: `Ups, żadna sekcja nie pasuje do identyfikatora #[ID]! Zwróć uwagę na literówki i lokalne różnice w pisowni.`,
+            startTextError: `Ups, żaden akapit nie zawiera tekstu “[start]”! Zwróć uwagę na literówki.`,
+
+            // Embed modal!
+            embedStep0: `Możesz to umieścić jako "rozszerzalne wyjaśnienie" na swoim blogu lub stronie!
+                         Kliknij, aby zobaczyć podgląd → [EXAMPLE]`,
+            embedStep1: `Krok 1) Skopiuj ten kod do [HEAD] swojej strony: [CODE]`,
+            embedStep2: `Krok 2) Stwórz w swoim artykule link do [LINK]
+                         i upewnij się, że tekst linku rozpoczyna się :dwukropkiem,
+                         <a href="#">:w ten sposób</a>,
+                         żeby Nutshell wiedział, aby umożliwić jego rozszerzanie.`,
+            embedStep3: `Krok 3) To by było na tyle! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+
         }
     };
 
