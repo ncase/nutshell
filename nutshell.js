@@ -336,6 +336,34 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[.?!]\s/g
 
+        },
+        zh: {
+
+            // Button text
+            closeAllNutshells: `关闭所有的Nutshell扩展`,
+
+            // Nutshell errors...
+            notFoundError: `抱歉,找不到界面.仔细检查链接:`,
+            wikiError: `抱歉,维基百科没有加载,这可能是链接输入错误.请检查:`,
+            corsError: `抱歉,已找到了该页面,但未显示其内容.请检查其他站点是否安装了 Nutshell 或启用了 CORS:`,
+            sectionIDError: `抱歉,没有与 ID #[ID]! 匹配的部分.检查输入是否正确/是否有错别字.`,
+            startTextError: `抱歉,没有带有文本 “[start]”的段落,检查输入是否正确/是否有错别字.`,
+
+            // Embed modal!
+            embedStep0: `您可以将其作为“可折叠的介绍”放置在您自己的博客/网站上!
+                         点击预览 → [EXAMPLE]`,
+            embedStep1: `第1步) 将此代码复制到您网站的 [HEAD] 中：[CODE]`,
+            embedStep2: `第2步) 在您的文章中创建一个指向 [LINK] 的链接
+                         并且确保链接文本以 :冒号 开头,
+                         <a href="#">:像这样</a>,
+                         让Nutshell知道让它可扩展`,
+            embedStep3: `第3步) 就是这样! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”《》`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!。]\s/g
+
         }
     };
 
