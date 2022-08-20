@@ -363,8 +363,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             keepPunctuation: `.,?!)_~'"’”`,
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[.?!]\s/g,
-      
-		}
+
+        }
     };
 
     Nutshell.getLocalizedText = (textID)=>{
