@@ -354,7 +354,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                          Click para previsualizar → [EXAMPLE]`,
             embedStep1: `Paso 1) Copia este código en la [HEAD] de tu sitio: [CODE]`,
             embedStep2: `Paso 2) En tu artículo, añade un link a [LINK]
-                         y asegúrate que el texto del link comience con :dos puntos,
+                         y asegúrate de que el texto del link comience con :dos puntos,
                          <a href="#">:así</a>,
                          para que Nutshell sepa cómo expandirlo.`,
             embedStep3: `Paso 3) ¡Eso es todo, amigos! 🎉`,
