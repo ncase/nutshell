@@ -337,6 +337,34 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             endPunctuation: /[.?!]\s/g
 
         }
+		  es: {
+
+            // Button text
+            closeAllNutshells: `cerrar todos los nutshells`,
+
+            // Nutshell errors...
+            notFoundError: `¡Ups, no se encontró la página! Verifica el link:`,
+            wikiError: `Ups, Wikipedia no está cargando, o el link está roto. Verifica:`,
+            corsError: `¡Ups, la página se encontró pero esta no entregó su contenido! Verifica que la otra página tenga Nutshell instalado o CORS habilitado:`,
+            sectionIDError: `¡Ups, no se ha encontrado la sección con la ID #[ID]! Verifica que no haya errores de tipeo o diferencias regionales de escritura.`,
+            startTextError: `¡Ups, no hay ningún párrafo con el texto “[start]”! Verifica que no haya errores de tipeo.`,
+
+            // Embed modal!
+            embedStep0: `¡Puedes insertar esto como una “explicación expandible” en tu propio blog o página!
+                         Click para previsualizar → [EXAMPLE]`,
+            embedStep1: `Paso 1) Copia este código en la [HEAD] de tu sitio: [CODE]`,
+            embedStep2: `Paso 2) En tu artículo, añade un link a [LINK]
+                         y asegúrate que el texto del link comience con :dos puntos,
+                         <a href="#">:así</a>,
+                         para que Nutshell sepa cómo expandirlo.`,
+            embedStep3: `Paso 3) ¡Eso es todo, amigos! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+
+        },
     };
 
     Nutshell.getLocalizedText = (textID)=>{
