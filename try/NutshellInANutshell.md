@@ -34,7 +34,7 @@ You want to embed an explanation, but no-one's written it yet & you can't be bot
 
 [:Catgirl on English Wikipedia](https://en.wikipedia.org/wiki/Catgirl) links to `https://en.wikipedia.org/wiki/Catgirl)`
 
-[:Baguette on French Wikipedia](https://fr.wikipedia.org/wiki/Baguette_(pain)) links to `https://en.wikipedia.org/wiki/Catgirl)`
+[:Baguette on French Wikipedia](https://fr.wikipedia.org/wiki/Baguette_(pain)) links to `https://fr.wikipedia.org/wiki/Baguette_(pain)`
 
 [:Universe on Simple Wikipedia](https://simple.wikipedia.org/wiki/Universe) links to `https://simple.wikipedia.org/wiki/Universe`
 
