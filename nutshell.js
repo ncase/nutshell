@@ -8,7 +8,14 @@
 ██║░╚███║╚██████╔╝░░░██║░░░██████╔╝██║░░██║███████╗███████╗███████╗
 ╚═╝░░╚══╝░╚═════╝░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
 
-v1.0.1 - "there were bugs immediately after launch"
+v1.0.2 - "Even More Bugs Were Squashed"
+
+( NOTE TO SELF: When updating version, remember to edit... )
+( this js file                                             )
+( includ_nutshell.js                                       )
+( words.md -> words.html -> index.html                     )
+( Find-All-And-Replace (1.0.x)                             )
+( ACTUALLY MAKE A RELEASE ON GITHUB                        )
 
 You know how in Memento, the amnesia guy tattoos reminders on his body?
 That is how I document my code. The following "documentation"
@@ -122,7 +129,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     window.Nutshell = {};
 
     // Version! & CDN
-    Nutshell.version = '1.0.1';
+    Nutshell.version = '1.0.2';
     Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
 
     // What's THIS page's URL? (WITH QUERYSTRING)
@@ -336,8 +343,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[.?!]\s/g
 
-        }
-		  es: {
+        },
+		es: {
 
             // Button text
             closeAllNutshells: `cerrar todos los nutshells`,
@@ -364,7 +371,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[.?!]\s/g
 
-        },
+        }
     };
 
     Nutshell.getLocalizedText = (textID)=>{
