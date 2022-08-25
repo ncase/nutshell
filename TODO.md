@@ -25,27 +25,29 @@ PR
 * wrong link https://github.com/ncase/nutshell/pull/16 @done
 * Chinese: https://github.com/ncase/nutshell/pull/14 @done
 * Spanish: https://github.com/ncase/nutshell/pull/15 @done
-* TRY adding "learn more about Nutshell" for all of them
+* TRY adding "learn more about Nutshell" for all of them @done
+* "Learn More About" button @done
 
 BUGS FOUND BY FOLX
+* Nutshell text only displays as black, even on black background
+https://github.com/ncase/nutshell/issues/17
+(workaround for now: `css`)
 * Wall of Thanks scrolling bug (just re-calculate every few frames, w/e...)
 https://github.com/ncase/nutshell/issues/13
 * YT links fail coz &t vs ?t
 * Wiki links fail due to weird-ass characters. Not HTML-decoding correctly?
-* Nutshell text only displays as black, even on black background
-https://github.com/ncase/nutshell/issues/17
-(workaround for now: `css`)
 
 OTHER NUTSHELL WHATEVERS
 * double check words.md -> words.html -> index.html still works. (AND REMOVE 1.0.2)
 * no nut on blog headings in ncase, what's the deal?
 * confirm... NEW url for ?=
-* FEATURES: Hidden messages for lack of JS (RSS, Pocket) etc fallback
-* Promo/copy more highlight "EMBEDDABLE", too... and highlight some extra features?
-* "Learn More About"
 * Remove Medium/Substack snark
-* Allow "before" and "after" texts for Wiki/YouTube
-* Can write full content of a very short Nutshell right in the link. (good for "hint systems")
+---
+* COPY: Promo/copy more highlight "EMBEDDABLE", too... and highlight some extra features?
+---
+* FEATURE: Hidden messages for lack of JS (RSS, Pocket) etc fallback
+* FEATURE: Allow "before" and "after" texts for Wiki/YouTube
+* FEATURE: Can write full content of a very short Nutshell right in the link. (good for "hint systems")
 
 AFTERWARDS
 * ask all of them for confirmation on "Learn More"

@@ -165,7 +165,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // Add styles & convert page
             Nutshell.addStyles();
             Nutshell.hideHeadings(el);
-            Nutshell.convertLinksToExpandables(el);
+            Nutshell.convertLinksToExpandables(el, document.body);
             Nutshell.convertHeadings(el);
 
             // Fill out other UI with localized text
@@ -210,6 +210,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             // Button text
             closeAllNutshells: `close all nutshells`,
+            learnMore: `learn more about Nutshell`,
 
             // Nutshell errors...
             notFoundError: `Uh oh, the page was not found! Double check the link:`,
@@ -237,6 +238,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         eo: {
             // Button text
             closeAllNutshells: `fermu ĉiujn nuksŝeloj`,
+            learnMore: `lernu pli`,
 
             // Nutshell errors...
             notFoundError: `Ho ne, la paĝo ne estis trovita! Kontroli denove la ligilo:`,
@@ -264,6 +266,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             // Button text
             closeAllNutshells: `sluit alle Nutshells`,
+            learnMore: `leer meer`,
 
             // Nutshell errors...
             notFoundError: `Uh oh, deze pagina kon niet worden gevonden! Controleer de link nogmaals:`,
@@ -292,6 +295,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             // Button text
             closeAllNutshells: `alle Nutshells schließen`,
+            learnMore: `lern mehr`,
 
             // Nutshell errors...
             notFoundError: `Ups, die Seite konnte nicht gefunden werden! Prüfe den Link nochmals:`,
@@ -320,6 +324,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             // Button text
             closeAllNutshells: `zamknij wszystkie nutshelle`,
+            learnMore: `Ucz się więcej`,
 
             // Nutshell errors...
             notFoundError: `Ups, nie znaleziono strony! Sprawdź link ponownie:`,
@@ -348,6 +353,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             // Button text
             closeAllNutshells: `cerrar todos los nutshells`,
+            learnMore: `aprende más`,
 
             // Nutshell errors...
             notFoundError: `¡Ups, no se encontró la página! Verifica el link:`,
@@ -376,6 +382,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             // Button text
             closeAllNutshells: `合上所有的nutshells`,
+            learnMore: `学到更多`,
 
             // Nutshell errors...
             notFoundError: `啊 噢, 没有找到网页！请再次检查链接:`,
@@ -416,7 +423,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     // ⭐️ Convert links to Expandable buttons
     /////////////////////////////////////////////////////////////////////
 
-    Nutshell.convertLinksToExpandables = (dom)=>{
+    Nutshell.convertLinksToExpandables = (dom, forThisElement=document.body)=>{
 
         // Get an array of all links, filtered by if the text starts with a :colon
         let expandables = [...dom.querySelectorAll('a')].filter(
@@ -442,6 +449,11 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             ex.appendChild(linkText);
             ex.appendChild(ballUp);
             ex.appendChild(ballDown);
+
+            // BALLS ARE SAME AS FONT COLOR
+            let linkStyle = window.getComputedStyle(forThisElement);
+            ballUp.style.background = linkStyle.color;
+            ballDown.style.background = linkStyle.color;
 
             // Save the punctuation!
             // Extremely inefficient: plop each character one-by-one into the span
@@ -1207,21 +1219,37 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         bubble.style.top = '-5px';
         setTimeout(()=>{ bubble.style.top = '0px'; },1);
         // RESET FONT STYLE to that of first parent <p>. Or document.body.
-        let p = _findFirstParentWithFilter(bubble,(p)=>{
+        let p = _findFirstParentWithFilter(expandable, (p)=>{
             return p.tagName=="P";
         }) || document.body;
-        let topPageStyle = window.getComputedStyle(p);
-        bubble.style.color = topPageStyle.color;
-        bubble.style.fontSize = topPageStyle.fontSize;
-        bubble.style.fontStyle = topPageStyle.fontStyle;
-        bubble.style.fontWeight = topPageStyle.fontWeight;
-        bubble.style.lineHeight = topPageStyle.lineHeight;
-        bubble.style.textDecoration = topPageStyle.textDecoration;
+        let parentNodeStyle = window.getComputedStyle(p);
+        bubble.style.color = parentNodeStyle.color;
+        bubble.style.fontSize = parentNodeStyle.fontSize;
+        bubble.style.fontStyle = parentNodeStyle.fontStyle;
+        bubble.style.fontWeight = parentNodeStyle.fontWeight;
+        bubble.style.lineHeight = parentNodeStyle.lineHeight;
+        bubble.style.textDecoration = parentNodeStyle.textDecoration;
 
         // A speech-bubble arrow, positioned at X of *where you clicked*???
         let arrow = document.createElement("div");
         arrow.className = "nutshell-bubble-arrow";
         bubble.appendChild(arrow);
+
+        // ARROW & BUBBLE COLOR. Background is background, Border is font color...
+        bubble.style.borderColor = parentNodeStyle.color;
+        arrow.style.borderBottomColor = parentNodeStyle.color;
+        // hack... keep bubbling up until you get a parent with a non-transparent BG color
+        let bgColor = parentNodeStyle.backgroundColor,
+            tryThisElementNext = p.parentNode;
+            failsafe = 50;
+        while(bgColor=='rgba(0, 0, 0, 0)' && failsafe-->0){
+            bgColor = window.getComputedStyle(tryThisElementNext).backgroundColor;
+            tryThisElementNext = tryThisElementNext.parentNode;
+        }
+        if(failsafe<=0){
+            bgColor = window.getComputedStyle(document.body).backgroundColor;
+        }
+        arrow.style.setProperty('--arrow-background', bgColor);
 
         // Position the arrow, starting at 20px left of the click...
         // SO HACKY.
@@ -1308,7 +1336,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         Nutshell.promiseSectionContainer(expandable).then((content)=>{
 
             // Links to Nutshell Expandables (yay recursion!)
-            Nutshell.convertLinksToExpandables(content);
+            Nutshell.convertLinksToExpandables(content, expandable);
 
             // Put in section's content
             section.innerHTML = '';
@@ -1534,6 +1562,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                 <p id="nutshell-embed-p1"></p>
                 <p id="nutshell-embed-p2"></p>
                 <p id="nutshell-embed-p3"></p>
+                <p id="nutshell-embed-p4"></p>
             </div>
         </div>
     `;
@@ -1542,7 +1571,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     let _p0 = _e.querySelector("#nutshell-embed-p0"),
         _p1 = _e.querySelector("#nutshell-embed-p1"),
         _p2 = _e.querySelector("#nutshell-embed-p2"),
-        _p3 = _e.querySelector("#nutshell-embed-p3");
+        _p3 = _e.querySelector("#nutshell-embed-p3"),
+        _p4 = _e.querySelector("#nutshell-embed-p4");
 
     // When Nutshell starts, populate with text localization
     Nutshell.fillEmbedModalText = ()=>{
@@ -1563,6 +1593,11 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         // Step 3: That's all, folks!
         _p3.innerHTML = Nutshell.getLocalizedText("embedStep3");
 
+        // (Learn More)
+        _p4.innerHTML = `<a href='https://ncase.me/nutshell/' target='_blank'>` +
+                            Nutshell.getLocalizedText("learnMore") +
+                        `</a>`;
+
         // Also, now that document.body exists, put it in
         document.body.appendChild(_e);
 
@@ -1578,7 +1613,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         // Reset Step 0's Example
         _p0.innerHTML = Nutshell.getLocalizedText("embedStep0")
             .replace(`[EXAMPLE]`,`<a href='${url}' style='font-weight:bold'>:${linkText}</a>`);
-        Nutshell.convertLinksToExpandables(_p0);
+        Nutshell.convertLinksToExpandables(_p0, _p0);
 
         // Update Step 2's link URL
         _e.querySelector("#nutshell-embed-modal-link").value = url;
@@ -1730,6 +1765,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         position: absolute;
         top: -20px;
         pointer-events: none; /* don't block clicking */
+        --arrow-background: #fff; /* css var */
     }
 
     /* Arrow white */
@@ -1739,7 +1775,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         height: 0;
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
-        border-bottom: 20px solid #fff;
+        border-bottom: 20px solid #fff; /* fallback */
+        border-bottom: 20px solid var(--arrow-background); /* css var */
         position: absolute;
         top: 1.5px;
         left: -20px;
@@ -1908,6 +1945,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
         /* Color & font */
         background: #fff;
+        color: #000;
         border-radius: 30px;
         font-size: 20px;
         line-height: 1.5em;
@@ -1954,6 +1992,14 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         width: 100%;
         font-size: 14px;
         font-family: monospace;
+    }
+
+    /* Learn More */
+    #nutshell-embed-p4{
+        font-size: 0.7em;
+        line-height: 0em;
+        text-align: center;
+        margin-top: 3em;
     }
 
     /***************************************************

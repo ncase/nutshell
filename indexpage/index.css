@@ -13,7 +13,11 @@ body {
     font-weight: 100;
     line-height: 1.6em;
 
-    background-color: white;
+    /*background-color: black;
+    color:white;*/
+
+    background-color: #bada55;
+    color: #ff4040;
 
     position: relative;
 
