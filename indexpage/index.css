@@ -13,14 +13,19 @@ body {
     font-weight: 100;
     line-height: 1.6em;
 
+    /* TEST TEST TEST */
     /*background-color: black;
     color:white;*/
-
     background-color: #bada55;
     color: #ff4040;
 
     position: relative;
 
+}
+/* TEST TEST TEST */
+#test{
+    background:#000;
+    color:#fff;
 }
 a, span[data-fake-link]{
     color: hsl(200,80%,60%);
@@ -47,11 +52,13 @@ strike{
 }
 
 #big_nuts{
-    font-size:50px;
-    line-height:1.75em;
     list-style: none;
     padding-left: 0;
     margin-bottom: 0;
+}
+#big_nuts > li > a{
+    font-size:50px;
+    line-height:1.75em;
 }
 
 #PointyMcPointFace{

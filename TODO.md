@@ -31,7 +31,7 @@ PR
 BUGS FOUND BY FOLX
 * Nutshell text only displays as black, even on black background
 https://github.com/ncase/nutshell/issues/17
-(workaround for now: `css`)
+(workaround for now: `css`) @done
 * Wall of Thanks scrolling bug (just re-calculate every few frames, w/e...)
 https://github.com/ncase/nutshell/issues/13
 * YT links fail coz &t vs ?t

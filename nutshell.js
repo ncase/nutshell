@@ -165,7 +165,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // Add styles & convert page
             Nutshell.addStyles();
             Nutshell.hideHeadings(el);
-            Nutshell.convertLinksToExpandables(el, document.body);
+            Nutshell.convertLinksToExpandables(el);
             Nutshell.convertHeadings(el);
 
             // Fill out other UI with localized text
@@ -423,7 +423,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     // ⭐️ Convert links to Expandable buttons
     /////////////////////////////////////////////////////////////////////
 
-    Nutshell.convertLinksToExpandables = (dom, forThisElement=document.body)=>{
+    Nutshell.convertLinksToExpandables = (dom, forThisElement)=>{
 
         // Get an array of all links, filtered by if the text starts with a :colon
         let expandables = [...dom.querySelectorAll('a')].filter(
@@ -451,7 +451,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             ex.appendChild(ballDown);
 
             // BALLS ARE SAME AS FONT COLOR
-            let linkStyle = window.getComputedStyle(forThisElement);
+            let linkStyle = window.getComputedStyle(forThisElement ? forThisElement : ex);
             ballUp.style.background = linkStyle.color;
             ballDown.style.background = linkStyle.color;
 
@@ -1218,10 +1218,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         // Subtly move down
         bubble.style.top = '-5px';
         setTimeout(()=>{ bubble.style.top = '0px'; },1);
-        // RESET FONT STYLE to that of first parent <p>. Or document.body.
-        let p = _findFirstParentWithFilter(expandable, (p)=>{
-            return p.tagName=="P";
-        }) || document.body;
+        // RESET FONT STYLE to that of first parent node. Or document.body.
+        let p = expandable.parentNode || document.body;
         let parentNodeStyle = window.getComputedStyle(p);
         bubble.style.color = parentNodeStyle.color;
         bubble.style.fontSize = parentNodeStyle.fontSize;
@@ -1238,18 +1236,19 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         // ARROW & BUBBLE COLOR. Background is background, Border is font color...
         bubble.style.borderColor = parentNodeStyle.color;
         arrow.style.borderBottomColor = parentNodeStyle.color;
-        // hack... keep bubbling up until you get a parent with a non-transparent BG color
+        // HACK... keep bubbling up until you get a parent with a non-transparent BG color
         let bgColor = parentNodeStyle.backgroundColor,
             tryThisElementNext = p.parentNode;
-            failsafe = 50;
-        while(bgColor=='rgba(0, 0, 0, 0)' && failsafe-->0){
+            failsafe = 10;
+        while(bgColor=='rgba(0, 0, 0, 0)' && tryThisElementNext && tryThisElementNext.tagName && failsafe-->0){
             bgColor = window.getComputedStyle(tryThisElementNext).backgroundColor;
             tryThisElementNext = tryThisElementNext.parentNode;
         }
-        if(failsafe<=0){
-            bgColor = window.getComputedStyle(document.body).backgroundColor;
+        if(bgColor=='rgba(0, 0, 0, 0)'){
+            bgColor = '#fff'; // worst case, default to white.
         }
         arrow.style.setProperty('--arrow-background', bgColor);
+        bubble.style.background = bgColor;
 
         // Position the arrow, starting at 20px left of the click...
         // SO HACKY.
@@ -1613,7 +1612,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         // Reset Step 0's Example
         _p0.innerHTML = Nutshell.getLocalizedText("embedStep0")
             .replace(`[EXAMPLE]`,`<a href='${url}' style='font-weight:bold'>:${linkText}</a>`);
-        Nutshell.convertLinksToExpandables(_p0, _p0);
+        Nutshell.convertLinksToExpandables(_p0);
 
         // Update Step 2's link URL
         _e.querySelector("#nutshell-embed-modal-link").value = url;
@@ -1960,6 +1959,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     #nutshell-embed-modal-close{
 
         /* Top right button */
+        z-index: 999;
         position: absolute;
         top: 5px; right: 10px;
         cursor: pointer;
