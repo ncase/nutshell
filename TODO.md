@@ -44,7 +44,10 @@ OTHER NUTSHELL WHATEVERS
 * Remove Medium/Substack snark
 ---
 * COPY: Promo/copy more highlight "EMBEDDABLE", too... and highlight some extra features?
----
+
+------------------------
+
+AFTERWARDS
 * FEATURE: Hidden messages for lack of JS (RSS, Pocket) etc fallback
 * FEATURE: Allow "before" and "after" texts for Wiki/YouTube
 * FEATURE: Can write full content of a very short Nutshell right in the link. (good for "hint systems")

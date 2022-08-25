@@ -654,7 +654,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                 let urlObject = new URL(url);
                 // The article title is the last bit of the path
                 let splitPath = urlObject.pathname.split('/');
-                    articleTitle = splitPath[splitPath.length-1];
+                    articleTitle = decodeURIComponent( splitPath[splitPath.length-1] );
                 // Which language wikipedia? (including Simple...)
                 let domain = urlObject.host.split('.')[0];
 
