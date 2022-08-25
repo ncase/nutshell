@@ -253,6 +253,34 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[.?!]\s/g
         },
+        fr: {
+
+            // Button text
+            closeAllNutshells: `fermer toutes les coquilles`,
+
+            // Nutshell errors...
+            notFoundError: `Oh oh, la page n'as pas été trouvée! Lien à vérifier:`,
+            wikiError: `Oh oh, Wikipédia n'envoie rien, ou le lien est cassé. S'il vous plaît, vérifiez:`,
+            corsError: `Oh oh, la page a été trouvée mais refuse de nous donner son contenu! Vérifiez que l'autre site a Nutshell d'installé ou CORS d'activé:`,
+            sectionIDError: `Oh oh, il n'existe pas de section avec l'identifiant #[ID]! Ça pourrait venir d'une faute de frappe ou d'une orthographe d'origine différente.`,
+            startTextError: `Oh oh, il n'existe pas de paragraphe contenant “[start]”! Ça pourrait venir d'une faute de frappe.`,
+
+            // Embed modal!
+            embedStep0: `Vous pouvez insérer ceci comme "explication expansible" dans votre propre blog/site!
+                        Cliquez pour prévisualiser → [EXAMPLE]`,
+            embedStep1: `Étape 1) Copiez ce code dans le [HEAD] de votre site: [CODE]`,
+            embedStep2: `Étape 2) Dans votre article, créez un lien vers [LINK]
+                         et assurez vous que le texte du lien démarre avec :deux-points,
+                         <a href="#">:comme ça</a>,
+                         pour que Nutshell sache que c'est expansible.`,
+            embedStep3: `Step 3) Et voila! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+
+        },
         nl: {
 
             // Button text
