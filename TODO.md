@@ -44,6 +44,7 @@ OTHER NUTSHELL WHATEVERS
 * iframe the new credits, ?v whatever @done
 * COPY: Promo/copy more highlight "EMBEDDABLE", too... and highlight some extra features?
 
+
 RESPOND TO ALL OF EM
 INCLUDING TELLING THAT ONE OFF.
 
@@ -69,3 +70,7 @@ AFTERWARDS
 * FEATURE: Hidden messages for lack of JS (RSS, Pocket) etc fallback
 * FEATURE: Allow "before" and "after" texts for Wiki/YouTube
 * FEATURE: Can write full content of a very short Nutshell right in the link. (good for "hint systems")
+* Shorter than: You can embed this as an "expandable explanation" in your own blog/site! Click to preview
+* Use "v". whoops.
+
+> It’s common practice to prefix your version names with the letter v. Some good tag names might be v1.0.0 or v2.3.4.

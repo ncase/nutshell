@@ -263,7 +263,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         fr: {
 
             // Button text
-            closeAllNutshells: `fermer toutes les coquilles`,
+            closeAllNutshells: `fermer toutes les Nutshells`,
 
             // Nutshell errors...
             notFoundError: `Oh oh, la page n'as pas été trouvée! Lien à vérifier:`,
