@@ -25,6 +25,9 @@ Bug fixes are self-explanatory. Translations are slightly harder.
 
 ### On translating:
 
+(Translations already done: French, Esperanto, Dutch, German, Polish,
+Spanish, Chinese)
+
 In the `nutshell.js` file, there's a JSON object containing all of Nutshell's English text:
 
 ```

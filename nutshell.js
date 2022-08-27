@@ -11,10 +11,7 @@
 v1.0.2 - "Even More Bugs Were Squashed"
 
 ( NOTE TO SELF: When updating version, remember to edit... )
-( this js file                                             )
-( includ_nutshell.js                                       )
-( words.md -> words.html -> index.html                     )
-( Find-All-And-Replace (1.0.x)                             )
+( this js file, include_nutshell.js                        )
 ( ACTUALLY MAKE A RELEASE ON GITHUB                        )
 
 You know how in Memento, the amnesia guy tattoos reminders on his body?
@@ -151,6 +148,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
         // Restart!
         Nutshell.htmlCache = {};
+        Nutshell._nutshellsOpen = 0;
 
         // IF TOP PAGE: Convert this page!
         // (By default, the whole document. But you can specify element,
@@ -1683,6 +1681,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     }
     .nutshell-heading-embed img{
         width:1em; height:1em;
+        min-width: 1em;
+        min-height: 1em; /* some deal with the devil */
     }
     .nutshell-heading:hover .nutshell-heading-embed{
         left:0.25em;

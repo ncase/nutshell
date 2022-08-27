@@ -2,15 +2,15 @@
 
 <iframe width="750" height="300" src="indexpage/splash.html" data-splash="yes"></iframe>
 
-**Nutshell** is a tool to make "expandable explanations", like this! They can even be [:recursive](#Recursion). (← click me 👆) This lets your readers learn only the details they need, just-in-time, always-in-context.
+**Nutshell** is a tool to make "expandable, embeddable explanations", like this! They can even be [:recursive](#Recursion). (← click me 👆) This lets your readers learn what they need, just-in-time, always-in-context.
 
-Unlike links, Nutshell lets you include *only* the snippet you need, not the whole page. Plus, instead of being lost in a jungle of new tabs, your reader stays on one page, keeping their flow of reading. Even if you [:interrupt a sentence](#Interruption), Nutshell recaps the sentence afterwards, so your reader never loses context.
+What's more, **you can embed explanations from _other_ webpages and authors, even stuff written _before_ Nutshell was made!** (Example: a snippet from [:my pretentious 2014 blog post](https://blog.ncase.me/explorable-explanations/#ProceduralRhetoric).) This works because Nutshell doesn't require writing in a new format – just good ol' headings, paragraphs, and links. This way, you don't have to write all your expandable explanations from scratch: you can just build upon others', and others can build upon yours.
 
-Unlike [:Wikipedia's "Hover to Preview Article" feature](#HoverToPreview), **you can re-use explanations from other websites and authors, _even stuff that was written long ago!_** (Example: a snippet from [:my pretentious 2014 blog post](https://blog.ncase.me/explorable-explanations/#ProceduralRhetoric).) This works because Nutshell doesn't require writing in a new format – just the good ol' headings, paragraphs, and links you're used to.
+But why not links? Well, unlike links, Nutshell lets you include *only* the snippet you need, not the whole page. And instead of a jungle of new tabs, your reader stays on one page, keeping their flow of reading. Even if you [:interrupt a sentence](#Interruption), Nutshell recaps the sentence afterwards, so your reader never loses context.
 
 *But wait, there's more!* It's not just text & pictures you can embed! You can also embed [:interactive playthings](indexpage/malicious.html#InteractivePlay), [:YouTube videos](https://www.youtube.com/watch?v=i_RLYSaPvak), and – hey, why not – [:Wikipedia articles](https://en.wikipedia.org/wiki/Catgirl). (That includes [:other languages](https://fr.wikipedia.org/wiki/Baguette_(pain)) and [:Simple Wikipedia](https://simple.wikipedia.org/wiki/Universe), too!)
 
-So: whether you're writing a blog, a news article, a glossary, educational material, or code documentation... I hope Nutshell helps you help _your_ readers.
+So: whether you're writing a blog, a news article, a glossary, educational material, code documentation, etc... I hope Nutshell helps you help _your_ readers.
 
 Bite-sized, yet nutritious. Let's get crackin' with Nutshell!
 
@@ -26,6 +26,10 @@ Then, to write a Nutshell snippet, just use headings & paragraphs. To embed a sn
     <source src="indexpage/screenies/instructions.mp4" type="video/mp4">
     oh no! your browser does not support the video tag. :(
 </video>
+
+(even if you don't make links, the above one line of code makes all the sections of your blog post embeddable for *others*:)
+
+<img src="indexpage/screenies/embedthis.gif" data-border="yes" width="400"/>
 
 And that's all! To try Nutshell online, check out:
 
@@ -70,7 +74,7 @@ Hey, maybe *that'll* birth the new era of empathy and enlightenment!
 
 Nicky <strike>panhandles on the internet</strike> was supported by these kind folks:
 
-<iframe src='https://ncase.me/thanks/aug2022.html?credits=1' width='750px' height='400px'></iframe>
+<iframe src='https://ncase.me/thanks/aug2022.html?credits=1&v=2' width='750px' height='400px'></iframe>
 
 If you'd like to help Nicky keep making free educational stuff & talking about themselves in the third person, dispose of your disposable cash **[on their Patreon!](https://www.patreon.com/ncase)**
 
@@ -113,9 +117,9 @@ Or, smaller "minified" file:
 
 <iframe src='indexpage/include_nutshell.html?url=min' width='750' height='22' data-include='yes'></iframe>
 
-(You can also download & re-host the files yourself {[full](https://cdn.jsdelivr.net/gh/ncase/nutshell@1.0.2/nutshell.js), [minified](https://cdn.jsdelivr.net/gh/ncase/nutshell@1.0.2/nutshell.min.js)}. Also, Nutshell doesn't require a package manager; I copy-pasted all dependencies into it. Like a *savage*.)
+(You can also download & re-host the files yourself {[full](https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js), [minified](https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.min.js)}. Also, Nutshell doesn't require a package manager; I copy-pasted all dependencies into it. Like a *savage*.)
 
-Alas, some platforms like Medium and Substack don't let you add *any* code, not even *one line.* You can't use Nutshell on those platforms. ("The web will empower the people", they said...)
+Alas, some platforms like Medium and Substack don't let you add *any* code, not even *one line.* You can't use Nutshell on those platforms. 😿
 
 ## : HTML/CSS/JS
 

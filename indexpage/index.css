@@ -15,18 +15,18 @@ body {
 
     /* TEST TEST TEST */
     /*background-color: black;
-    color:white;*/
+    color:white;
     background-color: #bada55;
-    color: #ff4040;
+    color: #ff4040;*/
 
     position: relative;
 
 }
-/* TEST TEST TEST */
+/* TEST TEST TEST
 #test{
     background:#000;
     color:#fff;
-}
+}*/
 a, span[data-fake-link]{
     color: hsl(200,80%,60%);
     transition: color 0.1s;
@@ -96,6 +96,9 @@ iframe[data-splash=yes]{
 }
 iframe[data-include=yes]{
     border: none !important;
+}
+img[data-border]{
+    border:1px solid #ccc;
 }
 
 /* MOBILE */

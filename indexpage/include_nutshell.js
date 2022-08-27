@@ -8,10 +8,13 @@ clickme.onclick = (e)=>{
     e.target.blur();
 }*/
 
-/*let fullURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell@1.0.2/nutshell.js',
-    minURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell@1.0.2/nutshell.min.js',*/
-let fullURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js',
-    minURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.min.js',
-    fullOrMin = (new URL(window.location.href)).searchParams.get('url'),
-    resource = (fullOrMin=='full') ? fullURL : minURL;
+let fullURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell@1.0.2/nutshell.js';
+let minURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell@1.0.2/nutshell.min.js';
+
+//let fullURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js';
+//let minURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.min.js';
+
+let fullOrMin = (new URL(window.location.href)).searchParams.get('url');
+let resource = (fullOrMin=='full') ? fullURL : minURL;
+
 clickme.value = `<script src="${resource}"></script>`;
