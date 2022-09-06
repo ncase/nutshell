@@ -434,6 +434,33 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[。.?!]\s/g // added chinese period
 
+        },
+        he: {
+            // Button text
+            closeAllNutshells: `סגור את כל האגוזים`,
+            learnMore: `עוד אודות קליפת האגוז`,
+
+            // Nutshell errors...
+            notFoundError: `:אוי לא, הדף לא נמצא! בדקו שוב את הקישור`,
+            wikiError: `:אוי לא, ויקיפדיה לא טוען, או שהלינק לא תקין. בבקשה בדקו שוב`,
+            corsError: `:מופעל CORS מותקן או nutshell אוי לא, העמוד נמצא אך לא איפשר גישה לתוכן! בדקו אם לאתר יש `,
+            sectionIDError: `.בדקו שגיאות כתיב והבדלי איות אזוריים ! #[ID] IDאוי לא, אין סעיף אשר תואם את ה`,
+            startTextError: `.הזהרו משגיאות כתיב !“[start]” אוי לא, אין פסקה עם הטקסט`,
+
+            // Embed modal!
+            embedStep0: `!אתם יכול להטמיע זאת כ"הסבר הניתן להרחבה" בבלוג/אתר שלכם
+                         [EXAMPLE] ← לחצו לתצוגה מוקדמת`,
+            embedStep1: `[CODE] :של האתר שלכם [HEAD]צעד 1) העתיקו את הקוד הזה לתוך ה`,
+            embedStep2: `[LINK]צעד 2) במאמר שלכם, תיצרו קישור ל
+                         ודאגו שהטקסט של הלינק מתחיל עם :נקודותיים,
+                         <a href="#">:ככה</a>
+                         .ידע לעשות אותו ניתן להרחבה Nutshellכך ש`,
+            embedStep3: `🎉 !צעד 3) זה הכל, חברים`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
         }
     };
 
