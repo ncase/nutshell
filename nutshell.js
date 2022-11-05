@@ -126,7 +126,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     window.Nutshell = {};
 
     // Version! & CDN
-    Nutshell.version = '1.0.3';
+    Nutshell.version = 'v1.0.3';
     Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
 
     // What's THIS page's URL? (WITH QUERYSTRING)
