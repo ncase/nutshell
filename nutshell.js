@@ -8,10 +8,10 @@
 ██║░╚███║╚██████╔╝░░░██║░░░██████╔╝██║░░██║███████╗███████╗███████╗
 ╚═╝░░╚══╝░╚═════╝░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
 
-v1.0.2 - "Even More Bugs Were Squashed"
+v1.0.3 - "Remember Remember The Fifth of November"
 
 ( NOTE TO SELF: When updating version, remember to edit... )
-( this js file, include_nutshell.js                        )
+( this js file "Nutshell.version", include_nutshell.js     )
 ( ACTUALLY MAKE A RELEASE ON GITHUB                        )
 
 You know how in Memento, the amnesia guy tattoos reminders on his body?
@@ -126,7 +126,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     window.Nutshell = {};
 
     // Version! & CDN
-    Nutshell.version = '1.0.2';
+    Nutshell.version = '1.0.3';
     Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
 
     // What's THIS page's URL? (WITH QUERYSTRING)
@@ -1632,7 +1632,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         // Step 1: Code for head
         _p1.innerHTML = Nutshell.getLocalizedText("embedStep1")
             .replace(`[HEAD]`, `<span style="font-family:monospace">&lt;head&gt;</span>`)
-            .replace(`[CODE]`, `<input style="width:100%" value="${Nutshell.cdn}" onclick="select()"/>`);
+            .replace(`[CODE]`, `<input style="width:100%" value="<script src='${Nutshell.cdn}'></script>" onclick="select()"/>`);
 
         // Step 2: Link
         _p2.innerHTML = Nutshell.getLocalizedText("embedStep2")
