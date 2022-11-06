@@ -1353,9 +1353,10 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         overflow.appendChild(section);
 
         // Close Button
-        let close = document.createElement('div');
+        let close = document.createElement('button');
         close.className = 'nutshell-bubble-overflow-close';
         close.innerHTML = '&times;';
+        close.ariaLabel = "Close";
         close.onclick = ()=>{
 
             // Close my parent, which'll also close me
@@ -1916,13 +1917,16 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     .nutshell-bubble-overflow-close{
 
         /* A &times; sign */
-        /*font-weight:100;*/
+        font-family: inherit;
+        font-size: 1rem;
         text-align: center;
 
         /* Whole-width bottom */
         position:absolute;
         width:100%;
         bottom:0;
+        border: 0;
+        background: none;
 
         /* A button that gets darker. */
         cursor:pointer;
@@ -1931,6 +1935,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
     }
     .nutshell-bubble-overflow-close:hover{
+        background: none;
         opacity:1;
     }
 
