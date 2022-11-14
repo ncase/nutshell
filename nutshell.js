@@ -461,6 +461,35 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             keepPunctuation: `.,?!)_~'"’”`,
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[.?!]\s/g
+        },
+        tr: {
+
+            // Button text
+            closeAllNutshells: `tüm Nutshell'leri kapat`,
+            learnMore: `Nutshell hakkında daha fazla şey öğren`,
+
+            // Nutshell errors...
+            notFoundError: `Ah, sayfa bulunamadı! Linki tekrar kontrol edin:`,
+            wikiError: `Ah, Wikipedia yüklenmiyor veya link bozuk. Lütfen tekrar kontrol edin:`,
+            corsError: `Ah, sayfa bulundu ama içeriği görüntüleyemiyoruz! Diğer sitede de Nutshell'in kurulu veya CORS'un etkin olduğundan emin olunuz:`,
+            sectionIDError: `Ah, #[ID] kimliğiyle eşleşen bir bölüm yok! Yazım hatalarına ve bölgesel yazım farklılıklarına dikkat edin.`,
+            startTextError: `Ah, “[start]” metnine sahip bir paragraf yok! Yazım hatalarına dikkat edin.`,
+
+            // Embed modal!
+            embedStep0: `Bunu kendi web günlüğünüze/sitenize "genişletilebilir bir açıklama" olarak yerleştirebilirsiniz!
+                         Önizlemek için tıklayın → [EXAMPLE]`,
+            embedStep1: `Adım 1) Bu kodu sitenizin [HEAD] bölümüne kopyalayın: [CODE]`,
+            embedStep2: `Adım 2) İçeriğinizde [LINK] için bir bağlantı oluşturun
+                         ve bağlantı metninin :iki nokta ile başladığından emin olun
+                         <a href="#">:bu şekilde</a>,
+                         böylece Nutshell onu genişletmesi gerektiğini anlar.`,
+            embedStep3: `Adım 3) İşte, hepsi bu kadar! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+
         }
     };
 
