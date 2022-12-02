@@ -8,10 +8,10 @@
 ██║░╚███║╚██████╔╝░░░██║░░░██████╔╝██║░░██║███████╗███████╗███████╗
 ╚═╝░░╚══╝░╚═════╝░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
 
-v1.0.3 - "Remember Remember The Fifth of November"
+v1.0.4 - "On the 23rd Day of Christmas"
 
 ( NOTE TO SELF: When updating version, remember to edit... )
-( this js file "Nutshell.version", include_nutshell.js     )
+( this js file's "Nutshell.version", include_nutshell.js     )
 ( ACTUALLY MAKE A RELEASE ON GITHUB                        )
 
 You know how in Memento, the amnesia guy tattoos reminders on his body?
@@ -126,8 +126,9 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     window.Nutshell = {};
 
     // Version! & CDN
-    Nutshell.version = 'v1.0.3';
-    Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
+    Nutshell.version = 'v1.0.4';
+    //Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
+    Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js`;
 
     // What's THIS page's URL? (WITH QUERYSTRING)
     Nutshell.thisPageURL = location.protocol + '//' + location.host + location.pathname + location.search;

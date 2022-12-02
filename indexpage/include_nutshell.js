@@ -8,8 +8,8 @@ clickme.onclick = (e)=>{
     e.target.blur();
 }*/
 
-let fullURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell@v1.0.3/nutshell.js';
-let minURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell@v1.0.3/nutshell.min.js';
+let fullURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js';
+let minURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.min.js';
 
 //let fullURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js';
 //let minURL = 'https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.min.js';
