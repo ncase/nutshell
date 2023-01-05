@@ -491,7 +491,37 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[.?!]\s/g
 
+        },
+	ko: {
+
+            // Button text
+            closeAllNutshells: `껍질 모두 닫기`,
+            learnMore: `껍질에 대해 더 배우기`,
+
+            // Nutshell errors...
+            notFoundError: `이런, 페이지를 찾지 못했어요! 주소를 다시 확인하세요:`,
+            wikiError: `이런, 위키피디아가 로딩이 안 되거나 주소가 망가졌어요. 다시 확인해 주세요:`,
+            corsError: `이런, 페이지를 찾았지만 내용물을 주지 않았어요! 그 다른 사이트가 껍질이 설치되었거나 CORS가 작동됐는지 확인하세요:`,
+            sectionIDError: `이런, ID #[ID]에 맞는 부분이 없어요! 오타나 지역적인 철자의 차이를 주의하세요.`,
+            startTextError: `이런, “[start]”라는 글이 있는 단락이 없어요! 오타를 주의하세요.`,
+
+            // Embed modal!
+            embedStep0: `이것을 당신의 블로그/사이트에 "펼칠 수 있는 설명"으로 첨부할 수 있어요!
+                         눌러서 미리보기 → [EXAMPLE]`,
+            embedStep1: `1) 이 코드를 당신의 사이트의 [HEAD]에 복사하세요: [CODE]`,
+            embedStep2: `2) 당신의 글에 [LINK]로 가는 링크를 넣으세요
+                         그리고 링크가 반드시 :쌍점으로 시작하게 하세요,
+                         <a href="#">:이렇게</a>,
+                         그래야지 프로그램이 이걸 펼칠 수 있게 만들어야 하는 걸 압니다.`,
+            embedStep3: `Step 3) 그게 다에요! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+
         }
+	    
     };
 
     Nutshell.getLocalizedText = (textID)=>{
