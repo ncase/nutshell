@@ -87,8 +87,8 @@ After including Nutshell (e.g. where you put `<script src="nutshell.js"><script>
 <script>
 Nutshell.setOptions({
     startOnLoad: true, // Start Nutshell on load? (default: true)
-	lang: 'en', // Language (default: 'en', which is English)
-	dontEmbedHeadings: false, // If 'true', removes the "embed this as a nutshell" option on headings
+    lang: 'en', // Language (default: 'en', which is English)
+    dontEmbedHeadings: false, // If 'true', removes the "embed this as a nutshell" option on headings
 });
 </script>
 ```
