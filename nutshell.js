@@ -8,7 +8,7 @@
 ██║░╚███║╚██████╔╝░░░██║░░░██████╔╝██║░░██║███████╗███████╗███████╗
 ╚═╝░░╚══╝░╚═════╝░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
 
-v1.0.4 - "On the 23rd Day of Christmas"
+v1.0.5 - "Annyeong"
 
 ( NOTE TO SELF: When updating version, remember to edit... )
 ( this js file's "Nutshell.version", include_nutshell.js     )
@@ -126,7 +126,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     window.Nutshell = {};
 
     // Version! & CDN
-    Nutshell.version = 'v1.0.4';
+    Nutshell.version = 'v1.0.5';
     //Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
     Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js`;
 
@@ -190,7 +190,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
     Nutshell.options = {
         startOnLoad: true, // Start Nutshell on load? (default: true)
-        lang: 'en' // Language (default: 'en', which is English)
+        lang: 'en', // Language (default: 'en', which is English)
+        dontEmbedHeadings: false, // If 'true', removes the "embed this as a nutshell" option on headings
     };
 
     // A semantic sugar function to override options
@@ -492,7 +493,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             endPunctuation: /[.?!]\s/g
 
         },
-	ko: {
+        ko: {
 
             // Button text
             closeAllNutshells: `껍질 모두 닫기`,
@@ -513,7 +514,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                          그리고 링크가 반드시 :쌍점으로 시작하게 하세요,
                          <a href="#">:이렇게</a>,
                          그래야지 프로그램이 이걸 펼칠 수 있게 만들어야 하는 걸 압니다.`,
-            embedStep3: `Step 3) 그게 다에요! 🎉`,
+            embedStep3: `3) 그게 다에요! 🎉`,
 
             // What punctuation (in this language) should we KEEP after an expandable opens?
             keepPunctuation: `.,?!)_~'"’”`,
@@ -521,7 +522,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             endPunctuation: /[.?!]\s/g
 
         }
-	    
+
     };
 
     Nutshell.getLocalizedText = (textID)=>{
@@ -1554,13 +1555,15 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                 permalink = Nutshell.thisPageURL+"#"+sectionID;
 
             // Embed button
-            let embedButton = document.createElement('div');
-            embedButton.className = 'nutshell-heading-embed';
-            embedButton.innerHTML = `<img src='${Nutshell._dataURIImage}'/>`;
-            embedButton.onclick = ()=>{
-                Nutshell.showEmbedModal(permalink, headingText);
-            };
-            heading.appendChild(embedButton);
+            if(!Nutshell.options.dontEmbedHeadings){
+                let embedButton = document.createElement('div');
+                embedButton.className = 'nutshell-heading-embed';
+                embedButton.innerHTML = `<img src='${Nutshell._dataURIImage}'/>`;
+                embedButton.onclick = ()=>{
+                    Nutshell.showEmbedModal(permalink, headingText);
+                };
+                heading.appendChild(embedButton);
+            }
 
         });
 

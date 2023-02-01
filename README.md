@@ -87,12 +87,13 @@ After including Nutshell (e.g. where you put `<script src="nutshell.js"><script>
 <script>
 Nutshell.setOptions({
     startOnLoad: true, // Start Nutshell on load? (default: true)
-    lang: 'en' // Language (default: 'en', which is English)
+	lang: 'en', // Language (default: 'en', which is English)
+	dontEmbedHeadings: false, // If 'true', removes the "embed this as a nutshell" option on headings
 });
 </script>
 ```
 
-There are currently only 2 options:
+There are currently 3 options:
 
 **startOnLoad (default: true).** Set this to `false` if you *don't* want Nutshell to immediately run on page load. (e.g. if your article is asynchronously loaded). Later, to *actually* start Nutshell, call:
 
@@ -103,6 +104,13 @@ By default, Nutshell tries to convert the whole page. To limit Nutshell to conve
 `Nutshell.start(element);`
 
 **lang (default: 'en').** If Nutshell supports your language, you can make Nutshell speak it by setting `lang` to your language's [two-letter code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). (Currently, Nutshell only supports English, but there'll be more fan-translations soon! If you're comfortable with programming/Github, see [how you can help translate it](https://github.com/ncase/nutshell#on-translating))
+
+**dontEmbedHeadings (default: false).**
+When `false` (by default), it puts an "embed this" button next to all headings on your page, like so:
+
+![](indexpage/screenies/embedthis.gif)
+
+When set to `true`, that button does not show up.
 
 **Want to change Nutshell's style?** Just put CSS after the Nutshell script! To see the classes Nutshell uses (all prepended .nutshell-\*), look at `Nutshell.defaultStyle` in `nutshell.js`.
 
