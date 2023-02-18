@@ -277,13 +277,13 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             // Embed modal!
             embedStep0: `Vous pouvez insérer ceci comme "explication expansible" dans votre propre blog/site!
-                        Cliquez pour prévisualiser → [EXAMPLE]`,
+                         Cliquez pour prévisualiser → [EXAMPLE]`,
             embedStep1: `Étape 1) Copiez ce code dans le [HEAD] de votre site: [CODE]`,
             embedStep2: `Étape 2) Dans votre article, créez un lien vers [LINK]
                          et assurez vous que le texte du lien démarre avec :deux-points,
                          <a href="#">:comme ça</a>,
                          pour que Nutshell sache que c'est expansible.`,
-            embedStep3: `Step 3) Et voila! 🎉`,
+            embedStep3: `Étape 3) Et voila! 🎉`,
 
             // What punctuation (in this language) should we KEEP after an expandable opens?
             keepPunctuation: `.,?!)_~'"’”`,
@@ -312,7 +312,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                          en zorg ervoor dat de link start met een :dubbelepunt,
                          <a href="#">:zoals dit</a>,
                          zodat Nutshell weet dat deze link moet uitklappen.`,
-            embedStep3: `Step 3) Dat is alles! 🎉`,
+            embedStep3: `Stap 3) Dat is alles! 🎉`,
 
             // What punctuation (in this language) should we KEEP after an expandable opens?
             keepPunctuation: `.,?!)_~'"’”`,
@@ -341,7 +341,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                          und stelle dabei sicher, dass der Linktext mit einem :Doppelpunkt beginnt,
                          <a href="#">:also so</a>,
                          sodass Nutshell weiß, dass er ausklappbar sein soll.`,
-            embedStep3: `Step 3) Das wars! 🎉`,
+            embedStep3: `Schritt 3) Das wars! 🎉`,
 
             // What punctuation (in this language) should we KEEP after an expandable opens?
             keepPunctuation: `.,?!)_~'"’”`,
