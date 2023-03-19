@@ -26,7 +26,7 @@ Bug fixes are self-explanatory. Translations are slightly harder.
 ### On translating:
 
 (Translations already done: French, Esperanto, Dutch, German, Polish,
-Spanish, Chinese)
+Spanish, Chinese, Hebrew, Turkish, Korean, Russian, Hindi)
 
 In the `nutshell.js` file, there's a JSON object containing all of Nutshell's English text:
 
@@ -103,7 +103,7 @@ By default, Nutshell tries to convert the whole page. To limit Nutshell to conve
 
 `Nutshell.start(element);`
 
-**lang (default: 'en').** If Nutshell supports your language, you can make Nutshell speak it by setting `lang` to your language's [two-letter code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). (Currently, Nutshell only supports English, but there'll be more fan-translations soon! If you're comfortable with programming/Github, see [how you can help translate it](https://github.com/ncase/nutshell#on-translating))
+**lang (default: 'en').** If Nutshell supports your language, you can make Nutshell speak it by setting `lang` to your language's [two-letter code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). (If you're comfortable with programming/Github, see [how you can help translate Nutshell](https://github.com/ncase/nutshell#on-translating))
 
 **dontEmbedHeadings (default: false).**
 When `false` (by default), it puts an "embed this" button next to all headings on your page, like so:

@@ -278,13 +278,13 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             // Embed modal!
             embedStep0: `Vous pouvez insérer ceci comme "explication expansible" dans votre propre blog/site!
-                        Cliquez pour prévisualiser → [EXAMPLE]`,
+                         Cliquez pour prévisualiser → [EXAMPLE]`,
             embedStep1: `Étape 1) Copiez ce code dans le [HEAD] de votre site: [CODE]`,
             embedStep2: `Étape 2) Dans votre article, créez un lien vers [LINK]
                          et assurez vous que le texte du lien démarre avec :deux-points,
                          <a href="#">:comme ça</a>,
                          pour que Nutshell sache que c'est expansible.`,
-            embedStep3: `Step 3) Et voila! 🎉`,
+            embedStep3: `Étape 3) Et voila! 🎉`,
 
             // What punctuation (in this language) should we KEEP after an expandable opens?
             keepPunctuation: `.,?!)_~'"’”`,
@@ -313,7 +313,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                          en zorg ervoor dat de link start met een :dubbelepunt,
                          <a href="#">:zoals dit</a>,
                          zodat Nutshell weet dat deze link moet uitklappen.`,
-            embedStep3: `Step 3) Dat is alles! 🎉`,
+            embedStep3: `Stap 3) Dat is alles! 🎉`,
 
             // What punctuation (in this language) should we KEEP after an expandable opens?
             keepPunctuation: `.,?!)_~'"’”`,
@@ -342,7 +342,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                          und stelle dabei sicher, dass der Linktext mit einem :Doppelpunkt beginnt,
                          <a href="#">:also so</a>,
                          sodass Nutshell weiß, dass er ausklappbar sein soll.`,
-            embedStep3: `Step 3) Das wars! 🎉`,
+            embedStep3: `Schritt 3) Das wars! 🎉`,
 
             // What punctuation (in this language) should we KEEP after an expandable opens?
             keepPunctuation: `.,?!)_~'"’”`,
@@ -551,8 +551,36 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[।?,.]\s/g
 
-        }
+        },
+        ru: {
 
+            // Button text
+            closeAllNutshells: `закрыть все пояснения`,
+            learnMore: `узнать больше про Nutshell`,
+
+            // Nutshell errors...
+            notFoundError: `О нет, страница не найдена! Перепроверьте, что ссылка правильная:`,
+            wikiError: `О нет, Википедия не загружается, или ссылка битая. Пожалуйста, перепроверьте её:`,
+            corsError: `О нет, страница найдена, но не отдаёт содержимое! Проверьте, что на другом сайте установлен Nutshell или включён CORS:`,
+            sectionIDError: `О нет, раздела с идентификатором #[ID] не существует! Проверьте, что вы не опечатались и учли все орфографические особенности.`,
+            startTextError: `О нет, абзаца с текстом «[start]» не существует! Проверьте, что вы не опечатались.`,
+
+            // Embed modal!
+            embedStep0: `Вы можете встроить это «разворачиваемое пояснение» в свой собственный блог или сайт!
+                         Нажмите для предпросмотра → [EXAMPLE]`,
+            embedStep1: `Шаг 1) Скопируйте этот код в элемент [HEAD] на вашем сайте: [CODE]`,
+            embedStep2: `Шаг 2) На нужной странице сделайте ссылку на [LINK]
+                         и убедитесь, что текст ссылки начинается с :двоеточия,
+                         <a href="#">:вот так</a>,
+                         чтобы Nutshell знал, что её можно развернуть.`,
+            embedStep3: `Шаг 3) Вот и всё! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”»`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+
+        }
     };
 
     Nutshell.getLocalizedText = (textID)=>{
