@@ -8,10 +8,11 @@
 ██║░╚███║╚██████╔╝░░░██║░░░██████╔╝██║░░██║███████╗███████╗███████╗
 ╚═╝░░╚══╝░╚═════╝░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
 
-v1.0.5 - "Annyeong"
+v1.0.6 - "More translations"
 
 ( NOTE TO SELF: When updating version, remember to edit... )
-( this js file's "Nutshell.version", include_nutshell.js     )
+( this js file's "Nutshell.version", include_nutshell.js   )
+( and README.md what translations finished                 )
 ( ACTUALLY MAKE A RELEASE ON GITHUB                        )
 
 You know how in Memento, the amnesia guy tattoos reminders on his body?
@@ -126,7 +127,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     window.Nutshell = {};
 
     // Version! & CDN
-    Nutshell.version = 'v1.0.5';
+    Nutshell.version = 'v1.0.6';
     //Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
     Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js`;
 
@@ -522,7 +523,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             endPunctuation: /[.?!]\s/g
 
         },
-	hi: {
+        hi: {
 
             // Button text
             closeAllNutshells: `सारे नटशेल्स बंद करे`,
@@ -550,7 +551,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[।?,.]\s/g
 
-        }   
+        }
 
     };
 

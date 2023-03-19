@@ -31,4 +31,3 @@ AFTERWARDS
 * Shorter than: You can embed this as an "expandable explanation" in your own blog/site! Click to preview
 * Use "v". whoops.
 
-> It’s common practice to prefix your version names with the letter v. Some good tag names might be v1.0.0 or v2.3.4.
