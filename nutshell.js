@@ -1112,6 +1112,10 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
                     // IF NO SECTION ID, give entire article
                     if(!queryString || queryString.trim()==''){
+                        // Hidden sections should still be hidden
+                        Nutshell.hideHeadings(safeEl);
+                        // Folded sections need to convert relative links to absolute
+                        _convertRelativeToAbsoluteLinks("a", "href", url, safeEl);
                         // Article is assumed to be the container of the first <p>
                         let assumedArticle = safeEl.querySelector('p').parentNode;
                         resolve(assumedArticle);
