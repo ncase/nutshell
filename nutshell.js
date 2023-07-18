@@ -8,7 +8,7 @@
 ██║░╚███║╚██████╔╝░░░██║░░░██████╔╝██║░░██║███████╗███████╗███████╗
 ╚═╝░░╚══╝░╚═════╝░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
 
-v1.0.6 - "More translations"
+v1.0.7 - "Baby's First XSS Vulnerability"
 
 ( NOTE TO SELF: When updating version, remember to edit... )
 ( this js file's "Nutshell.version", include_nutshell.js   )
@@ -127,7 +127,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     window.Nutshell = {};
 
     // Version! & CDN
-    Nutshell.version = 'v1.0.6';
+    Nutshell.version = 'v1.0.7';
     //Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
     Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js`;
 
@@ -612,7 +612,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             // Remove colon, replace with animated balls
             let linkText = document.createElement('span');
-            linkText.innerHTML = ex.innerText.slice(ex.innerText.indexOf(':')+1);
+            //linkText.innerHTML = ex.innerText.slice(ex.innerText.indexOf(':')+1); // CURSED LINE
+            linkText.innerText = ex.innerText.slice(ex.innerText.indexOf(':')+1);
             linkText.className = 'nutshell-expandable-text';
             let ballUp = document.createElement('span');
             ballUp.className = 'nutshell-ball-up';
