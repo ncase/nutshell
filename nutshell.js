@@ -580,7 +580,35 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
             endPunctuation: /[.?!]\s/g
 
-        }
+        },
+        vi: {
+
+            // Button text
+            closeAllNutshells: `đóng tất cả các nutshell`,
+            learnMore: `tìm hiểu thêm về Nutshell`,
+
+            // Nutshell errors...
+            notFoundError: `Ôi không, không thể tìm thấy trang! Kiểm tra lại link:`,
+            wikiError: `Ôi không, có thể Wikipedia bị hư, hoặc trang không tồn tại. Kiểm tra lại link:`,
+            corsError: `Ôi không, trang tồn tại nhưng không cho phép truy cập! Kiểm tra trang đã tải Nutshell hay bật CORS chưa:`,
+            sectionIDError: `Ôi không, không có phần nào được gán ID #[ID]! Kiểm tra lỗi chính tả.`,
+            startTextError: `Ôi không, không có đoạn nào có câu “[start]”! Kiểm tra lỗi chính tả.`,
+
+            // Embed modal!
+            embedStep0: `Bạn có thể nhúng phần này như là phần "giải thích mở rộng" trên website của bạn!
+                         Click để xem thử → [EXAMPLE]`,
+            embedStep1: `Step 1) Copy code này vào phần [HEAD] trong website của bạn: [CODE]`,
+            embedStep2: `Step 2) Trong bài viết của bạn, tạo đường link tới [LINK]
+                         và luôn luôn đặt dấu :hai chấm phía trước đường link,
+                         <a href="#">:như thế này</a>,
+                         để Nutshell biết mở rộng phần này.`,
+            embedStep3: `Step 3) Xong rồi đấy! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+		},
     };
 
     Nutshell.getLocalizedText = (textID)=>{
