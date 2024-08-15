@@ -884,7 +884,17 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
                             // create valid links 
                             pageHTML = pageHTML.replaceAll(/href="\/wiki/g, `href="https://${domain}.wikipedia.org/wiki`);
-                            // Cache it
+                            
+                            // get all a tags with wiki links and any title and change inner text to have : in front 
+                            // don't touch images
+                            pageHTML = pageHTML.replace(/<a.*?href="https:\/\/.*?\.wikipedia\.org\/wiki\/(.*?)".*?>(.*?)<\/a>/g, (match, p1, p2) => {
+                                // if it's an image, don't touch it
+                                if(p1.includes("File:")){
+                                    return match;
+                                }
+                                return `<a href="https://${domain}.wikipedia.org/wiki/${p1}">:${p2}</a>`;
+                            });
+
                             Nutshell.htmlCache[url] = pageHTML;
                             // FULFIL THE PROPHECY
                             resolvePurifiedHTML( Nutshell.htmlCache[url] );
