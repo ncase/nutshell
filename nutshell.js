@@ -881,6 +881,10 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                             // remove all links with title that starts with Edit Section
                             pageHTML = pageHTML.replace(/<a.*?title="Edit section.*?<\/a>/g, "");
                             pageHTML = pageHTML.replace(/<span class="mw-editsection-bracket">.*?<\/span>/g, "");
+
+                            // create valid links 
+                            pageHTML = pageHTML.replaceAll(/href="\/wiki/g, `href="https://${domain}.wikipedia.org/wiki`);
+                            // Cache it
                             Nutshell.htmlCache[url] = pageHTML;
                             // FULFIL THE PROPHECY
                             resolvePurifiedHTML( Nutshell.htmlCache[url] );
