@@ -8,7 +8,7 @@
 ██║░╚███║╚██████╔╝░░░██║░░░██████╔╝██║░░██║███████╗███████╗███████╗
 ╚═╝░░╚══╝░╚═════╝░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
 
-v1.0.7 - "Baby's First XSS Vulnerability"
+v1.0.8 - "Recursive Wikipedia Rabbithole"
 
 ( NOTE TO SELF: When updating version, remember to edit... )
 ( this js file's "Nutshell.version", include_nutshell.js   )
@@ -127,7 +127,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     window.Nutshell = {};
 
     // Version! & CDN
-    Nutshell.version = 'v1.0.7';
+    Nutshell.version = 'v1.0.8';
     //Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
     Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js`;
 
