@@ -8,7 +8,7 @@ What's more, **you can embed explanations from _other_ webpages and authors, eve
 
 But why not links? Well, unlike links, Nutshell lets you include *only* the snippet you need, not the whole page. And instead of a jungle of new tabs, your reader stays on one page, keeping their flow of reading. Even if you [:interrupt a sentence](#Interruption), Nutshell recaps the sentence afterwards, so your reader never loses context.
 
-*But wait, there's more!* It's not just text & pictures you can embed! You can also embed [:interactive playthings](indexpage/malicious.html#InteractivePlay), [:YouTube videos](https://www.youtube.com/watch?v=i_RLYSaPvak), and – hey, why not – [:Wikipedia articles](https://en.wikipedia.org/wiki/Catgirl). (That includes [:other languages](https://fr.wikipedia.org/wiki/Baguette_(pain)) and [:Simple Wikipedia](https://simple.wikipedia.org/wiki/Universe), too!)
+*But wait, there's more!* It's not just text & pictures you can embed! You can also embed [:interactive playthings](indexpage/malicious.html#InteractivePlay), [:YouTube videos](https://www.youtube.com/watch?v=i_RLYSaPvak), and – hey, why not – [:Wikipedia articles](https://en.wikipedia.org/wiki/Chicago_rat_hole). (That includes [:other languages](https://fr.wikipedia.org/wiki/Baguette_(pain)) and [:Simple Wikipedia](https://simple.wikipedia.org/wiki/Universe), too!)
 
 So: whether you're writing a blog, a news article, a glossary, educational material, code documentation, etc... I hope Nutshell helps you help _your_ readers.
 
@@ -76,12 +76,14 @@ Nicky <strike>panhandles on the internet</strike> was supported by these kind fo
 
 <iframe src='https://ncase.me/thanks/aug2022.html?credits=1&v=2' width='750px' height='400px'></iframe>
 
-If you'd like to help Nicky keep making free educational stuff & talking about themselves in the third person, dispose of your disposable cash **[on their Patreon!](https://www.patreon.com/ncase)**
+If you'd like to help Nicky keep making free educational stuff & talking about themselves in the third person, dispose of your disposable cash **[on her Patreon!](https://www.patreon.com/ncase)**
 
 But seriously, thank you to everyone above. I appreciate y'all.
 
 🥜,    
 ~ Nicky Case
+
+**Update Oct 11, 2024:** Also thank you to **[Dev Mehta](https://github.com/Dev-Mehta)** for adding the ability to use Nutshell on *specific* Wikipedia sub-sections, and with recursive expandable links! Like so — [: Binary Addition](https://en.wikipedia.org/wiki/Binary_number#Addition)
 
 ## : Recursion
 
@@ -179,7 +181,7 @@ There's probably many more StretchText-likes, but I haven't heard of 'em.
 
 <img src="indexpage/sprites/nicky.png" data-float="left" width="200"/>
 
-Nicky Case is an internet person who explains stuff with games, "games", and pictures with words. See what they've wrought upon humanity at [ncase.me](https://ncase.me).
+Nicky Case is an internet person who explains stuff with games, "games", and pictures with words. See what she hath wrought at [ncase.me](https://ncase.me).
 
 ## : Open Source
 
