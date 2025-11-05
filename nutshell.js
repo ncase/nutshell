@@ -1419,7 +1419,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
     // Add "from" source paragraph, if source is not THIS page
     let _addSource = (url)=>{
-        if(url == Nutshell.thisPageURL){
+        let urlSansHash = url.split("#")[0];
+        if(urlSansHash == Nutshell.thisPageURL){
             return ''; // nah.
         }else{
             let urlSansProtocol = url.split("://")[1];
