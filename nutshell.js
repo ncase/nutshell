@@ -1077,9 +1077,10 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
     // PURIFY. (& make src's absolute)
     let _purifyHTML = (rawHTML, baseURL)=>{
-
+        let is_same_origin = new URL(baseURL).origin == window.location.origin;
+        
         // DOMPurify: no styles, no scripts, iframes allowed (but sandboxed later)
-        let cleanHTML = DOMPurify.sanitize(rawHTML,{
+        let cleanHTML = is_same_origin ? rawHTML : DOMPurify.sanitize(rawHTML,{
             FORBID_ATTR: ['style','id','class'],
             FORBID_TAGS: ['style'],
             ADD_TAGS: ['iframe','audio','video']
