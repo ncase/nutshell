@@ -653,11 +653,6 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             ex.appendChild(ballUp);
             ex.appendChild(ballDown);
 
-            // BALLS ARE SAME AS FONT COLOR
-            let linkStyle = window.getComputedStyle(forThisElement ? forThisElement : ex);
-            ballUp.style.background = linkStyle.color;
-            ballDown.style.background = linkStyle.color;
-
             // Save the punctuation!
             // Extremely inefficient: plop each character one-by-one into the span
             let punctuation = document.createElement('span');
@@ -1972,7 +1967,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         /* They're balls */
         width: 0.15em;
         height: 0.15em;
-        background: #000;
+        background: currentcolor;
         border-radius: 1em;
 
         /* Animate moving up & down */
